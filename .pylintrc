@@ -1,0 +1,10 @@
+[MESSAGES CONTROL]
+disable=
+    C0114,  # missing-module-docstring (docstring em arquivos)
+    C0116,  # missing-function-docstring (docstring em funções)
+    W0613,  # unused-argument (argumentos não usados, comum em rotas do Bottle)
+    R0903,  # too-few-public-methods (classes com poucos métodos)
+    invalid-name, missing-docstring  # Opcional: suprime avisos comuns
+
+[FORMAT]
+max-line-length=120  # Permite linhas até 120 caracteres (opcional)
