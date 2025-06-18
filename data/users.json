@@ -1,8 +1,20 @@
 [
     {
         "id": 1,
-        "name": "UsuÃ¡rio Teste",
+        "name": "Gustavo",
         "email": "uduarioteste@email.com",
-        "birthdate": "1999-10-21"
+        "birthdate": "2006-10-21"
+    },
+    {
+        "id": 2,
+        "name": "Velho",
+        "email": "velho@gmail.com",
+        "birthdate": "2025-06-19"
+    },
+    {
+        "id": 3,
+        "name": "Luquinhas",
+        "email": "l@gmail.com",
+        "birthdate": "2025-08-02"
     }
 ]
