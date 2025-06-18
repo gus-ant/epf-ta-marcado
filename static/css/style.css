@@ -1,13 +1,17 @@
 /* Reset e Estilos Globais */
 :root {
   --primary-color: #3498db;
+  --primary-color-hover: #2c80b4;
   --secondary-color: #2980b9;
   --danger-color: #e74c3c;
   --success-color: #2ecc71;
-  --text-color: #333;
-  --light-gray: #f5f5f5;
-  --border-color: #ddd;
-  --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --text-color: #2c3e50;
+  --muted-text-color: #7f8c8d;
+  --light-gray: #f5f7fa;
+  --border-color: #e0e0e0;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --radius: 10px;
+  --transition: all 0.3s ease;
 }
 
 * {
@@ -18,20 +22,46 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
+  line-height: 1.7;
+  font-size: 16px;
+  background-color: var(--light-gray);
   color: var(--text-color);
-  background-color: #f9f9f9;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   padding: 0;
   margin: 0;
 }
 
-/* Layout */
+/* Layout Container */
 .container {
   max-width: 1200px;
-  margin: 20px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
+  transition: var(--transition);
 }
 
+/* Adicionais que podem ser úteis */
+.container:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-color-hover);
+  text-decoration: underline;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--border-color);
+  margin: 20px 0;
+}
