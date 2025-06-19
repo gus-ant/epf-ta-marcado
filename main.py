@@ -3,6 +3,7 @@ from app import create_app
 if __name__ == '__main__':
     app = create_app()
     app.run()
+    
 #LISTA TO-DO:
 
 #terminar de adicionar comentarios na parte das views e app.py e config.py
