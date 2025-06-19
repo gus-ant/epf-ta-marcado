@@ -15,6 +15,7 @@ class User: #representa um usuario do sistema
         self.name = name #nome completo
         self.email = email #endereçp de email
         self.birthdate = birthdate #data de nascimento em string 
+        #depois adicionar senha e se é adm ou não
 
 
     def __repr__(self): #representação em string, serve pra debbuging
