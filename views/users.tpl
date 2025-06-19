@@ -1,4 +1,4 @@
-%rebase('layout', title='Usuários')
+%rebase('layout', title='Usuários') <!--entra na parte do !base em layout.tpl-->
 
 <section class="users-section">
     <div class="section-header">

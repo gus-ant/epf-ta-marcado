@@ -1,4 +1,4 @@
-% rebase('layout', title='Formulário Usuário')
+% rebase('layout', title='Formulário Usuário') <!-- entra na parte do !base em layout.tpl-->
 
 <section class="form-section">
     <h1>{{'Editar Usuário' if user else 'Adicionar Usuário'}}</h1>
