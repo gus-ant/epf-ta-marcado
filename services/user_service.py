@@ -20,6 +20,8 @@ class UserService:
         name = request.forms.get('name') #pega esse dado diretamente do formulario http
         email = request.forms.get('email')
         birthdate = request.forms.get('birthdate')
+        password = request.forms.get('password') #puxa a senha do formulario
+        adm = request.forms.get('adm') == 'on' #é um checkbox, on se marcado, none se não 
 
         user = User(id=new_id, name=name, email=email, birthdate=birthdate) #cria o objeto de user
         self.user_model.add_user(user) #adiciona na memoria

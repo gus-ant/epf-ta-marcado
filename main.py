@@ -8,7 +8,7 @@ if __name__ == '__main__':
 
 #terminar de adicionar comentarios na parte das views e app.py e config.py
 
-#adicionar senha e se é adm ou não ao user (adm cria evento)
+#fazer verificação pra evitar email duplicado
 
 #adicionar eventos no sistema:
 #-os eventos tem:
