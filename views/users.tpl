@@ -14,11 +14,11 @@
             
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Data Nasc.</th>
-                    <th>Ações</th>
+                    <th>ID  </th>
+                    <th>Nome  </th>
+                    <th>Email  </th>
+                    <th>Data Nasc.  </th>
+                    <th>Ações  </th>
                 </tr>
             </thead>
 

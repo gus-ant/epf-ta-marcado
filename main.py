@@ -8,7 +8,8 @@ if __name__ == '__main__':
 
 #terminar de adicionar comentarios na parte das views e app.py e config.py
 
-#adicionar senha e se é adm ou não ao user (adm cria evento)
+#criar os outros tipos de erro em exceptions.py
+#criar uma pagina de erro, pra quando der erro, o user ser redirecionado corretamente de volta pra home
 
 #adicionar eventos no sistema:
 #-os eventos tem:
@@ -22,3 +23,13 @@ if __name__ == '__main__':
 
 #criar a /home:
 #-os usuarios vão direto pra /home ao abrir o programa
+
+#o usuario que for adm ficar marcado com uma estrela 
+
+#criar e adicionar nossa logo no site 
+#titulo do site ser o nosso
+
+#primeiro focar no python/html dps no css, quando tudo já funcionar, focar no CSS
+
+#metas pro projeto já pronto:
+#-criptografar as senhas dos users no banco de dados JSON

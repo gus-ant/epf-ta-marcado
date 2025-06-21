@@ -2,7 +2,7 @@ import json
 import os
 from dataclasses import dataclass, asdict
 from typing import List
-
+#EM ALGUM MOMENTO PENSAR EM CRIPTOGRAFIA DE SENHA
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 # Define o diretório onde os arquivos de dados serão armazenados
 # __file__ é o caminho do arquivo atual, os.path.dirname pega o diretório pai
@@ -10,17 +10,24 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 # Exemplo: se o arquivo atual está em '/projeto/models/user.py', DATA_DIR será '/projeto/data'
 
 class User: #representa um usuario do sistema
-    def __init__(self, id, name, email, birthdate):
+    def __init__(self, id, name, email, birthdate, password, adm=False):
         self.id = id #identificador unico
         self.name = name #nome completo
         self.email = email #endereçp de email
         self.birthdate = birthdate #data de nascimento em string 
+        self.password = password #senha da conta
+        self.adm = adm #se é ou não adm (pode criar eventos)
         #depois adicionar senha e se é adm ou não
 
-
+    def set_password(self, password):#define uma nova senha
+        self.password = password
+    
+    def check_password(self, password):#false se a senha for errada
+        return self.password == password
+    
     def __repr__(self): #representação em string, serve pra debbuging
         return (f"User(id={self.id}, name='{self.name}', email='{self.email}', "
-                f"birthdate='{self.birthdate}'")
+                f"birthdate='{self.birthdate}', adm={self.adm}")
 
 
     def to_dict(self): #pega o objeto e transforma em um dicionario, serve pro JSON
@@ -28,7 +35,9 @@ class User: #representa um usuario do sistema
             'id': self.id,
             'name': self.name,
             'email': self.email,
-            'birthdate': self.birthdate
+            'birthdate': self.birthdate,
+            'password' : self.password,
+            'adm': self.adm
         }
     """Exemplo:
             user = User(1, 'João', 'joao@email.com', '1990-01-15')
@@ -42,7 +51,9 @@ class User: #representa um usuario do sistema
             id=data['id'], #aqui, id recebe o valor da chave de nome 'id' no dicionario data
             name=data['name'],
             email=data['email'],
-            birthdate=data['birthdate']
+            birthdate=data['birthdate'],
+            password=data['password'],
+            adm=data['adm']
         )#retorna um objeto usando os valores do dicionario
 
 
@@ -64,8 +75,10 @@ class UserModel:
         # Exemplo: {'id': 1, 'name': 'João'} vira User(id=1, name='João')
 
 
-    def _save(self): #abre o filepath, no modo write (sobrescreve o conteudo anterior), com utf 8 e chama isso de f 
-        with open(self.FILE_PATH, 'w', encoding='utf-8') as f:
+    def _save(self): 
+        os.makedirs(os.path.dirname(self.FILE_PATH), exist_ok=True) #caso não tenha diretorio, ele é criado
+
+        with open(self.FILE_PATH, 'w', encoding='utf-8') as f: #abre o filepath, no modo write (sobrescreve o conteudo anterior), com utf 8 e chama isso de f 
             json.dump([u.to_dict() for u in self.users], f, indent=4, ensure_ascii=False) #o dump salva as coisas em f (arquivo de destino)
             #tudo é salvo como dict (objeto User vira dict), indent=4 facilita a leitura, o ensure permite caracteres unicode
 
@@ -77,6 +90,9 @@ class UserModel:
     def get_by_id(self, user_id: int): 
         return next((u for u in self.users if u.id == user_id), None) #busca pelo id, caso não encontre, retorna None
         #o next é otimizado, pois para assim que acha
+
+    def get_by_email(self, email: str): #busca por email
+        return next((u for u in self.users if u.email == email), None)
 
 
     def add_user(self, user: User):
@@ -95,3 +111,9 @@ class UserModel:
     def delete_user(self, user_id: int): #salva uma nova lista sem o id antigo
         self.users = [u for u in self.users if u.id != user_id] #cria uma lista excluindo o antigo
         self._save() #salva
+
+    def get_admins(self): #retorna uma lista com todos os adms
+        return [u for u in self.users if u.adm]
+    
+    def get_regular_users(self): #retorna uma lista com todos os não adm
+        return [u for u in self.users if not(u.adm)]

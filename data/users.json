@@ -1,20 +1,10 @@
 [
     {
         "id": 1,
-        "name": "Gustavo",
-        "email": "uduarioteste@email.com",
-        "birthdate": "2006-10-21"
-    },
-    {
-        "id": 2,
-        "name": "Velho",
-        "email": "velho@gmail.com",
-        "birthdate": "2025-06-19"
-    },
-    {
-        "id": 3,
-        "name": "Luquinhas",
-        "email": "l@gmail.com",
-        "birthdate": "2025-08-02"
+        "name": "Gabriel Velho De Souza",
+        "email": "slafds@gmail.com",
+        "birthdate": "2025-06-03",
+        "password": "12345677",
+        "adm": true
     }
 ]
