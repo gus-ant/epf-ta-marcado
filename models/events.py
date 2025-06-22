@@ -68,11 +68,29 @@ class EventModel:
         self.events = self._load() #inicializa a lista e armazena na memoria
 
     def _load(self):
-        if not os.path.exists(self.FILE_PATH): #caso não tenha
-            return[] #lista vazia
-        with open(self.FILE_PATH, 'r', encoding='utf-8') as f: #abre o arquivo em modo read e chama isso de f
-            data = json.load(f) #data é json.load(f) f é o arquivo
-            return [Event(**item) for item in data] #os dicionarios do arquivo são desempacotados em objetos Event
+        if not os.path.exists(self.FILE_PATH):
+            return []
+
+        with open(self.FILE_PATH, 'r', encoding='utf-8') as f:
+            content = f.read().strip()
+            if not content or content == "":  # EVITA erro com arquivo vazio
+                return []
+            try:
+                data = json.loads(content)
+                return [Event(**item) for item in data]
+            except json.JSONDecodeError:
+                print("Erro ao carregar JSON do arquivo de eventos. Verifique o conteúdo.")
+                return []
+
+    # def _load(self):
+    #     if not os.path.exists(self.FILE_PATH): #caso não tenha
+    #         return[] #lista vazia
+    #     with open(self.FILE_PATH, 'r', encoding='utf-8') as f: #abre o arquivo em modo read e chama isso de f
+    #         content = f.read().strip()
+    #         if not content:
+    #             return [] # isso faz retornar uma lista vazia se o Arquivo existir mas não tiver nada
+    #     data = json.load(f) #data é json.load(f) f é o arquivo
+    #     return [Event(**item) for item in data] #os dicionarios do arquivo são desempacotados em objetos Event
         
     def _save(self):
         os.makedirs(os.path.dirname(self.FILE_PATH), exist_ok=True) #faz o diretorio caso ainda não exista

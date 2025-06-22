@@ -19,6 +19,8 @@ class UserController(BaseController): #herda de BaseController
         self.app.route('/users/delete/<user_id:int>', method='POST', callback=self.delete_user) #Registra rota POST /users/delete/<user_id> para deletar usuário específico
 
         #novas rotas para gerenciar privilegios
+        #Ótima ideia
+    
         self.app.route('/users/promote/<user_id:int>', method='POST', callback=self.promote_user) #Promove usuário a admin
         self.app.route('/users/demote/<user_id:int>', method='POST', callback=self.demote_user) #Remove privilégios de admin
 

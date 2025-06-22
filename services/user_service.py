@@ -4,7 +4,7 @@ from exceptions import EmailAlreadyUsedException
 
 class UserService:
     # Esta classe atua como uma camada intermediária entre o controlador (rotas)
-    #e o modelo de dados, implementando a lógica de negócio.: 
+    # E o modelo de dados, implementando a lógica de negócio.: 
 
     def __init__(self):
         self.user_model = UserModel() #acessa o usermodel de user.py
