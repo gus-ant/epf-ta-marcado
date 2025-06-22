@@ -6,5 +6,13 @@
         "birthdate": "2025-06-03",
         "password": "12345677",
         "adm": true
+    },
+    {
+        "id": 2,
+        "name": "Gustavo Antonio",
+        "email": "g@gmail.com",
+        "birthdate": "2023-06-22",
+        "password": "123123123",
+        "adm": true
     }
 ]
