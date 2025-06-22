@@ -26,6 +26,7 @@ class UserService:
         
         if not password: #verifica se não foi colocada uma senha 
             raise ValueError("É obrigatorio ter uma senha")
+        #como no tpl diz que é obrigatorio, depois tentar tirar aqui
         
         if self.user_model.get_by_email(email): #verifica se o email ja existe
             raise EmailAlreadyUsedException(email)
