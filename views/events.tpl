@@ -17,9 +17,9 @@
                 <a href="/events/{{evento.id}}">{{evento.name}}</a>
             </h2>
                 <p><strong>Local:</strong> {{evento.local}}</p>
-                <p><strong>Data:</strong> {{evento.date}} às {{evento.time}}</p>
+                
                 <p><strong>Preço:</strong> R$ {{evento.price}}</p>
-                <p><strong>Capacidade:</strong> {{evento.current_capacity}} / {{evento.max_capacity}}</p>
+                
                 
             </li>
             <hr>
