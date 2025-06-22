@@ -17,7 +17,6 @@ class User: #representa um usuario do sistema
         self.birthdate = birthdate #data de nascimento em string 
         self.password = password #senha da conta
         self.adm = adm #se é ou não adm (pode criar eventos)
-        #depois adicionar senha e se é adm ou não
 
     def set_password(self, password):#define uma nova senha
         self.password = password

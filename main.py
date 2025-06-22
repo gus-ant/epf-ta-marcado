@@ -12,14 +12,12 @@ if __name__ == '__main__':
 #criar uma pagina de erro, pra quando der erro, o user ser redirecionado corretamente de volta pra home
 
 #adicionar eventos no sistema:
-#-os eventos tem:
-#--local
-#--data (quando expira aparece um aviso e sai do sistema depois de uma semana)
-#--lotação maxima
-#--preço do evento
-#--horario
+#event_controller
+#event_service
+#events.tpl (na verdade isso vai ser a /home)
 #--(podemos colocar como o clima vai estar no dia do evento)
 #--(podemos colocar qrcode)
+#talver adicionar uma capa pro evento 
 
 #criar a /home:
 #-os usuarios vão direto pra /home ao abrir o programa
