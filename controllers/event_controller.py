@@ -9,7 +9,7 @@ class EventController(BaseController):
         super().__init__(app)
         self.event_service = EventService()
         self.setup_routes()
-
+        
     def setup_routes(self):
         self.app.route('/events', method='GET', callback=self.list_events)
         self.app.route('/events/create', method=['GET', 'POST'], callback=self.create_event)
@@ -41,7 +41,7 @@ class EventController(BaseController):
                 return self.render('event_form', action='/events/create', error=str(e))
             
     def view_event(self, event_id):
-        evento = self.event_service.get_event_by_id(event_id)
+        evento = self.event_service.get_by_id(event_id)
         if not evento:
             return "Evento não encontrado"
         return self.render('event_detail', evento=evento)
