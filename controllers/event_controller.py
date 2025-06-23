@@ -34,10 +34,10 @@ class EventController(BaseController):
                 time = request.forms.get('time')  # formato obrigatorio hh:mm
                 price = float(request.forms.get('price'))
                 max_capacity = int(request.forms.get('max_capacity'))
-
                 owner_email = request.forms.get('user_email') or 'anon@anon.com' 
+                description = request.forms.get('description')
 
-                self.event_service.add_event(name, local, date, time, price, max_capacity, owner_email)
+                self.event_service.add_event(name, local, date, time, price, max_capacity, owner_email, description)
 
                 return self.redirect('/events')
             except Exception as e:

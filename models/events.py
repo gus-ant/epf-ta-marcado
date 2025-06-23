@@ -12,7 +12,7 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 class Event:
     #falta adicionar uma lista com todas as pessoas participando 
 
-    def __init__(self, id, name, local, date, price, max_capacity, time, current_capacity, owner_email):
+    def __init__(self, id, name, local, date, price, max_capacity, time, current_capacity, owner_email, description):
         self.id = id #identificador unico 
         self.name = name #nome do evento
         self.local = local #local do evento
@@ -21,6 +21,7 @@ class Event:
         self.max_capacity = max_capacity #capacidade maxima
         self.time = time #horario do envento
         self.owner_email = owner_email #email de quem criou o evento
+        self.description = description #descrição do evento
 
         self.current_capacity = max_capacity #capacidade atual inicial
         if current_capacity != None: #caso seja passado valor
@@ -30,7 +31,8 @@ class Event:
     def __repr__(self): #representação em string 
         return (f"Event(id={self.id}, name={self.name}, local={self.local},time={self.time} ,"
                 f"date={self.date}, price={self.price}, max_capacity={self.max_capacity},"
-                 f"owner_email={self.owner_email}), current_capacity={self.current_capacity}")
+                f"owner_email={self.owner_email}), current_capacity={self.current_capacity},"
+                f"description={self.description}")
 
     def to_dict(self): #torna o objeto em um dicionario
         return {
@@ -42,7 +44,8 @@ class Event:
             'max_capacity': self.max_capacity,
             'time' : self.time,
             'current_capacity': self.current_capacity,
-            'owner_email': self.owner_email
+            'owner_email': self.owner_email,
+            'description': self.description
         }
 
     @classmethod #metodo de classe
@@ -56,7 +59,8 @@ class Event:
             max_capacity = data['max_capacity'],
             time = data['time'],
             current_capacity = data['current_capacity'],
-            owner_email = data['owner_email']
+            owner_email = data['owner_email'],
+            description = data['description']
         ) 
 
 class EventModel:
@@ -138,4 +142,3 @@ class EventModel:
     def delete_event(self, event_id:int):
         self.events = [e for e in self.events if e.id !=event_id] #troca por uma nova lista sem o item com mesmo id
         self._save() #salva
-

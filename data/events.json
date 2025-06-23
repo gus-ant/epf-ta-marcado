@@ -8,7 +8,8 @@
         "max_capacity": 200,
         "time": "22:00",
         "current_capacity": 150,
-        "owner_email": "organizacao@festas.com"
+        "owner_email": "organizacao@festas.com",
+        "description": ","
     },
     {
         "id": 2,
@@ -19,7 +20,8 @@
         "max_capacity": 500,
         "time": "21:00",
         "current_capacity": 400,
-        "owner_email": "rock@eventos.com"
+        "owner_email": "rock@eventos.com",
+        "description": ","
     },
     {
         "id": 3,
@@ -30,7 +32,8 @@
         "max_capacity": 1000,
         "time": "09:00",
         "current_capacity": 990,
-        "owner_email": "feira@tech.com"
+        "owner_email": "feira@tech.com",
+        "description": ","
     },
     {
         "id": 4,
@@ -41,7 +44,8 @@
         "max_capacity": 90,
         "time": "21:02",
         "current_capacity": 1,
-        "owner_email": "anon@anon.com"
+        "owner_email": "anon@anon.com",
+        "description": ","
     },
     {
         "id": 5,
@@ -52,6 +56,19 @@
         "max_capacity": 90,
         "time": "20:00",
         "current_capacity": 90,
-        "owner_email": "anon@anon.com"
+        "owner_email": "anon@anon.com",
+        "description": ","
+    },
+    {
+        "id": 6,
+        "name": "caminhada atÃ© a China",
+        "local": "Piaui",
+        "date": "2031-10-15",
+        "price": 6969.0,
+        "max_capacity": 3,
+        "time": "14:42",
+        "current_capacity": 3,
+        "owner_email": "anon@anon.com",
+        "description": "vamos andar atÃ© a china mesmo, vai ser uma caminhada bem legal :)"
     }
 ]
