@@ -1,10 +1,12 @@
 from bottle import Bottle
 from controllers.user_controller import user_routes
 from controllers.event_controller import event_routes
+from controllers.auth_controller import auth_routes
 
 def init_controllers(app: Bottle):
     app.merge(user_routes)
     app.merge(event_routes)
+    app.merge(auth_routes)
     # app.merge() é um método do Bottle que combina rotas de diferentes instâncias
     # Pega todas as rotas definidas em user_routes e adiciona à aplicação principal (app)
     # 

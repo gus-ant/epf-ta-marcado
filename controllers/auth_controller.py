@@ -1,4 +1,4 @@
-from bottle import request, redirect
+from bottle import request, redirect, Bottle
 from services.user_service import UserService
 from controllers.base_controller import BaseController
 
@@ -10,7 +10,7 @@ class AuthController(BaseController):
 
     def setup_routes(self):
         self.app.route('/login', method=['GET', 'POST'], callback=self.login)
-        self.app.route('/register', method=['GET', 'POST'], callback=self.register)
+        
         self.app.route('/logout', method='GET', callback=self.logout)
 
     def login(self):
@@ -25,19 +25,10 @@ class AuthController(BaseController):
                 return self.render('login', error='Login inválido')
         return self.render('login', error=None)
 
-    def register(self):
-        if request.method == 'POST':
-            try:
-                name = request.forms.get('name')
-                email = request.forms.get('email')
-                password = request.forms.get('password')
-                self.user_service.register(name, email, password)
-                redirect('/login')
-            except ValueError as e:
-                return self.render('register', error=str(e))
-        return self.render('register', error=None)
-
     def logout(self):
         session = request.environ['beaker.session']
         session.delete()
         redirect('/')
+
+auth_routes = Bottle()
+auth_controller = AuthController(auth_routes)
