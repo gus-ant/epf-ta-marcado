@@ -12,6 +12,7 @@ if __name__ == '__main__':
 #criar uma pagina de erro, pra quando der erro, o user ser redirecionado corretamente de volta pra home
 
 #adicionar eventos no sistema:
+#lista com todos os participantes
 #-adicionar descrição no evento (esqueci) 
 #-event_controller 👍
 #-events.tpl (pagina onde um adm pode ver os eventos que tem) 👍
@@ -22,6 +23,7 @@ if __name__ == '__main__':
 #-poder adicionar uma capa pro evento (Acho importante, mas vai ter que mecher com imagem)
 #-no event_service fazer um edit_event
 #-talvez adicionar outros tipos de ingresso(meia entrada e tals)
+#ter likes no evento (cada user só pode dar 1 like)
 
 #login
 #-um usuario pode escolher logar ou criar conta
@@ -29,8 +31,9 @@ if __name__ == '__main__':
 
 #BUG FIX
 #-na parte de apagar user, lembrar de apagar todos os eventos que ele tem
-#-ao apagar um evento, todo mundo inscrito sai do evento
+#-ao apagar um evento, todo mundo inscrito sai do evento (lista no evento)
 #-quando um user for apagado, ele sai dos eventos e abre vaga
+#-quando um adm for apagado todos os eventos dele somem
 
 
 #criar a /home:
@@ -43,3 +46,4 @@ if __name__ == '__main__':
 
 #metas pro projeto já pronto:
 #-criptografar as senhas dos users no banco de dados JSON (muito importante)
+#-usar likes como "algoritmo" pra mostrar os eventos com mais likes no topo do /home
