@@ -2,6 +2,13 @@ from bottle import request, redirect, Bottle
 from services.user_service import UserService
 from controllers.base_controller import BaseController
 
+
+# esse arquivo vai controlar a autenticação do Site, ainda não está pronto. 
+# falta colocar o beaker em prática, que é uma biblioteca para controlar se o usuário está logado e quais requisições HTTPs ele pode fazer
+# FLASK >>>> BOTTLE PQ O FLASK TEM SUPORTE A SEÇOES E AUTENTICAÇÃO
+
+
+
 class AuthController(BaseController):
     def __init__(self, app):
         super().__init__(app)
@@ -32,3 +39,4 @@ class AuthController(BaseController):
 
 auth_routes = Bottle()
 auth_controller = AuthController(auth_routes)
+

@@ -2,6 +2,7 @@ from bottle import Bottle, request
 from .base_controller import BaseController
 import json
 from services.event_service import EventService
+from models.events import Event
 
 
 class EventController(BaseController):
@@ -20,6 +21,8 @@ class EventController(BaseController):
         eventos = self.event_service.get_all()
         return self.render('events', eventos=eventos)
     
+    
+    
     def create_event(self):
         if request.method == 'GET':
             return self.render('event_form', action='/events/create', error = None)
@@ -32,7 +35,7 @@ class EventController(BaseController):
                 price = float(request.forms.get('price'))
                 max_capacity = int(request.forms.get('max_capacity'))
 
-                owner_email = request.get_cookie('user_email') or 'anon@anon.com' 
+                owner_email = request.forms.get('user_email') or 'anon@anon.com' 
 
                 self.event_service.add_event(name, local, date, time, price, max_capacity, owner_email)
 

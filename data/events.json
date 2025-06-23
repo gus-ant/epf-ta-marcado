@@ -1,36 +1,57 @@
 [
     {
-      "id": 1,
-      "name": "Festa Universitária",
-      "local": "Quadra da Engenharia",
-      "date": "2025-07-05",
-      "time": "22:00",
-      "price": 15.0,
-      "max_capacity": 200,
-      "current_capacity": 150,
-      "owner_email": "organizacao@festas.com"
+        "id": 1,
+        "name": "Festa Universitária",
+        "local": "Quadra da Engenharia",
+        "date": "2025-07-05",
+        "price": 15.0,
+        "max_capacity": 200,
+        "time": "22:00",
+        "current_capacity": 150,
+        "owner_email": "organizacao@festas.com"
     },
     {
-      "id": 2,
-      "name": "Show da Banda XYZ",
-      "local": "Ginásio de Esportes",
-      "date": "2025-07-10",
-      "time": "21:00",
-      "price": 50.0,
-      "max_capacity": 500,
-      "current_capacity": 400,
-      "owner_email": "rock@eventos.com"
+        "id": 2,
+        "name": "Show da Banda XYZ",
+        "local": "Ginásio de Esportes",
+        "date": "2025-07-10",
+        "price": 50.0,
+        "max_capacity": 500,
+        "time": "21:00",
+        "current_capacity": 400,
+        "owner_email": "rock@eventos.com"
     },
     {
-      "id": 3,
-      "name": "Feira de Tecnologia",
-      "local": "Pavilhão ExpoCenter",
-      "date": "2025-07-02",
-      "time": "09:00",
-      "price": 0.0,
-      "max_capacity": 1000,
-      "current_capacity": 990,
-      "owner_email": "feira@tech.com"
+        "id": 3,
+        "name": "Feira de Tecnologia",
+        "local": "Pavilhão ExpoCenter",
+        "date": "2025-07-02",
+        "price": 0.0,
+        "max_capacity": 1000,
+        "time": "09:00",
+        "current_capacity": 990,
+        "owner_email": "feira@tech.com"
+    },
+    {
+        "id": 4,
+        "name": "Cruzeiro do Neymar",
+        "local": "Rio De Janeiro",
+        "date": "2025-06-29",
+        "price": 12000.0,
+        "max_capacity": 90,
+        "time": "21:02",
+        "current_capacity": 1,
+        "owner_email": "anon@anon.com"
+    },
+    {
+        "id": 5,
+        "name": "Campeonato de Sinuca",
+        "local": "Bar do Mane",
+        "date": "2025-08-21",
+        "price": 10.0,
+        "max_capacity": 90,
+        "time": "20:00",
+        "current_capacity": 90,
+        "owner_email": "anon@anon.com"
     }
-  ]
-  
+]
