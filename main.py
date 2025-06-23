@@ -12,9 +12,7 @@ if __name__ == '__main__':
 #criar uma pagina de erro, pra quando der erro, o user ser redirecionado corretamente de volta pra home
 
 #adicionar eventos no sistema:
-#lista com todos os participantes
-#-adicionar descrição no evento (esqueci) 
-#-event_controller 👍
+#lista com todos os participantes 
 #-events.tpl (pagina onde um adm pode ver os eventos que tem) 👍
 #-na pagina do user, é possivel ver todos os eventos que participa
 #-ou o user vai ter uma lista com todos os seus eventos, ou puxar por email
