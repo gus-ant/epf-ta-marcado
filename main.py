@@ -13,13 +13,13 @@ if __name__ == '__main__':
 
 #adicionar eventos no sistema:
 #-adicionar descrição no evento (esqueci) 
-#-event_controller
+#-event_controller 👍
 #-events.tpl (pagina onde um adm pode ver os eventos que tem) 👍
 #-na pagina do user, é possivel ver todos os eventos que participa
 #-ou o user vai ter uma lista com todos os seus eventos, ou puxar por email
 #--(podemos colocar como o clima vai estar no dia do evento)
 #--(podemos colocar qrcode)
-#-poder adicionar uma capa pro evento 
+#-poder adicionar uma capa pro evento (Acho importante, mas vai ter que mecher com imagem)
 #-no event_service fazer um edit_event
 #-talvez adicionar outros tipos de ingresso(meia entrada e tals)
 
@@ -42,4 +42,4 @@ if __name__ == '__main__':
 #primeiro focar no python/html dps no css, quando tudo já funcionar, focar no CSS
 
 #metas pro projeto já pronto:
-#-criptografar as senhas dos users no banco de dados JSON
+#-criptografar as senhas dos users no banco de dados JSON (muito importante)
