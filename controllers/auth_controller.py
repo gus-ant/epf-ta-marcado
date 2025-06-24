@@ -21,21 +21,23 @@ class AuthController(BaseController):
         self.app.route('/logout', method='GET', callback=self.logout)
 
     def login(self):
+        session = request.environ['beaker.session']
         if request.method == 'POST':
             email = request.forms.get('email')
             password = request.forms.get('password')
             user = self.user_service.authenticate(email, password)
-            if user:
-                request.environ['beaker.session']['user'] = user.email
+            if user: #conseguiu fazer o login
+                session['user'] = user.email #PODE ACESSAR O EMAIL DE QUALQUER LUGAR
+                session.save()
                 redirect('/')
-            else:
+            else: #não acertou o login
                 return self.render('login', error='Login inválido')
         return self.render('login', error=None)
 
     def logout(self):
         session = request.environ['beaker.session']
         session.delete()
-        redirect('/')
+        redirect('/login')
 
 auth_routes = Bottle()
 auth_controller = AuthController(auth_routes)

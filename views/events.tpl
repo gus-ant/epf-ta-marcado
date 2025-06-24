@@ -18,7 +18,11 @@
             </h2>
                 <p><strong>Local:</strong> {{evento.local}}</p>
                 
-                <p><strong>Preço:</strong> R$ {{evento.price}}</p>
+                % if evento.price == 0:
+                    <p><strong>Entrada grátis</strong></p>
+                % else:
+                    <p><strong>Preço:</strong> R$ {{evento.price}}</p>
+                %end
                 
                 
             </li>

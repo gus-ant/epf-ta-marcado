@@ -14,5 +14,13 @@
         "birthdate": "2023-06-22",
         "password": "123123123",
         "adm": true
+    },
+    {
+        "id": 3,
+        "name": "eu",
+        "email": "123@gmail.com",
+        "birthdate": "0009-08-04",
+        "password": "12345678",
+        "adm": true
     }
 ]
