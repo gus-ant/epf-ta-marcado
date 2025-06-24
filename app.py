@@ -18,7 +18,7 @@ class App:
     def run(self):
         self.setup_routes()
 
-        #config do beaker
+        #config do beaker (coisa que faz o login/logout)
         session_ops = {
         'session.type': 'cookie',
         'session.cookie_expires': True,

@@ -12,6 +12,7 @@ if __name__ == '__main__':
 #criar uma pagina de erro, pra quando der erro, o user ser redirecionado corretamente de volta pra home
 
 #adicionar eventos no sistema:
+#-TORNAR A CRIAÇÃO DE EVENTO EXCLUSIVA AOS ADMS
 #lista com todos os participantes no evento, usar email dos participantes (melhor do que id)
 #-events.tpl (pagina onde um adm pode ver os eventos que tem) 👍
 #-na pagina do user, é possivel ver todos os eventos que participa
@@ -24,15 +25,15 @@ if __name__ == '__main__':
 #ter likes no evento (cada user só pode dar 1 like)
 
 #login
-#-um usuario pode escolher logar ou criar conta
-#-uma vez logado, vai pra /home
+#-aparecer a opção de logout quando tá logado
+#-aparecer o nome do user logado e o email do user logado em cima na pagina (mudar layout.tpl)
 
 #BUG FIX
 #-na parte de apagar user, lembrar de apagar todos os eventos que ele tem
 #-ao apagar um evento, todo mundo inscrito sai do evento (lista no evento)
 #-quando um user for apagado, ele sai dos eventos e abre vaga
 #-quando um adm for apagado todos os eventos dele somem
-#-não permitir mais que o user troque o email
+#-não permitir mais que o user troque o email (ou quando ele trocar, todos os lugares onde aparece mudam tmb)
 
 
 #criar a /home:
@@ -42,6 +43,8 @@ if __name__ == '__main__':
 #titulo do site ser o nosso
 
 #primeiro focar no python/html dps no css, quando tudo já funcionar, focar no CSS
+
+#formatar o valor da entrada do evento pro formato br
 
 #metas pro projeto já pronto:
 #-criptografar as senhas dos users no banco de dados JSON (muito importante)

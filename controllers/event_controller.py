@@ -33,7 +33,9 @@ class EventController(BaseController):
                 local = request.forms.get('local')
                 date = request.forms.get('date')  # formato obrigatório yyyy-mm-dd
                 time = request.forms.get('time')  # formato obrigatorio hh:mm
-                price = float(request.forms.get('price'))
+                price = 0 
+                if request.forms.get('price'): #só coloca preço caso tenha
+                    price = float(request.forms.get('price'))
                 max_capacity = int(request.forms.get('max_capacity'))
                 owner_email = email #agora puxa automatico
                 description = request.forms.get('description')

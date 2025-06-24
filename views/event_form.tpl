@@ -21,14 +21,10 @@
         <input type="time" id="time" name="time" required><br><br>
 
         <label for="price">Preço (R$):</label><br>
-        <input type="number" step="0.01" id="price" name="price" required><br><br>
+        <input type="number" step="0.01" id="price" name="price" min="0"><br><br>
 
         <label for="max_capacity">Capacidade Máxima:</label><br>
         <input type="number" id="max_capacity" name="max_capacity" required><br><br>
-        
-        <label for="owner_email">Email do Criador:</label><br>
-        <input type="text" id="owner_email" name="owner_email" required><br><br>
-        <!-- deixar o owner_email automatico usando o user logado-->
 
         <label for="description">Descrição:</label><br>
         <textarea type="text" id="description" name="description" rows="6" cols="45"></textarea>
@@ -36,5 +32,5 @@
         <input type="submit" value="Criar Evento">
     </form>
 
-    <p><a href="/events">Voltar para lista de eventos</a></p>
+    <p><a href="/events">Voltar para a lista de eventos</a></p>
 </body>
