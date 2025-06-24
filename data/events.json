@@ -70,5 +70,17 @@
         "current_capacity": 3,
         "owner_email": "anon@anon.com",
         "description": "vamos andar atÃ© a china mesmo, vai ser uma caminhada bem legal :)"
+    },
+    {
+        "id": 7,
+        "name": "sim",
+        "local": "sim",
+        "date": "1111-11-11",
+        "price": 1.0,
+        "max_capacity": 1,
+        "time": "11:11",
+        "current_capacity": 1,
+        "owner_email": "123@gmail.com",
+        "description": "sim"
     }
 ]
