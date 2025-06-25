@@ -358,5 +358,13 @@
         "amount": 6969.0,
         "status": "pending",
         "timestamp": null
+    },
+    {
+        "id": 42,
+        "event_id": 2,
+        "user_email": "g@gmail.com",
+        "amount": 50.0,
+        "status": "pending",
+        "timestamp": null
     }
 ]
