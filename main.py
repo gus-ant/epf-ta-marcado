@@ -34,7 +34,8 @@ if __name__ == '__main__':
 #-quando um user for apagado, ele sai dos eventos e abre vaga
 #-quando um adm for apagado todos os eventos dele somem
 #-não permitir mais que o user troque o email (ou quando ele trocar, todos os lugares onde aparece mudam tmb)
-
+#- QUANDO O USER CLICA EM QUERO IR PARA FAZER O PAGAMENTO, DEMORA UM POUCO PARA RESETAR A PÁGINA E O SISTEMA LER QUAL O ID DO PAGAMENTO
+# continuacao: MAS PROVAVELMENTE O ERRO ESTÁ EM PAYMENT_CONTROLLER EM SHOW PAYMENT
 
 #criar a /home:
 #-os usuarios vão direto pra /home ao abrir o programa

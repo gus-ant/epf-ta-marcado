@@ -15,3 +15,4 @@
                 <form action="/events/{{evento.id}}/join" method="post" style="display:inline;">
                     <button type="submit">❤️ Quero ir</button>
                 </form>
+

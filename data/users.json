@@ -13,7 +13,7 @@
         "email": "g@gmail.com",
         "birthdate": "2023-06-22",
         "password": "123123123",
-        "adm": true
+        "adm": false
     },
     {
         "id": 3,

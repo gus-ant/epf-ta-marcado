@@ -1,13 +1,12 @@
 from bottle import request, redirect, Bottle
 from services.user_service import UserService
 from controllers.base_controller import BaseController
+from utils.decorators import login_required
 
 
 # esse arquivo vai controlar a autenticação do Site, ainda não está pronto. 
 # falta colocar o beaker em prática, que é uma biblioteca para controlar se o usuário está logado e quais requisições HTTPs ele pode fazer
 # FLASK >>>> BOTTLE PQ O FLASK TEM SUPORTE A SEÇOES E AUTENTICAÇÃO
-
-
 
 class AuthController(BaseController):
     def __init__(self, app):
@@ -29,13 +28,17 @@ class AuthController(BaseController):
             if user: #conseguiu fazer o login
                 session['user'] = user.email #PODE ACESSAR O EMAIL DE QUALQUER LUGAR
                 session.save()
+                print(f"USER {user.name} LOGADO")
+                
                 redirect('/')
             else: #não acertou o login
                 return self.render('login', error='Login inválido')
         return self.render('login', error=None)
 
+    @login_required      
     def logout(self):
         session = request.environ['beaker.session']
+        print(f"USER DESLOGADO")
         session.delete()
         redirect('/login')
 

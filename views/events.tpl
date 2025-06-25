@@ -23,8 +23,7 @@
                 % else:
                     <p><strong>Preço:</strong> R$ {{evento.price}}</p>
                 %end
-                
-                
+                       
             </li>
             <hr>
         % end
