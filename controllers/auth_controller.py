@@ -2,6 +2,7 @@ from bottle import request, redirect, Bottle
 from services.user_service import UserService
 from controllers.base_controller import BaseController
 from utils.decorators import login_required
+from models.user import User
 
 
 # esse arquivo vai controlar a autenticação do Site, ainda não está pronto. 
@@ -24,7 +25,10 @@ class AuthController(BaseController):
         if request.method == 'POST':
             email = request.forms.get('email')
             password = request.forms.get('password')
-            user = self.user_service.authenticate(email, password)
+            print(email, password)
+            user1 = UserService()
+            user = user1.authenticate(email, password) # AQUI O MÉTODO NÃO RETORNAVA NADA
+            print(user.email)
             if user: #conseguiu fazer o login
                 session['user'] = user.email #PODE ACESSAR O EMAIL DE QUALQUER LUGAR
                 session.save()

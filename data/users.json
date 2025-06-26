@@ -38,5 +38,29 @@
         "birthdate": "2205-08-04",
         "password": "12345678",
         "adm": true
+    },
+    {
+        "id": 6,
+        "name": "Gustavo Antonio r",
+        "email": "gus@gmail.com",
+        "birthdate": "2025-03-19",
+        "password": "123123123",
+        "adm": true
+    },
+    {
+        "id": 7,
+        "name": "novo user teste 2",
+        "email": "t@gmail.com",
+        "birthdate": "2005-03-21",
+        "password": "123123123",
+        "adm": true
+    },
+    {
+        "id": 8,
+        "name": "Wesley Lopes",
+        "email": "ta@gmail.com",
+        "birthdate": "2025-06-01",
+        "password": "123123123",
+        "adm": true
     }
 ]

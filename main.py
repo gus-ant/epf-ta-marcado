@@ -13,6 +13,8 @@ if __name__ == '__main__':
 
 #adicionar eventos no sistema:
 #testar passar o preço com diferentes formatações de preço
+# colocar um método para modificar as infos dos eventos
+# quando alguém comprar o ingresso, tirar uma vaga
 #lista com todos os participantes no evento, usar email dos participantes (melhor do que id)
 #-adm/events (pagina onde um adm pode ver os eventos que tem) 
 #-na pagina do user, é possivel ver todos os eventos que participa

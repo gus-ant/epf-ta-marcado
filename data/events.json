@@ -167,5 +167,18 @@
         "owner_email": "superadm@gmail.com",
         "description": "tem foto! legal...",
         "cover": "5326a489152247868b398ac5899cdeae.jpg"
+    },
+    {
+        "id": 14,
+        "name": "ENCONTRO DE FÏsica AEROESPACIAL",
+        "local": "Casa do Russo",
+        "date": "2025-08-30",
+        "price": 900.0,
+        "max_capacity": 100000,
+        "time": "09:00",
+        "current_capacity": 100000,
+        "owner_email": "superadm@gmail.com",
+        "description": "O melhor evento de Física do DF, imperdível.\r\nParticipantes:\r\n-Elon Mosca\r\n-Donald Trumpo",
+        "cover": "7b14bd9bd55a4b658f9d23922b3d11ed.png"
     }
 ]
