@@ -3,6 +3,9 @@ from .base_controller import BaseController
 from services.event_service import EventService
 from utils.decorators import login_required, admin_required
 from services.payment_service import PaymentService
+import os, uuid
+
+UPLOAD_DIR = './static/uploads/event_covers' #local onde as capas de eventos são salvas
 
 class EventController(BaseController):
     def __init__(self, app):
@@ -65,7 +68,7 @@ class EventController(BaseController):
         session = request.environ['beaker.session'] #puxa o user logado
         email = session.get('user')
         if request.method == 'GET':
-            return redirect('event_form', action='/events/create', error = None)
+            return self.render('event_form', action='/events/create', error = None)
         else:
             try:
                 name = request.forms.get('name')
@@ -78,8 +81,20 @@ class EventController(BaseController):
                 max_capacity = int(request.forms.get('max_capacity'))
                 owner_email = email #agora puxa automatico
                 description = request.forms.get('description')
+                cover_file = request.files.get('cover')
 
-                self.event_service.add_event(name, local, date, time, price, max_capacity, owner_email, description)
+                filename = None #trata dos casos onde não tem imagem enviada
+
+                if cover_file and cover_file.filename: #puxa o filename do arquivo enviado
+                    tipo = os.path.splitext(cover_file.filename)[1] #tipo do arquivo
+                    nome_unico = uuid.uuid4().hex #cria um novo nome unico, pra tratar dos casos onde existem 2 imagens de mesmo nome
+                    filename = f"{nome_unico}{tipo}" 
+                    save_path = os.path.join(UPLOAD_DIR, filename) #local onde vai ser salvo
+                    os.makedirs(os.path.dirname(save_path), exist_ok=True) #cria o dir caso não exista
+                    cover_file.save(save_path) #guarda a imagem
+                    
+
+                self.event_service.add_event(name, local, date, time, price, max_capacity, owner_email, description, cover=filename)
 
                 return self.redirect('/events')
             except Exception as e:

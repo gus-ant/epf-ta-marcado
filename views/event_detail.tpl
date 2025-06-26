@@ -2,6 +2,10 @@
 
 <h1>Evento: {{evento.name}}</h1>
 
+% if evento.cover:
+    <img src="/static/uploads/event_covers/{{evento.cover}}" style="max-width: 300px;">
+% end
+
 <p><strong>Local:</strong> {{evento.local}}</p>
                 <p><strong>Data:</strong> {{evento.date}} às {{evento.time}}</p>
                 % if evento.price == 0:

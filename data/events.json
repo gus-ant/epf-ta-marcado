@@ -9,7 +9,8 @@
         "time": "22:00",
         "current_capacity": 150,
         "owner_email": "organizacao@festas.com",
-        "description": ","
+        "description": ",",
+        "cover": ""
     },
     {
         "id": 2,
@@ -21,7 +22,8 @@
         "time": "21:00",
         "current_capacity": 400,
         "owner_email": "rock@eventos.com",
-        "description": ","
+        "description": ",",
+        "cover": ""
     },
     {
         "id": 3,
@@ -33,7 +35,8 @@
         "time": "09:00",
         "current_capacity": 990,
         "owner_email": "feira@tech.com",
-        "description": ","
+        "description": ",",
+        "cover": ""
     },
     {
         "id": 4,
@@ -45,7 +48,8 @@
         "time": "21:02",
         "current_capacity": 1,
         "owner_email": "anon@anon.com",
-        "description": ","
+        "description": ",",
+        "cover": ""
     },
     {
         "id": 5,
@@ -57,7 +61,8 @@
         "time": "20:00",
         "current_capacity": 90,
         "owner_email": "anon@anon.com",
-        "description": ","
+        "description": ",",
+        "cover": ""
     },
     {
         "id": 6,
@@ -69,7 +74,8 @@
         "time": "14:42",
         "current_capacity": 3,
         "owner_email": "anon@anon.com",
-        "description": "vamos andar atÃ© a china mesmo, vai ser uma caminhada bem legal :)"
+        "description": "vamos andar atÃ© a china mesmo, vai ser uma caminhada bem legal :)",
+        "cover": ""
     },
     {
         "id": 7,
@@ -81,7 +87,8 @@
         "time": "11:11",
         "current_capacity": 1,
         "owner_email": "123@gmail.com",
-        "description": "sim"
+        "description": "sim",
+        "cover": ""
     },
     {
         "id": 8,
@@ -93,7 +100,8 @@
         "time": "12:21",
         "current_capacity": 123,
         "owner_email": "123@gmail.com",
-        "description": "bla bla bla"
+        "description": "bla bla bla",
+        "cover": ""
     },
     {
         "id": 9,
@@ -105,7 +113,8 @@
         "time": "12:33",
         "current_capacity": 123123112313,
         "owner_email": "123@gmail.com",
-        "description": "nao"
+        "description": "nao",
+        "cover": ""
     },
     {
         "id": 10,
@@ -117,7 +126,8 @@
         "time": "14:14",
         "current_capacity": 1414,
         "owner_email": "123@gmail.com",
-        "description": "14"
+        "description": "14",
+        "cover": ""
     },
     {
         "id": 11,
@@ -129,6 +139,33 @@
         "time": null,
         "current_capacity": null,
         "owner_email": "falta aqui",
-        "description": null
+        "description": null,
+        "cover": ""
+    },
+    {
+        "id": 12,
+        "name": "evento sem foto",
+        "local": "Piaui",
+        "date": "2222-02-22",
+        "price": 0,
+        "max_capacity": 2,
+        "time": "22:22",
+        "current_capacity": 2,
+        "owner_email": "superadm@gmail.com",
+        "description": "nao tem foto pq no piaui só tem wifi via radio",
+        "cover": null
+    },
+    {
+        "id": 13,
+        "name": "evento com foto",
+        "local": "aqui",
+        "date": "3333-03-31",
+        "price": 0,
+        "max_capacity": 3,
+        "time": "03:33",
+        "current_capacity": 3,
+        "owner_email": "superadm@gmail.com",
+        "description": "tem foto! legal...",
+        "cover": "5326a489152247868b398ac5899cdeae.jpg"
     }
 ]

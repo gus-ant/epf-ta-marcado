@@ -12,19 +12,22 @@ if __name__ == '__main__':
 #criar uma pagina de erro, pra quando der erro, o user ser redirecionado corretamente de volta pra home
 
 #adicionar eventos no sistema:
-#-TORNAR A CRIAÇÃO DE EVENTO EXCLUSIVA AOS ADMS
+#testar passar o preço com diferentes formatações de preço
 #lista com todos os participantes no evento, usar email dos participantes (melhor do que id)
-#-events.tpl (pagina onde um adm pode ver os eventos que tem) 👍
+#-adm/events (pagina onde um adm pode ver os eventos que tem) 
 #-na pagina do user, é possivel ver todos os eventos que participa
 #-ou o user vai ter uma lista com todos os seus eventos, ou puxar por email
 #--(podemos colocar como o clima vai estar no dia do evento)
 #--(podemos colocar qrcode)
-#-poder adicionar uma capa pro evento (Acho importante, mas vai ter que mexer com imagem)
 #-no event_service fazer um edit_event
 #-talvez adicionar outros tipos de ingresso(meia entrada e tals)
 #ter likes no evento (cada user só pode dar 1 like)
 
 #login
+#EU CRIEI A CONTA E TENTEI LOGAR NA MESMA HORA, DEU ERRO
+#assim que criar conta, logar
+#quando um user normal tentar fazer evento, aparecer o erro e voltar pra /home
+#criar confirmação de senha
 #-aparecer a opção de logout quando tá logado
 #-aparecer o nome do user logado e o email do user logado em cima na pagina (mudar layout.tpl)
 

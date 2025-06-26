@@ -22,5 +22,21 @@
         "birthdate": "0009-08-04",
         "password": "12345678",
         "adm": true
+    },
+    {
+        "id": 4,
+        "name": "user normal nao adm",
+        "email": "naoadm@gmail.com",
+        "birthdate": "2005-08-04",
+        "password": "12345678",
+        "adm": false
+    },
+    {
+        "id": 5,
+        "name": "super adm",
+        "email": "superadm@gmail.com",
+        "birthdate": "2205-08-04",
+        "password": "12345678",
+        "adm": true
     }
 ]

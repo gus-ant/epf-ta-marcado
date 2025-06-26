@@ -27,7 +27,7 @@ class EventService:
     def get_open_events(self):
         return self.event_model.get_open_events
     
-    def add_event(self, name, local, date, time, price, max_capacity, owner_email, description=''):
+    def add_event(self, name, local, date, time, price, max_capacity, owner_email, description='', cover=None):
         # gera um novo ID automaticamente com base nos eventos já existentes
         events = self.event_model.get_all()
         new_id = max([e.id for e in events], default=0) + 1
@@ -42,7 +42,8 @@ class EventService:
             max_capacity=max_capacity,
             owner_email=owner_email,
             current_capacity=max_capacity,
-            description=description
+            description=description,
+            cover = cover
         )
 
         self.event_model.add_event(event)
