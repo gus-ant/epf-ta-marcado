@@ -1,4 +1,4 @@
-from bottle import request #usado pra acessar dados de formularios HTTP
+from bottle import request, template #usado pra acessar dados de formularios HTTP
 from models.user import UserModel, User
 from exceptions import EmailAlreadyUsedException
 
@@ -22,6 +22,9 @@ class UserService:
         email = request.forms.get('email')
         birthdate = request.forms.get('birthdate')
         password = request.forms.get('password') #puxa a senha do formulario
+        password_confirm = request.forms.get('password_confirm') #serve pra confirmar a senha
+        if password != password_confirm:
+            return template('user_form', error='as senhas digitadas não coincidem', user = None, action = "/users/add")
         adm = request.forms.get('adm') == 'on' #é um checkbox, on se marcado, none se não 
         
         if not password: #verifica se não foi colocada uma senha 
@@ -48,11 +51,18 @@ class UserService:
         email = request.forms.get('email')
         birthdate = request.forms.get('birthdate')
         password = request.forms.get('password')
+        password_confirm = request.forms.get('password_confirm')
         adm = request.forms.get('adm')== 'on'
+
+        if password or password_confirm:
+            if password != password_confirm:
+                return template('user_form', error='as senhas digitadas não coincidem', user = user, action = f"/users/edit/{user.id}")
 
         existing_user = self.user_model.get_by_email(email) #verifica um user que já tem o mesmo email
         if existing_user and existing_user.id != user.id: #caso o email seja usado por outro user, raiser error
             raise EmailAlreadyUsedException(email)
+        
+
 
         user.name = name #sobrescreve os dados
         user.email = email

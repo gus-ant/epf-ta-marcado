@@ -4,6 +4,10 @@
 <section class="form-section">
     <h1>{{'Editar Usuário' if user else 'Adicionar Usuário'}}</h1>
     
+    % if error:
+        <p style="color: red;">Erro: {{error}}</p>
+    % end
+    
     % if defined('error') and error:
         <div class="error-message">
             <p><strong>Erro:</strong> {{error}}</p>
@@ -38,6 +42,13 @@
             <label for="password">Senha:</label>
             <input type="password" id="password" name="password" minlength="8"
                 {{'placeholder = "Digite nova senha (opcional)"'if user else 'required'}}>
+            <small>Mínimo de 8 caracteres</small>
+        </div>
+
+        <div class = "form-group">
+            <label for="password_confirm">Confirme a senha:</label>
+            <input type="password" id="password_confirm" name="password_confirm" minlength="8"
+            {{'placeholder = "Digite nova senha (opcional)"'if user else 'required'}}>
             <small>Mínimo de 8 caracteres</small>
         </div>
 

@@ -35,7 +35,9 @@ class UserController(BaseController): #herda de BaseController
         else:
             # POST - salvar usuário
             try:
-                self.user_service.save()
+                result = self.user_service.save()
+                if result: #trata os erros
+                    return result
                 self.redirect('/users') #apos salvar manda de volta pra users
             except ValueError as e:
                 # para tratar os erros
@@ -52,7 +54,9 @@ class UserController(BaseController): #herda de BaseController
         else:
             # POST - salvar edição
             try:
-                self.user_service.edit_user(user)
+                result = self.user_service.edit_user(user)
+                if result: #trata dos erros
+                    return result
                 self.redirect('/users')
             except ValueError as e:
                 return self.render('user_form', user=user, action=f"/users/edit/{user_id}")
