@@ -12,7 +12,7 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 class Event:
     #falta adicionar uma lista com todas as pessoas participando 
 
-    def __init__(self, id, name, local, date, price, max_capacity, time, current_capacity, owner_email, description):
+    def __init__(self, id, name, local, date, price, max_capacity, time, current_capacity, owner_email, description, cover=None):
         self.id = id #identificador unico 
         self.name = name #nome do evento
         self.local = local #local do evento
@@ -22,6 +22,7 @@ class Event:
         self.time = time #horario do envento
         self.owner_email = owner_email #email de quem criou o evento
         self.description = description #descrição do evento
+        self.cover = cover #capa do evento
 
         self.current_capacity = max_capacity #capacidade atual inicial
         if current_capacity != None: #caso seja passado valor
@@ -45,7 +46,8 @@ class Event:
             'time' : self.time,
             'current_capacity': self.current_capacity,
             'owner_email': self.owner_email,
-            'description': self.description
+            'description': self.description,
+            'cover': self.cover
         }
 
     @classmethod #metodo de classe
@@ -60,7 +62,8 @@ class Event:
             time = data['time'],
             current_capacity = data['current_capacity'],
             owner_email = data['owner_email'],
-            description = data['description']
+            description = data['description'],
+            cover = data['cover']
         ) 
 
 class EventModel:

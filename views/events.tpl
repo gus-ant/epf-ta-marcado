@@ -14,7 +14,12 @@
         % for evento in eventos:
             <li>
             <h2>
+                
                 <a href="/events/{{evento.id}}">{{evento.name}}</a>
+                % if evento.cover:
+                    <img src="/static/uploads/event_covers/{{evento.cover}}" style="max-width: 150px;">
+                % end
+
             </h2>
                 <p><strong>Local:</strong> {{evento.local}}</p>
                 
