@@ -1,4 +1,4 @@
-% rebase('layout.tpl', title='Detalhes do Pagamento')
+% rebase('layout', title='Detalhes do Pagamento')
 
 <h2>Detalhes do Pagamento</h2>
 

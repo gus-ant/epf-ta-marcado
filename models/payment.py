@@ -8,17 +8,28 @@ class Payment:
         self.user_email = user_email
         self.amount = amount
         self.status = status          
-        self.timestamp  = timestamp
+        self.timestamp  = timestamp or datetime.datetime.now().isoformat()
 
     def to_dict(self):
-        return self.__dict__
+        return {
+            'id': self.id,
+            'event_id': self.event_id,
+            'user_email': self.user_email,
+            'amount': self.amount,
+            'status': self.status,
+            'timestamp': self.timestamp
+        }
 
     @classmethod
-    def from_dict(cls, d):
-        d['id'] = int(d['id']) 
-        d['event_id'] = int(d['event_id']) 
-        d['amount'] = float(d['amount'])  
-        return cls(**d)
+    def from_dict(cls, data):
+        return cls(
+            id = data['id'],
+            event_id = data['event_id'],
+            user_email = data['user_email'],
+            amount = data['amount'],
+            status = data['status'],
+            timestamp = data['timestamp']
+        )
 
 
 class PaymentModel:
@@ -29,10 +40,13 @@ class PaymentModel:
 
     def _load(self):
         if not os.path.exists(self.FILE_PATH): return []
+
         with open(self.FILE_PATH, 'r', encoding='utf-8') as f:
             txt = f.read().strip()
-            if not txt: return []
-            return [Payment.from_dict(x) for x in json.loads(txt)]
+            if not txt or txt == '': return []
+
+            data=json.loads(txt)
+            return [Payment.from_dict(x) for x in data]
 
     def _save(self):
         os.makedirs(os.path.dirname(self.FILE_PATH), exist_ok=True)
@@ -43,10 +57,10 @@ class PaymentModel:
     def add(self, payment):
         self.payments.append(payment)
         self._save()
+        self.payments = self._load()
 
     def get_by_id(self, pid):
-        self._save()
-        self._load()
+        self.payments = self._load()
         print(f"[DEBUG] Procurando pagamento com ID: {pid}")
         print(f"[DEBUG] IDs disponíveis: {[p.id for p in self.payments]}")
         return next((p for p in self.payments if p.id == pid), None)
@@ -56,4 +70,5 @@ class PaymentModel:
             if p.id == payment.id:
                 self.payments[i] = payment
                 self._save()
-                break
+                return True
+        return False
