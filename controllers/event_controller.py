@@ -22,6 +22,7 @@ class EventController(BaseController):
         eventos = self.event_service.get_all()
         return self.render('events', eventos=eventos)
     
+    #O BUG DE DELAY FOI RESOLVIDO AEEEE
     @login_required
     def join_event(self, event_id):
         session = request.environ['beaker.session']
@@ -32,26 +33,26 @@ class EventController(BaseController):
             return "Evento não encontrado", 404
 
         # cria pagamento pendente
-        payment = self.payment_service.create_payment(
+        paymente = self.payment_service.create_payment(
             event_id=event.id,
             user_email=user,
             amount=event.price
         )
         
-        print(f"AQUI ESTÁ: {payment.event_id}" )
+        print(f"AQUI ESTÁ: {paymente.id}" )
 
-        return redirect(f'/payments/{int(payment.id)}')
+        return redirect(f'/payments/{paymente.id}')
 
 
 
     def payment_page(self, payment_id):
-        payment = self.payment_service.get_by_id(int(payment_id))
+        payment = self.payment_service.get_by_id(payment_id)
         if not payment:
-            return "Pagamento não encontrado man", 404
+            return "Pagamento não encontrado MANN", 404
 
         if request.method == 'POST':
-            
-            self.payment_service.mark_as_paid(payment_id)
+            print("atualiza capacidade do evento")
+            self.payment_service.mark_as_paid(payment_id+1)
             # atualiza capacidade do evento
             self.event_service.decrease_capacity(payment.event_id)
             return self.render('payment_success', payment=payment)

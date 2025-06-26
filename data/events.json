@@ -118,5 +118,17 @@
         "current_capacity": 1414,
         "owner_email": "123@gmail.com",
         "description": "14"
+    },
+    {
+        "id": 11,
+        "name": null,
+        "local": null,
+        "date": null,
+        "price": null,
+        "max_capacity": null,
+        "time": null,
+        "current_capacity": null,
+        "owner_email": "falta aqui",
+        "description": null
     }
 ]

@@ -1,7 +1,7 @@
 from bottle import Bottle, redirect, HTTPError
 from .base_controller import BaseController
 from services.payment_service import PaymentService
-
+from utils.decorators import login_required, admin_required
 # ATENCAO: AINDA TEM UM CERTO DELAY QUANDO O USER CLICA NO CORACAO E ACESSA A PÁGINA DE PAYMENTS/<NUMBER>
 
 class PaymentController(BaseController):
@@ -15,19 +15,17 @@ class PaymentController(BaseController):
         self.app.route('/payments/<payment_id:int>/confirm', method='POST', callback=self.confirm_payment)
 
 
+    @login_required
     def show_payment(self, payment_id):
-
-        try:
-            pid = int(payment_id)
-        except ValueError:
-            # ID inválido na URL → 400 Bad Request
-            return HTTPError(400, "Payment ID inválido.")
-
+        print("Ate aqui DA SIM")
+        pid = int(payment_id)
+        
+        print(pid)
         payment = self.payment_service.get_by_id(pid)
-
+        print(payment)
         if not payment:
             # 404 padrão do Bottle
-            return HTTPError(404, "Pagamento não encontrado mano.")
+            return HTTPError(404, "Pagamento não encontrado.")
 
         # sucesso
         return self.render('payment_detail', payment=payment)

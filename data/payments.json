@@ -17,11 +17,11 @@
     },
     {
         "id": 3,
-        "event_id": 1,
+        "event_id": 5,
         "user_email": "g@gmail.com",
-        "amount": 15.0,
+        "amount": 10.0,
         "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072158"
+        "timestamp": null
     },
     {
         "id": 4,
@@ -29,330 +29,18 @@
         "user_email": "g@gmail.com",
         "amount": 50.0,
         "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072167"
+        "timestamp": null
     },
     {
         "id": 5,
-        "event_id": 2,
+        "event_id": 4,
         "user_email": "g@gmail.com",
-        "amount": 50.0,
+        "amount": 12000.0,
         "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072174"
-    },
-    {
-        "id": 5,
-        "event_id": 1,
-        "user_email": "g@gmail.com",
-        "amount": 15.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072180"
-    },
-    {
-        "id": 5,
-        "event_id": 1,
-        "user_email": "g@gmail.com",
-        "amount": 15.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072186"
-    },
-    {
-        "id": 5,
-        "event_id": 1,
-        "user_email": "g@gmail.com",
-        "amount": 15.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072192"
-    },
-    {
-        "id": 5,
-        "event_id": 1,
-        "user_email": "g@gmail.com",
-        "amount": 15.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072198"
+        "timestamp": null
     },
     {
         "id": 6,
-        "event_id": 2,
-        "user_email": "g@gmail.com",
-        "amount": 50.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072204"
-    },
-    {
-        "id": 7,
-        "event_id": 2,
-        "user_email": "g@gmail.com",
-        "amount": 50.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072210"
-    },
-    {
-        "id": 8,
-        "event_id": 3,
-        "user_email": "g@gmail.com",
-        "amount": 0.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072216"
-    },
-    {
-        "id": 9,
-        "event_id": 3,
-        "user_email": "g@gmail.com",
-        "amount": 0.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072222"
-    },
-    {
-        "id": 10,
-        "event_id": 1,
-        "user_email": "g@gmail.com",
-        "amount": 15.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072228"
-    },
-    {
-        "id": 11,
-        "event_id": 2,
-        "user_email": "g@gmail.com",
-        "amount": 50.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072234"
-    },
-    {
-        "id": 12,
-        "event_id": 3,
-        "user_email": "g@gmail.com",
-        "amount": 0.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072241"
-    },
-    {
-        "id": 13,
-        "event_id": 3,
-        "user_email": "g@gmail.com",
-        "amount": 0.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072259"
-    },
-    {
-        "id": 14,
-        "event_id": 9,
-        "user_email": "g@gmail.com",
-        "amount": 0.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072273"
-    },
-    {
-        "id": 15,
-        "event_id": 7,
-        "user_email": "g@gmail.com",
-        "amount": 1.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072282"
-    },
-    {
-        "id": 16,
-        "event_id": 7,
-        "user_email": "g@gmail.com",
-        "amount": 1.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072290"
-    },
-    {
-        "id": 17,
-        "event_id": 1,
-        "user_email": "g@gmail.com",
-        "amount": 15.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072297"
-    },
-    {
-        "id": 18,
-        "event_id": 1,
-        "user_email": "g@gmail.com",
-        "amount": 15.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072303"
-    },
-    {
-        "id": 19,
-        "event_id": 1,
-        "user_email": "g@gmail.com",
-        "amount": 15.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072309"
-    },
-    {
-        "id": 20,
-        "event_id": 1,
-        "user_email": "g@gmail.com",
-        "amount": 15.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072315"
-    },
-    {
-        "id": 21,
-        "event_id": 1,
-        "user_email": "g@gmail.com",
-        "amount": 15.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072321"
-    },
-    {
-        "id": 22,
-        "event_id": 7,
-        "user_email": "g@gmail.com",
-        "amount": 1.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072326"
-    },
-    {
-        "id": 23,
-        "event_id": 5,
-        "user_email": "g@gmail.com",
-        "amount": 10.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072333"
-    },
-    {
-        "id": 24,
-        "event_id": 6,
-        "user_email": "g@gmail.com",
-        "amount": 6969.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072339"
-    },
-    {
-        "id": 25,
-        "event_id": 6,
-        "user_email": "g@gmail.com",
-        "amount": 6969.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072344"
-    },
-    {
-        "id": 26,
-        "event_id": 6,
-        "user_email": "g@gmail.com",
-        "amount": 6969.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072350"
-    },
-    {
-        "id": 27,
-        "event_id": 2,
-        "user_email": "g@gmail.com",
-        "amount": 50.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072356"
-    },
-    {
-        "id": 28,
-        "event_id": 2,
-        "user_email": "g@gmail.com",
-        "amount": 50.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072362"
-    },
-    {
-        "id": 29,
-        "event_id": 2,
-        "user_email": "g@gmail.com",
-        "amount": 50.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072368"
-    },
-    {
-        "id": 30,
-        "event_id": 10,
-        "user_email": "g@gmail.com",
-        "amount": 14.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072374"
-    },
-    {
-        "id": 31,
-        "event_id": 1,
-        "user_email": "g@gmail.com",
-        "amount": 15.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072380"
-    },
-    {
-        "id": 32,
-        "event_id": 10,
-        "user_email": "g@gmail.com",
-        "amount": 14.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072391"
-    },
-    {
-        "id": 33,
-        "event_id": 2,
-        "user_email": "g@gmail.com",
-        "amount": 50.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072403"
-    },
-    {
-        "id": 34,
-        "event_id": 1,
-        "user_email": "g@gmail.com",
-        "amount": 15.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072414"
-    },
-    {
-        "id": 35,
-        "event_id": 5,
-        "user_email": "g@gmail.com",
-        "amount": 10.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072423"
-    },
-    {
-        "id": 36,
-        "event_id": 9,
-        "user_email": "g@gmail.com",
-        "amount": 0.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072431"
-    },
-    {
-        "id": 37,
-        "event_id": 3,
-        "user_email": "g@gmail.com",
-        "amount": 0.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072438"
-    },
-    {
-        "id": 38,
-        "event_id": 3,
-        "user_email": "g@gmail.com",
-        "amount": 0.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072444"
-    },
-    {
-        "id": 39,
-        "event_id": 2,
-        "user_email": "g@gmail.com",
-        "amount": 50.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:08.072450"
-    },
-    {
-        "id": 40,
-        "event_id": 2,
-        "user_email": "g@gmail.com",
-        "amount": 50.0,
-        "status": "pending",
-        "timestamp": "2025-06-25T19:40:11.760235"
-    },
-    {
-        "id": 41,
         "event_id": 6,
         "user_email": "g@gmail.com",
         "amount": 6969.0,
@@ -360,11 +48,139 @@
         "timestamp": null
     },
     {
-        "id": 42,
+        "id": 7,
+        "event_id": 3,
+        "user_email": "g@gmail.com",
+        "amount": 0.0,
+        "status": "pending",
+        "timestamp": null
+    },
+    {
+        "id": 8,
+        "event_id": 4,
+        "user_email": "g@gmail.com",
+        "amount": 12000.0,
+        "status": "pending",
+        "timestamp": null
+    },
+    {
+        "id": 9,
         "event_id": 2,
         "user_email": "g@gmail.com",
         "amount": 50.0,
         "status": "pending",
+        "timestamp": null
+    },
+    {
+        "id": 10,
+        "event_id": 9,
+        "user_email": "g@gmail.com",
+        "amount": 0.0,
+        "status": "pending",
+        "timestamp": null
+    },
+    {
+        "id": 11,
+        "event_id": 9,
+        "user_email": "g@gmail.com",
+        "amount": 0.0,
+        "status": "pending",
+        "timestamp": null
+    },
+    {
+        "id": 12,
+        "event_id": 9,
+        "user_email": "g@gmail.com",
+        "amount": 0.0,
+        "status": "pending",
+        "timestamp": null
+    },
+    {
+        "id": 13,
+        "event_id": 9,
+        "user_email": "g@gmail.com",
+        "amount": 0.0,
+        "status": "pending",
+        "timestamp": null
+    },
+    {
+        "id": 14,
+        "event_id": 9,
+        "user_email": "g@gmail.com",
+        "amount": 0.0,
+        "status": "pending",
+        "timestamp": null
+    },
+    {
+        "id": 15,
+        "event_id": 9,
+        "user_email": "g@gmail.com",
+        "amount": 0.0,
+        "status": "pending",
+        "timestamp": null
+    },
+    {
+        "id": 16,
+        "event_id": 9,
+        "user_email": "g@gmail.com",
+        "amount": 0.0,
+        "status": "pending",
+        "timestamp": null
+    },
+    {
+        "id": 17,
+        "event_id": 9,
+        "user_email": "g@gmail.com",
+        "amount": 0.0,
+        "status": "pending",
+        "timestamp": null
+    },
+    {
+        "id": 18,
+        "event_id": 9,
+        "user_email": "g@gmail.com",
+        "amount": 0.0,
+        "status": "pending",
+        "timestamp": null
+    },
+    {
+        "id": 19,
+        "event_id": 9,
+        "user_email": "g@gmail.com",
+        "amount": 0.0,
+        "status": "pending",
+        "timestamp": null
+    },
+    {
+        "id": 20,
+        "event_id": 10,
+        "user_email": "g@gmail.com",
+        "amount": 14.0,
+        "status": "pending",
+        "timestamp": null
+    },
+    {
+        "id": 21,
+        "event_id": 5,
+        "user_email": "g@gmail.com",
+        "amount": 10.0,
+        "status": "pending",
+        "timestamp": null
+    },
+    {
+        "id": 22,
+        "event_id": 10,
+        "user_email": "g@gmail.com",
+        "amount": 14.0,
+        "status": "pending",
+        "timestamp": null
+    },
+    {
+        "id": 23,
+        "event_id": 10,
+        "user_email": "g@gmail.com",
+        "amount": 14.0,
+        "status": "paid",
         "timestamp": null
     }
 ]

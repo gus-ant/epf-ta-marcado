@@ -45,6 +45,7 @@ class PaymentModel:
         self._save()
 
     def get_by_id(self, pid):
+        self._save()
         self._load()
         print(f"[DEBUG] Procurando pagamento com ID: {pid}")
         print(f"[DEBUG] IDs disponíveis: {[p.id for p in self.payments]}")

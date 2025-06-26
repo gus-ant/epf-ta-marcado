@@ -9,8 +9,13 @@ class PaymentService:
         payment = Payment(new_id+1, event_id, user_email, amount)
         self.model.add(payment)
         return payment
+    
+    def add(self, payment):
+        self.payments.append(payment)
+        self._save()  # já salva no arquivo JSON aqui
 
     def get_by_id(self, pid):
+        self.model = PaymentModel()
         return self.model.get_by_id(pid)
 
     def mark_as_paid(self, pid):
