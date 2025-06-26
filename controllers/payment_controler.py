@@ -11,8 +11,8 @@ class PaymentController(BaseController):
         self.setup_routes()
 
     def setup_routes(self):
-        self.app.route('/payments/<payment_id:int>', method='GET', callback=self.show_payment)
-        self.app.route('/payments/<payment_id:int>/confirm', method='POST', callback=self.confirm_payment)
+        self.app.route('/<payment_id:int>', method='GET', callback=self.show_payment)
+        self.app.route('/<payment_id:int>/confirm', method='POST', callback=self.confirm_payment)
 
 
     @login_required
@@ -26,7 +26,6 @@ class PaymentController(BaseController):
         if not payment:
             # 404 padrão do Bottle
             return HTTPError(404, "Pagamento não encontrado.")
-
         # sucesso
         return self.render('payment_detail', payment=payment)
 
