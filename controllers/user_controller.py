@@ -20,11 +20,6 @@ class UserController(BaseController): #herda de BaseController
         self.app.route('/users/edit/<user_id:int>', method=['GET', 'POST'], callback=self.edit_user) #Registra rota /users/edit/<user_id> com parâmetro inteiro para editar usuário específico
         self.app.route('/users/delete/<user_id:int>', method='POST', callback=self.delete_user) #Registra rota POST /users/delete/<user_id> para deletar usuário específico
 
-        #novas rotas para gerenciar privilegios
-        #Ótima ideia
-    
-        self.app.route('/users/promote/<user_id:int>', method='POST', callback=self.promote_user) #Promove usuário a admin
-        self.app.route('/users/demote/<user_id:int>', method='POST', callback=self.demote_user) #Remove privilégios de admin
 
     def list_users(self):
         users = self.user_service.get_all() #users é a lista de todos os users
@@ -76,18 +71,6 @@ class UserController(BaseController): #herda de BaseController
     def delete_user(self, user_id):
         self.user_service.delete_user(user_id) #remove o user
         self.redirect('/users') #redireciona 
-
-    def promote_user(self, user_id):
-        if self.user_service.promote_to_adm(user_id):
-            return self.redirect('/users')
-        else:
-            return "Erro ao promover usuario"
-    
-    def demote_user(self, user_id):
-        if self.user_service.demove_from_adm(user_id):
-            return self.redirect('/users')
-        else:
-            return "Erro ao promover usuario"
 
 user_routes = Bottle()
 user_controller = UserController(user_routes)

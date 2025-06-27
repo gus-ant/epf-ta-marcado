@@ -52,7 +52,6 @@ class UserService:
         birthdate = request.forms.get('birthdate')
         password = request.forms.get('password')
         password_confirm = request.forms.get('password_confirm')
-        adm = request.forms.get('adm')== 'on'
 
         if password or password_confirm:
             if password != password_confirm:
@@ -62,12 +61,9 @@ class UserService:
         if existing_user and existing_user.id != user.id: #caso o email seja usado por outro user, raiser error
             raise EmailAlreadyUsedException(email)
         
-
-
         user.name = name #sobrescreve os dados
         user.email = email
         user.birthdate = birthdate
-        user.adm = adm
 
         if password and password.strip(): #só troca de senha caso uma nova for fornecida
             user.set_password(password)
@@ -93,20 +89,4 @@ class UserService:
     
     def can_create_events(self, user): #verifica se o usuario pode criar eventos
         return user and user.adm
-    
-    def promote_to_adm(self, user_id): #promove um user a adm, usando seu id
-        user = self.get_by_id(user_id)
-        if user:
-            user.adm = True
-            self.user_model.update_user(user)
-            return True
-        return False #caso não exista esse user
-    
-    def demove_from_adm(self, user_id): #remove adm de um user, usando seu id
-        user = self.get_by_id(user_id)
-        if user:
-            user.adm = True
-            self.user_model.update_user(user)
-            return True
-        return False #caso não exista esse user
     

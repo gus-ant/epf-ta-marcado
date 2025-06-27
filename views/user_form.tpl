@@ -54,15 +54,17 @@
             <small>Mínimo de 8 caracteres</small>
         </div>
 
-        <!-- parte do adm-->
-         <div class = "form-group checkbox-group">
-            <label>
-                <input type="checkbox" name="adm"
-                    {{'checked' if user and user.adm else''}}>
-                <span class="checkmark"></span>
-                Adm (pode criar eventos)
-            </label>
-         </div>
+        <!-- parte do adm (só aparece no cadastro)-->
+        % if not user:
+            <div class = "form-group checkbox-group">
+                <label>
+                    <input type="checkbox" name="adm"
+                        {{'checked' if user and user.adm else''}}>
+                    <span class="checkmark"></span>
+                    Adm (pode criar eventos)
+                </label>
+            </div>
+        % end
 
 
         <div class="form-actions">
