@@ -20,8 +20,21 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"> <a class="nav-link" href="/events">Eventos</a></li>
-                    <li class="nav-item">  <a class="nav-link" href="/login">Login</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="/users/add">Cadastrar</a> </li>
+                    % if session and session.get('user'):
+                        <!--quando tá logado-->
+                        <li class="nav-item"><span class="nav-link">
+                            % if session['user'].get('adm'):
+                                <!--se for admin aparece uma estrelinha dourada-->
+                                <span title="Admin" style="color: gold; margin-right: 5px;">&#11088;</span>
+                            % end
+                                Olá, <strong>{{session['user']['name']}}</strong> ({{session['user']['email']}}) </span></li>
+                        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a> </li>
+                        <li class="nav-item"><a class="nav-link" href="/user">Perfil</a></li>
+                        <!--falta fazer o /user com as coisas do user(poder ver eventos e sair)-->
+                    % else:
+                        <li class="nav-item">  <a class="nav-link" href="/login">Login</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="/users/add">Cadastrar</a> </li>
+                    % end
                 </ul>
             </div>
         </div>

@@ -30,7 +30,11 @@ class AuthController(BaseController):
             user = user1.authenticate(email, password) # AQUI O MÉTODO NÃO RETORNAVA NADA
             print(user.email)
             if user: #conseguiu fazer o login
-                session['user'] = user.email #PODE ACESSAR O EMAIL DE QUALQUER LUGAR
+                session['user'] = {
+                    'email':user.email, #PODE ACESSAR O EMAIL DE QUALQUER LUGAR
+                    'name':user.name, #agora o nome tambem pode ser acessado
+                    'adm':user.adm #agora dá pra ver se é adm
+                    }
                 session.save()
                 print(f"USER {user.name} LOGADO")
                 

@@ -4,7 +4,10 @@
 <section class="form-section">
     <h1>{{'Editar Usuário' if user else 'Adicionar Usuário'}}</h1>
     
-    
+    % if error:
+        <p style="color: red;">Erro: {{error}}</p>
+    % end
+
     % if defined('error') and error:
         <div class="error-message">
             <p><strong>Erro:</strong> {{error}}</p>
