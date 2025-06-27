@@ -31,7 +31,7 @@ class UserController(BaseController): #herda de BaseController
 
     def add_user(self):
         if request.method == 'GET':
-            return self.render('user_form', user=None, action="/users/add") #faz o formulario vazio para o novo usuario
+            return self.render('user_form', user=None, action="/users/add", error=None) #faz o formulario vazio para o novo usuario
         else:
             # POST - salvar usuário
             try:

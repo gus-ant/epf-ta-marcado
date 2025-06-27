@@ -49,7 +49,9 @@ class BaseController: #classe base para todos os controllers
 
     def render(self, template, **context): #template é o nome, **context: Argumentos nomeados que serão passados para o template
         """Método auxiliar para renderizar templates HTML"""
-        from bottle import template as render_template
+        from bottle import template as render_template, request
+        session = request.environ.get('beaker.session') #pega a sessao atual
+        context['session'] = session #passa pro html
         # Importa a função template do Bottle (renomeada para render_template)
         # Importação local evita conflitos de nomes e melhora performance
         return render_template(template, **context)
