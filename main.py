@@ -22,16 +22,14 @@ if __name__ == '__main__':
 #--(podemos colocar como o clima vai estar no dia do evento)
 #--(podemos colocar qrcode)
 #-no event_service fazer um edit_event
-#-talvez adicionar outros tipos de ingresso(meia entrada e tals)
+#-talvez adicionar outros tipos de ingresso (meia entrada e tals)
 #ter likes no evento (cada user só pode dar 1 like)
+#na pagina de eventos, a foto do evento ficar acima do nome
 
 #login
-#EU CRIEI A CONTA E TENTEI LOGAR NA MESMA HORA, DEU ERRO
+#mesmo logado como adm, tá pedindo pra fazer login pra criar evento
 #assim que criar conta, logar
 #quando um user normal tentar fazer evento, aparecer o erro e voltar pra /home
-#criar confirmação de senha
-#-aparecer a opção de logout quando tá logado
-#-aparecer o nome do user logado e o email do user logado em cima na pagina (mudar layout.tpl)
 
 #BUG FIX
 #-na parte de apagar user, lembrar de apagar todos os eventos que ele tem
@@ -44,12 +42,11 @@ if __name__ == '__main__':
 #-os usuarios vão direto pra /home ao abrir o programa
 
 #criar e adicionar nossa logo no site 
-#titulo do site ser o nosso
 
-#primeiro focar no python/html dps no css, quando tudo já funcionar, focar no CSS
-
-#formatar o valor da entrada do evento pro formato br
+#formatar o valor da entrada do evento pro formato R$
 
 #metas pro projeto já pronto:
 #-criptografar as senhas dos users no banco de dados JSON (muito importante)
+#-verificar email
+#-recuperar senha caso esqueca
 #-usar likes como "algoritmo" pra mostrar os eventos com mais likes no topo do /home
