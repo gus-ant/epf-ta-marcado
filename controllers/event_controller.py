@@ -28,22 +28,24 @@ class EventController(BaseController):
     @login_required
     def join_event(self, event_id):
         session = request.environ['beaker.session']
-        email = session['user']   
+        email = session['user']['email']
 
         event = self.event_service.get_by_id(event_id)
         if not event:
             return "Evento não encontrado", 404
 
-        # cria pagamento pendente
-        payment = self.payment_service.create_payment(
-            event_id=event.id,
-            user_email=email,
-            amount=event.price
-        )
+        # cria pagamento pendente caso tenha custo
+        if event.price >0:
+            payment = self.payment_service.create_payment(
+                event_id=event.id,
+                user_email=email,
+                amount=event.price
+            )
+            self.event_service.add_participant(event_id, email) #coloca ele no evento
+            return redirect(f'/payments/{int(payment.id)}')
         
-        print(f"AQUI ESTÁ: {payment.event_id}" )
-
-        return redirect(f'/payments/{int(payment.id)}')
+        self.event_service.add_participant(event_id, email) #coloca ele no evento
+        return redirect('/events')
 
 
 

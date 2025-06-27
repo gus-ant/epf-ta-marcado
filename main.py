@@ -27,7 +27,6 @@ if __name__ == '__main__':
 #na pagina de eventos, a foto do evento ficar acima do nome
 
 #login
-#mesmo logado como adm, tá pedindo pra fazer login pra criar evento
 #assim que criar conta, logar
 #quando um user normal tentar fazer evento, aparecer o erro e voltar pra /home
 

@@ -12,7 +12,7 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 class Event:
     #falta adicionar uma lista com todas as pessoas participando 
 
-    def __init__(self, id, name, local, date, price, max_capacity, time, current_capacity, owner_email, description, cover=None):
+    def __init__(self, id, name, local, date, price, max_capacity, time, current_capacity, owner_email, description, cover=None, participants_emails:List[str]=[""]):
         self.id = id #identificador unico 
         self.name = name #nome do evento
         self.local = local #local do evento
@@ -23,6 +23,7 @@ class Event:
         self.owner_email = owner_email #email de quem criou o evento
         self.description = description #descrição do evento
         self.cover = cover #capa do evento
+        self.participants_emails = participants_emails or [] #todos os emails dos participantes do evento
 
         self.current_capacity = max_capacity #capacidade atual inicial
         if current_capacity != None: #caso seja passado valor
@@ -47,7 +48,8 @@ class Event:
             'current_capacity': self.current_capacity,
             'owner_email': self.owner_email,
             'description': self.description,
-            'cover': self.cover
+            'cover': self.cover,
+            'participants_emails': self.participants_emails
         }
 
     @classmethod #metodo de classe
@@ -63,7 +65,8 @@ class Event:
             current_capacity = data['current_capacity'],
             owner_email = data['owner_email'],
             description = data['description'],
-            cover = data['cover']
+            cover = data['cover'],
+            participants_emails = data['participants_emails', []]
         ) 
 
 class EventModel:
@@ -75,29 +78,19 @@ class EventModel:
         self.events = self._load() #inicializa a lista e armazena na memoria
 
     def _load(self):
-        if not os.path.exists(self.FILE_PATH):
-            return []
+        if not os.path.exists(self.FILE_PATH): #caso não tenha
+            return [] #lista vazia
 
-        with open(self.FILE_PATH, 'r', encoding='utf-8') as f:
+        with open(self.FILE_PATH, 'r', encoding='utf-8') as f: #abre o arquivo em modo read e chama isso de f
             content = f.read().strip()
             if not content or content == "":  # EVITA erro com arquivo vazio
-                return []
+                return [] # isso faz retornar uma lista vazia se o Arquivo existir mas não tiver nada
             try:
-                data = json.loads(content)
-                return [Event(**item) for item in data]
+                data = json.loads(content) #carrega o conteudo json do arquivo 'content'
+                return [Event(**item) for item in data] #os dicionarios do arquivo são desempacotados em objetos Event
             except json.JSONDecodeError:
                 print("Erro ao carregar JSON do arquivo de eventos. Verifique o conteúdo.")
                 return []
-
-    # def _load(self):
-    #     if not os.path.exists(self.FILE_PATH): #caso não tenha
-    #         return[] #lista vazia
-    #     with open(self.FILE_PATH, 'r', encoding='utf-8') as f: #abre o arquivo em modo read e chama isso de f
-    #         content = f.read().strip()
-    #         if not content:
-    #             return [] # isso faz retornar uma lista vazia se o Arquivo existir mas não tiver nada
-    #     data = json.load(f) #data é json.load(f) f é o arquivo
-    #     return [Event(**item) for item in data] #os dicionarios do arquivo são desempacotados em objetos Event
         
     def _save(self):
         os.makedirs(os.path.dirname(self.FILE_PATH), exist_ok=True) #faz o diretorio caso ainda não exista

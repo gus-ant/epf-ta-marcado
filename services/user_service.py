@@ -1,6 +1,8 @@
 from bottle import request, template #usado pra acessar dados de formularios HTTP
 from models.user import UserModel, User
 from exceptions import EmailAlreadyUsedException
+from models.events import EventModel
+from services.event_service import EventService
 
 class UserService:
     # Esta classe atua como uma camada intermediária entre o controlador (rotas)
@@ -8,6 +10,8 @@ class UserService:
 
     def __init__(self):
         self.user_model = UserModel() #acessa o usermodel de user.py
+        self.event_model = EventModel() #acessa o eventmodel de events.py
+        self.event_service = EventService() 
 
 
     def get_all(self):
@@ -48,7 +52,7 @@ class UserService:
 
     def edit_user(self, user): #usa um objeto user
         name = request.forms.get('name') #puxa os dados do formulario http
-        email = request.forms.get('email')
+        email = request.forms.get('email') #ISSO AQUI PODE DAR UM PROBLEMÃO
         birthdate = request.forms.get('birthdate')
         password = request.forms.get('password')
         password_confirm = request.forms.get('password_confirm')
@@ -72,7 +76,14 @@ class UserService:
 
 
     def delete_user(self, user_id):
-        self.user_model.delete_user(user_id) #usa o metodo do user.py
+        user = self.user_model.get_by_id(user_id)
+        if user: #caso encontre
+            if user.adm: #se for adm
+                eventos = [e for e in self.event_model.get_all() if e.owner_email == user.email] #lista com todos os eventos do adm
+                for e in eventos:
+                    self.event_model.delete_event(e.id) #apaga o evento
+            self.event_service.remove_user_from_all_events(user.email) #tira o user de todos os eventos
+            self.user_model.delete_user(user_id) #usa o metodo do user.py (já salva)
 
     def authenticate(self, email, password):
         #autentica um usuario usando email e senha
@@ -90,3 +101,10 @@ class UserService:
     def can_create_events(self, user): #verifica se o usuario pode criar eventos
         return user and user.adm
     
+    def get_events_user_participates(self, user_email: str):
+        return [e for e in self.event_model.get_all() if user_email == e.participants_emails] #lista de todos os eventos que tem um participante com o mesmo email
+    
+    def get_events_by_owner(self, owner_email):
+        return [e for e in self.event_model.get_all() if owner_email == e.owner_email] #lista de todos os eventos que um adm tem
+    
+
