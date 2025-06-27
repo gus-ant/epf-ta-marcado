@@ -50,7 +50,7 @@ class UserController(BaseController): #herda de BaseController
             return "Usuário não encontrado" #retorna isso caso não exista esse usuario
 
         if request.method == 'GET':
-            return self.render('user_form', user=user, action=f"/users/edit/{user_id}")
+            return self.render('user_form', user=user, action=f"/users/edit/{user_id}", error=None)
         else:
             # POST - salvar edição
             try:
@@ -59,7 +59,7 @@ class UserController(BaseController): #herda de BaseController
                     return result
                 self.redirect('/users')
             except ValueError as e:
-                return self.render('user_form', user=user, action=f"/users/edit/{user_id}")
+                return self.render('user_form', user=user, action=f"/users/edit/{user_id}", error=None)
 
 
     def delete_user(self, user_id):

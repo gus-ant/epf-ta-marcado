@@ -41,14 +41,16 @@
         <div class = "form-group"> 
             <label for="password">Senha:</label>
             <input type="password" id="password" name="password" minlength="8"
-                {{'placeholder = "Digite nova senha (opcional)"'if user else 'required'}}>
+                placeholder='{{ "Digite nova senha (opcional)" if user else "" }}'
+                {{ "" if user else "required" }}>
             <small>Mínimo de 8 caracteres</small>
         </div>
 
         <div class = "form-group">
             <label for="password_confirm">Confirme a senha:</label>
             <input type="password" id="password_confirm" name="password_confirm" minlength="8"
-            {{'placeholder = "Digite nova senha (opcional)"'if user else 'required'}}>
+                placeholder='{{ "Digite nova senha (opcional)" if user else "" }}'
+                {{ "" if user else "required" }}>
             <small>Mínimo de 8 caracteres</small>
         </div>
 
