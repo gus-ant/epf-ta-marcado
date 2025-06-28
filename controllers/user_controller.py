@@ -46,7 +46,12 @@ class UserController(BaseController): #herda de BaseController
         email = session['user']['email'] #pega o email
         user = self.user_service.get_by_email(email) #puxa o user
         if user:
-            return self.render('user', user=user) #vai pra pagina do user.tpl
+            from services.event_service import EventService
+            if not user.adm:
+                events = self.user_service.get_events_user_participates(email)
+            if user.adm:
+                events = self.user_service.get_events_by_owner(email)
+            return self.render('user', user=user, events=events) #vai pra pagina do user.tpl
         return "user not found"
 
 

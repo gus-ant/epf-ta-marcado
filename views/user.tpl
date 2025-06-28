@@ -13,6 +13,30 @@
             <span title="Admin" style="color: gold; margin-right: 5px;">&#11088;</span></p>
         % end
     </div>
+    
+    <div class="profile-events">
+        % if user.adm:
+            <h2>Eventos que criou:</h2>
+        % else:
+            <h2>Eventos que participa:</h2>
+        % end
+
+        % if events:
+            <ul>
+                % for event in events:
+                <li>
+                    <a href="/events/{{event.id}}">{{event.name}}</a> - {{event.date}} as {{event.time}} ({{event.local}})
+                </li>
+                % end
+            </ul>
+        % else:
+            %if user.adm:
+                <p>Voce ainda não criou nenhum evento.</p>
+            %else:
+                <p>Voce ainda nao participa de nenhum evento.</p>
+            % end
+        % end
+    </div>
 
     <div class="profile-actions">
         <a class="btn-edit" href="/users/edit/{{user.id}}">Editar perfil</a>

@@ -10,7 +10,10 @@
         "current_capacity": 150,
         "owner_email": "organizacao@festas.com",
         "description": ",",
-        "cover": ""
+        "cover": "",
+        "participants_emails": [
+            ""
+        ]
     },
     {
         "id": 2,
@@ -23,7 +26,10 @@
         "current_capacity": 400,
         "owner_email": "rock@eventos.com",
         "description": ",",
-        "cover": ""
+        "cover": "",
+        "participants_emails": [
+            ""
+        ]
     },
     {
         "id": 3,
@@ -36,7 +42,10 @@
         "current_capacity": 990,
         "owner_email": "feira@tech.com",
         "description": ",",
-        "cover": ""
+        "cover": "",
+        "participants_emails": [
+            ""
+        ]
     },
     {
         "id": 4,
@@ -49,7 +58,10 @@
         "current_capacity": 1,
         "owner_email": "anon@anon.com",
         "description": ",",
-        "cover": ""
+        "cover": "",
+        "participants_emails": [
+            ""
+        ]
     },
     {
         "id": 5,
@@ -62,7 +74,10 @@
         "current_capacity": 90,
         "owner_email": "anon@anon.com",
         "description": ",",
-        "cover": ""
+        "cover": "",
+        "participants_emails": [
+            ""
+        ]
     },
     {
         "id": 6,
@@ -75,7 +90,10 @@
         "current_capacity": 3,
         "owner_email": "anon@anon.com",
         "description": "vamos andar atÃ© a china mesmo, vai ser uma caminhada bem legal :)",
-        "cover": ""
+        "cover": "",
+        "participants_emails": [
+            ""
+        ]
     },
     {
         "id": 7,
@@ -88,7 +106,10 @@
         "current_capacity": 1,
         "owner_email": "123@gmail.com",
         "description": "sim",
-        "cover": ""
+        "cover": "",
+        "participants_emails": [
+            ""
+        ]
     },
     {
         "id": 8,
@@ -101,7 +122,10 @@
         "current_capacity": 123,
         "owner_email": "123@gmail.com",
         "description": "bla bla bla",
-        "cover": ""
+        "cover": "",
+        "participants_emails": [
+            ""
+        ]
     },
     {
         "id": 9,
@@ -114,7 +138,10 @@
         "current_capacity": 123123112313,
         "owner_email": "123@gmail.com",
         "description": "nao",
-        "cover": ""
+        "cover": "",
+        "participants_emails": [
+            ""
+        ]
     },
     {
         "id": 10,
@@ -127,7 +154,10 @@
         "current_capacity": 1414,
         "owner_email": "123@gmail.com",
         "description": "14",
-        "cover": ""
+        "cover": "",
+        "participants_emails": [
+            ""
+        ]
     },
     {
         "id": 11,
@@ -140,7 +170,10 @@
         "current_capacity": null,
         "owner_email": "falta aqui",
         "description": null,
-        "cover": ""
+        "cover": "",
+        "participants_emails": [
+            ""
+        ]
     },
     {
         "id": 12,
@@ -153,7 +186,10 @@
         "current_capacity": 2,
         "owner_email": "superadm@gmail.com",
         "description": "nao tem foto pq no piaui só tem wifi via radio",
-        "cover": null
+        "cover": null,
+        "participants_emails": [
+            ""
+        ]
     },
     {
         "id": 13,
@@ -166,7 +202,10 @@
         "current_capacity": 3,
         "owner_email": "superadm@gmail.com",
         "description": "tem foto! legal...",
-        "cover": "5326a489152247868b398ac5899cdeae.jpg"
+        "cover": "5326a489152247868b398ac5899cdeae.jpg",
+        "participants_emails": [
+            ""
+        ]
     },
     {
         "id": 14,
@@ -179,6 +218,25 @@
         "current_capacity": 100000,
         "owner_email": "superadm@gmail.com",
         "description": "O melhor evento de Física do DF, imperdível.\r\nParticipantes:\r\n-Elon Mosca\r\n-Donald Trumpo",
-        "cover": "7b14bd9bd55a4b658f9d23922b3d11ed.png"
+        "cover": "7b14bd9bd55a4b658f9d23922b3d11ed.png",
+        "participants_emails": [
+            ""
+        ]
+    },
+    {
+        "id": 15,
+        "name": "zoologico de quimeras",
+        "local": "umbral",
+        "date": "0006-06-06",
+        "price": 666.0,
+        "max_capacity": 666,
+        "time": "06:59",
+        "current_capacity": 666,
+        "owner_email": "gus@gmail.com",
+        "description": "MEDO MUITO MEDO",
+        "cover": "48f3af3586a84162ae939b1f4f274cc4.png",
+        "participants_emails": [
+            ""
+        ]
     }
 ]

@@ -9,6 +9,7 @@ class EventService:
     def __init__(self):
         self.event_model = EventModel()
         self.user_model = UserModel()
+        self.event_model._load() #atualiza o sistema quando criar um evento novo
 
     def get_all(self):
         events = self.event_model.get_all()
