@@ -510,5 +510,21 @@
         "participants_emails": [
             ""
         ]
+    },
+    {
+        "id": 33,
+        "name": "pfv",
+        "local": "para",
+        "date": "3333-03-31",
+        "price": 3.0,
+        "max_capacity": 333,
+        "time": "03:33",
+        "current_capacity": 333,
+        "owner_email": "adm@gmail.com",
+        "description": "de bugar",
+        "cover": null,
+        "participants_emails": [
+            ""
+        ]
     }
 ]
