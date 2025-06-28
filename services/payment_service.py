@@ -1,8 +1,10 @@
 from models.payment import PaymentModel, Payment
 
+
 class PaymentService:
     def __init__(self):
         self.payment_model = PaymentModel()
+        
 
     def create_payment(self, event_id, user_email, amount): #rever isso aqui
         old_id = int(max([p.id for p in self.payment_model.payments], default=0))
@@ -16,6 +18,11 @@ class PaymentService:
 
     def get_by_id(self, pid):
         return self.payment_model.get_by_id(pid)
+    
+    def get_payment_by_event_id(self, event_id):
+        from services.event_service import EventService
+        event_service = EventService()
+        return event_service.get_by_id(event_id)
 
     def mark_as_paid(self, pid):
         payment = self.get_by_id(pid)

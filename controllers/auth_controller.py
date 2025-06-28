@@ -5,7 +5,7 @@ from utils.decorators import login_required
 from models.user import User
 
 
-# esse arquivo vai controlar a autenticação do Site, ainda não está pronto. 
+# esse arquivo vai controlar a autenticação do Site, já está pronto. 
 # falta colocar o beaker em prática, que é uma biblioteca para controlar se o usuário está logado e quais requisições HTTPs ele pode fazer
 # FLASK >>>> BOTTLE PQ O FLASK TEM SUPORTE A SEÇOES E AUTENTICAÇÃO
 

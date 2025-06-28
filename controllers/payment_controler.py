@@ -1,6 +1,7 @@
 from bottle import Bottle, redirect, HTTPError
 from .base_controller import BaseController
 from services.payment_service import PaymentService
+from services.event_service import EventService
 from utils.decorators import login_required, admin_required
 # ATENCAO: AINDA TEM UM CERTO DELAY QUANDO O USER CLICA NO CORACAO E ACESSA A PÁGINA DE PAYMENTS/<NUMBER>
 
@@ -8,6 +9,7 @@ class PaymentController(BaseController):
     def __init__(self, app):
         super().__init__(app)
         self.payment_service = PaymentService()
+        self.event_service = EventService()
         self.setup_routes()
 
     def setup_routes(self):
@@ -32,6 +34,7 @@ class PaymentController(BaseController):
 
     def confirm_payment(self, payment_id):
         if self.payment_service.mark_as_paid(payment_id):
+            self.event_service.decrease_capacity(payment_id)
             return redirect(f'/payments/{payment_id}')   # volta a tela de detalhes do pagamento
         return "Erro ao confirmar pagamento"
 

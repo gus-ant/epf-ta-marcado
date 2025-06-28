@@ -1,5 +1,6 @@
 from bottle import request #usado pra acessar dados de formularios HTTP
 from models.events import EventModel, Event
+from services.payment_service import PaymentService
 
 class EventService:
     # Esta classe atua como uma camada intermediaria entre o controller (rotas)
@@ -7,6 +8,7 @@ class EventService:
 
     def __init__(self):
         self.event_model = EventModel()
+        
 
     def get_all(self):
         events = self.event_model.get_all()
@@ -64,10 +66,12 @@ class EventService:
         self.event_model.add_event(event)
 
     # a ideia é diminuir a capacidade do evento quando um user se inscrever
+    #Ainda tem que corrijir isso 
     def decrease_capacity(self, event_id):
-        event = self.get_event_by_id(event_id)
+        self.payment_service = PaymentService()
+        event = self.payment_service.get_payment_by_event_id(event_id)
         if event and event.current_capacity > 0:
             event.current_capacity -= 1
-            self.update_event(event)
+            self.save()
 
     

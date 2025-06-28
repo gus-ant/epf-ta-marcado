@@ -17,8 +17,6 @@ def login_required(func):
     return wrapper
 
 
-
-
 def admin_required(func):
     @wraps(func)
     def wrapper(self, *args, **kwargs):
