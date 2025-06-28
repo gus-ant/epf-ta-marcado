@@ -12,23 +12,29 @@ class EventService:
         self.event_model._load() #atualiza o sistema quando criar um evento novo
 
     def get_all(self):
+        self.event_model._load()
         events = self.event_model.get_all()
         return events
     
     def get_by_id(self, event_id):
+        self.event_model._load()
         return self.event_model.get_by_id(event_id)
     
     def get_by_owner_email(self, event_owner_email):
+        self.event_model._load()
         return self.event_model.get_by_owner_email(event_owner_email)
     
     def get_by_name(self, event_name):
+        self.event_model._load()
         return self.event_model.get_by_name(event_name)
     
     def get_closed_events(self):
+        self.event_model._load()
         return self.event_model.get_closed_events()
     
     def get_open_events(self):
-        return self.event_model.get_open_events
+        self.event_model._load()
+        return self.event_model.get_open_events()
     
     def add_event(self, name, local, date, time, price, max_capacity, owner_email, description='', cover=None, ):
         # gera um novo ID automaticamente com base nos eventos já existentes
@@ -50,12 +56,17 @@ class EventService:
         )
 
         self.event_model.add_event(event)
+        self.event_model.events = self.event_model._load()
+
+    def delete_event(self, event_id):
+        self.event_model.delete_event(event_id)
     
     def save(self):
         last_id = max([e.id for e in self.event_model.get_all()], default=0) #busca o id mais alto ja usado pelo sistema
         new_id = last_id+1
         name = request.forms.get('name')
-        owner_email = 'falta aqui' # puxar a pessoa que ta fazendo e usar email dela
+        session = request.environ.get('beaker.session')
+        owner_email = session['user']['email']
         local = request.forms.get('local')
         date = request.forms.get('date')
         price = request.forms.get('price')
@@ -65,10 +76,11 @@ class EventService:
 
         event = Event(id=new_id, name=name, local=local, date=date, price=price, max_capacity=max_capacity, time=time, current_capacity=max_capacity, owner_email=owner_email, description=description)
         self.event_model.add_event(event)
+        self.event_model.events = self.event_model._load()
 
     # a ideia é diminuir a capacidade do evento quando um user se inscrever
     def decrease_capacity(self, event_id):
-        event = self.get_event_by_id(event_id)
+        event = self.get_by_id(event_id)
         if event and event.current_capacity > 0:
             event.current_capacity -= 1
             self.event_model.update_event(event) 
@@ -101,6 +113,7 @@ class EventService:
                 self.remove_participant(event.id, user_email) #tira ele
 
     def get_participants(self, event_id:int):
+        self.event_model._load()
         event = self.get_by_id(event_id)
         return event.participants_emails if event else []        
         #retorna uma lista com todos os users que estiverem no evento

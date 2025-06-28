@@ -24,7 +24,7 @@
         <input type="number" step="0.01" id="price" name="price" min="0" placeholder="0.00"><br><br>
 
         <label for="max_capacity">Capacidade Máxima:</label><br>
-        <input type="number" id="max_capacity" name="max_capacity" required><br><br>
+        <input type="number" id="max_capacity" name="max_capacity" min="0" required><br><br>
 
         <label for="description">Descrição:</label><br>
         <textarea type="text" id="description" name="description" rows="6" cols="45"></textarea>

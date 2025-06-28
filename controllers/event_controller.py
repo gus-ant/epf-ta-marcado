@@ -106,8 +106,10 @@ class EventController(BaseController):
             
     def view_event(self, event_id):
         session = request.environ.get('beaker.session')
-        email = session['user']['email']
-        user = self.user_service.get_by_email(email)
+        user = None
+        if session and 'user' in session:
+            email = session['user']['email']
+            user = self.user_service.get_by_email(email)
         evento = self.event_service.get_by_id(event_id)
         if not evento:
             return "Evento não encontrado"

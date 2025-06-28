@@ -10,7 +10,7 @@ class UserService:
 
     def __init__(self):
         self.user_model = UserModel() #acessa o usermodel de user.py
-        self.event_model = EventModel() #acessa o eventmodel de events.py
+        self.event_model = EventModel()
         self.event_service = EventService() 
 
 
@@ -79,9 +79,9 @@ class UserService:
         user = self.user_model.get_by_id(user_id)
         if user: #caso encontre
             if user.adm: #se for adm
-                eventos = [e for e in self.event_model.get_all() if e.owner_email == user.email] #lista com todos os eventos do adm
+                eventos = [e for e in self.event_service.get_all() if e.owner_email == user.email] #lista com todos os eventos do adm
                 for e in eventos:
-                    self.event_model.delete_event(e.id) #apaga o evento
+                    self.event_service.delete_event(e.id) #apaga o evento
             self.event_service.remove_user_from_all_events(user.email) #tira o user de todos os eventos
             self.user_model.delete_user(user_id) #usa o metodo do user.py (já salva)
 
@@ -102,9 +102,10 @@ class UserService:
         return user and user.adm
     
     def get_events_user_participates(self, user_email: str):
-        return [e for e in self.event_model.get_all() if user_email == e.participants_emails] #lista de todos os eventos que tem um participante com o mesmo email
+        return [e for e in self.event_service.get_all() if user_email in e.participants_emails] #lista de todos os eventos que tem um participante com o mesmo email
     
     def get_events_by_owner(self, owner_email: str):
-        return [e for e in self.event_model.get_all() if owner_email == e.owner_email] #lista de todos os eventos que um adm tem
+        self.event_model.events = self.event_model._load()
+        return [e for e in self.event_model.events if owner_email == e.owner_email] #lista de todos os eventos que um adm tem
     
 

@@ -66,7 +66,7 @@ class Event:
             owner_email = data['owner_email'],
             description = data['description'],
             cover = data['cover'],
-            participants_emails = data['participants_emails', []]
+            participants_emails = data.get('participants_emails', [])
         ) 
 
 class EventModel:
@@ -127,14 +127,17 @@ class EventModel:
     def add_event(self, event:Event):
         self.events.append(event) #adiciona na lista
         self._save()
+        self.events = self._load()
 
     def update_event(self, updated_event: Event):
         for i, event in enumerate(self.events): #busca o evento e a ordem dele na lista
             if event.id == updated_event.id: #se os eventos tiverem o id igual
                 self.events[i] = updated_event #troca o evento da lista pelo novo
                 self._save() #salva
+                self.events = self._load()
                 break #fecha o loop
     
     def delete_event(self, event_id:int):
         self.events = [e for e in self.events if e.id !=event_id] #troca por uma nova lista sem o item com mesmo id
         self._save() #salva
+        self.events = self._load()

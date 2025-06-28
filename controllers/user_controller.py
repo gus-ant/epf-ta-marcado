@@ -2,6 +2,7 @@ from bottle import Bottle, request
 from .base_controller import BaseController
 from services.user_service import UserService
 from utils.decorators import login_required
+from services.event_service import EventService
 
 class UserController(BaseController): #herda de BaseController
 
@@ -10,6 +11,7 @@ class UserController(BaseController): #herda de BaseController
 
         self.setup_routes()
         self.user_service = UserService()
+        self.event_service = EventService()
 
 
     
@@ -50,6 +52,7 @@ class UserController(BaseController): #herda de BaseController
             if not user.adm:
                 events = self.user_service.get_events_user_participates(email)
             if user.adm:
+                admin_events = self.event_service.get_by_owner_email(email)
                 events = self.user_service.get_events_by_owner(email)
             return self.render('user', user=user, events=events) #vai pra pagina do user.tpl
         return "user not found"
