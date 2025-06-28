@@ -1,6 +1,7 @@
 from bottle import Bottle, request, redirect
 from .base_controller import BaseController
 from services.event_service import EventService
+from services.user_service import UserService
 from utils.decorators import login_required, admin_required
 from services.payment_service import PaymentService
 import os, uuid
@@ -12,6 +13,7 @@ class EventController(BaseController):
         super().__init__(app)
         self.event_service = EventService()
         self.payment_service = PaymentService()  
+        self.user_service = UserService()
         self.setup_routes()
         
     
@@ -28,22 +30,24 @@ class EventController(BaseController):
     @login_required
     def join_event(self, event_id):
         session = request.environ['beaker.session']
-        email = session['user']   
+        email = session['user']['email']
 
         event = self.event_service.get_by_id(event_id)
         if not event:
             return "Evento não encontrado", 404
 
-        # cria pagamento pendente
-        payment = self.payment_service.create_payment(
-            event_id=event.id,
-            user_email=email,
-            amount=event.price
-        )
+        # cria pagamento pendente caso tenha custo
+        if event.price >0:
+            payment = self.payment_service.create_payment(
+                event_id=event.id,
+                user_email=email,
+                amount=event.price
+            )
+            self.event_service.add_participant(event_id, email) #coloca ele no evento
+            return redirect(f'/payments/{int(payment.id)}')
         
-        print(f"AQUI ESTÁ: {payment.event_id}" )
-
-        return redirect(f'/payments/{int(payment.id)}')
+        self.event_service.add_participant(event_id, email) #coloca ele no evento
+        return redirect('/events')
 
 
 
@@ -66,7 +70,7 @@ class EventController(BaseController):
     @admin_required
     def create_event(self):
         session = request.environ['beaker.session'] #puxa o user logado
-        email = session.get('user')
+        email = session['user']['email']
         if request.method == 'GET':
             return self.render('event_form', action='/events/create', error = None)
         else:
@@ -101,10 +105,13 @@ class EventController(BaseController):
                 return self.render('event_form', action='/events/create', error=str(e))
             
     def view_event(self, event_id):
+        session = request.environ.get('beaker.session')
+        email = session['user']['email']
+        user = self.user_service.get_by_email(email)
         evento = self.event_service.get_by_id(event_id)
         if not evento:
             return "Evento não encontrado"
-        return self.render('event_detail', evento=evento)
+        return self.render('event_detail', event=evento, user=user)
 
 
 event_routes = Bottle()

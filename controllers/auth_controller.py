@@ -22,10 +22,12 @@ class AuthController(BaseController):
 
     def login(self):
         session = request.environ['beaker.session']
+        error = request.query.get('error') or ''
+
         if request.method == 'POST':
             email = request.forms.get('email')
             password = request.forms.get('password')
-            print(email, password)
+
             user1 = UserService()
             user = user1.authenticate(email, password) # AQUI O MÉTODO NÃO RETORNAVA NADA
             print(user.email)
@@ -41,7 +43,7 @@ class AuthController(BaseController):
                 redirect('/')
             else: #não acertou o login
                 return self.render('login', error='Login inválido')
-        return self.render('login', error=None)
+        return self.render('login', error=error)
 
     @login_required      
     def logout(self):

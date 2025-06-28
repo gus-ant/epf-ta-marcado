@@ -1,6 +1,7 @@
 from bottle import Bottle, request
 from .base_controller import BaseController
 from services.user_service import UserService
+from utils.decorators import login_required
 
 class UserController(BaseController): #herda de BaseController
 
@@ -13,16 +14,12 @@ class UserController(BaseController): #herda de BaseController
 
     
     def setup_routes(self): # Rotas User
+        self.app.route('/user', method='GET', callback=self.view_profile) #registra a pagina de detalhes do user
         self.app.route('/users', method='GET', callback=self.list_users) #Registra rota GET /users que chama o método list_users para listar usuários
         self.app.route('/users/add', method=['GET', 'POST'], callback=self.add_user) #Registra rota /users/add que aceita GET (mostrar formulário) e POST (salvar usuário)
         self.app.route('/users/edit/<user_id:int>', method=['GET', 'POST'], callback=self.edit_user) #Registra rota /users/edit/<user_id> com parâmetro inteiro para editar usuário específico
         self.app.route('/users/delete/<user_id:int>', method='POST', callback=self.delete_user) #Registra rota POST /users/delete/<user_id> para deletar usuário específico
 
-        #novas rotas para gerenciar privilegios
-        #Ótima ideia
-    
-        self.app.route('/users/promote/<user_id:int>', method='POST', callback=self.promote_user) #Promove usuário a admin
-        self.app.route('/users/demote/<user_id:int>', method='POST', callback=self.demote_user) #Remove privilégios de admin
 
     def list_users(self):
         users = self.user_service.get_all() #users é a lista de todos os users
@@ -42,6 +39,20 @@ class UserController(BaseController): #herda de BaseController
             except ValueError as e:
                 # para tratar os erros
                 return self.render('user_form', user=None, action='/users/add', error=str(e))
+            
+    @login_required
+    def view_profile(self):
+        session = request.environ.get('beaker.session') #pega a sessao atual
+        email = session['user']['email'] #pega o email
+        user = self.user_service.get_by_email(email) #puxa o user
+        if user:
+            from services.event_service import EventService
+            if not user.adm:
+                events = self.user_service.get_events_user_participates(email)
+            if user.adm:
+                events = self.user_service.get_events_by_owner(email)
+            return self.render('user', user=user, events=events) #vai pra pagina do user.tpl
+        return "user not found"
 
 
     def edit_user(self, user_id): #serve pra editar um usuario existente, usa o id
@@ -50,7 +61,7 @@ class UserController(BaseController): #herda de BaseController
             return "Usuário não encontrado" #retorna isso caso não exista esse usuario
 
         if request.method == 'GET':
-            return self.render('user_form', user=user, action=f"/users/edit/{user_id}")
+            return self.render('user_form', user=user, action=f"/users/edit/{user_id}", error=None)
         else:
             # POST - salvar edição
             try:
@@ -59,24 +70,12 @@ class UserController(BaseController): #herda de BaseController
                     return result
                 self.redirect('/users')
             except ValueError as e:
-                return self.render('user_form', user=user, action=f"/users/edit/{user_id}")
+                return self.render('user_form', user=user, action=f"/users/edit/{user_id}", error=None)
 
 
     def delete_user(self, user_id):
         self.user_service.delete_user(user_id) #remove o user
         self.redirect('/users') #redireciona 
-
-    def promote_user(self, user_id):
-        if self.user_service.promote_to_adm(user_id):
-            return self.redirect('/users')
-        else:
-            return "Erro ao promover usuario"
-    
-    def demote_user(self, user_id):
-        if self.user_service.demove_from_adm(user_id):
-            return self.redirect('/users')
-        else:
-            return "Erro ao promover usuario"
 
 user_routes = Bottle()
 user_controller = UserController(user_routes)

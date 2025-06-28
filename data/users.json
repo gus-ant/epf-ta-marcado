@@ -37,7 +37,7 @@
         "email": "superadm@gmail.com",
         "birthdate": "2205-08-04",
         "password": "12345678",
-        "adm": true
+        "adm": false
     },
     {
         "id": 6,
@@ -60,6 +60,14 @@
         "name": "Wesley Lopes",
         "email": "ta@gmail.com",
         "birthdate": "2025-06-01",
+        "password": "123123123",
+        "adm": true
+    },
+    {
+        "id": 9,
+        "name": "admilson",
+        "email": "adm@gmail.com",
+        "birthdate": "3333-03-31",
         "password": "123123123",
         "adm": true
     }

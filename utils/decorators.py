@@ -23,13 +23,14 @@ def admin_required(func):
     @wraps(func)
     def wrapper(self, *args, **kwargs):
         session = request.environ.get('beaker.session')
-        email = session.get('user') if session else None
-        if not email:
-            return redirect('/login')
+        user = session.get('user') if session else None
+        if not user:
+            return redirect('/login?error=o usuario precisa estar logado')
 
-        user = _user_service.get_by_email(email)
-        if not user or not user.adm:
-            return redirect('/login')   # TEM QUE COLOCAR O ERRO DE "SÓ ADMINS PODEM CRIAR EVENTOS"
+        admin = user.get('adm')
+        if not admin:
+            return redirect('/login?error=Apenas admins podem criar eventos')   # TEM QUE COLOCAR O ERRO DE "SÓ ADMINS PODEM CRIAR EVENTOS"
+        
         return func(self, *args, **kwargs)
     return wrapper
 
