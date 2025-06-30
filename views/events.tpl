@@ -11,6 +11,10 @@
     </form>
   </div>
 </div>
+  <div class="container">
+  <div style="margin-top: 40px; text-align: right;">
+    <a href="/events/create" class="btn">+ Criar novo evento</a>
+  </div>
 
   <div class="container">
 
@@ -45,9 +49,5 @@
     % else:
       <p>Nenhum evento disponível no momento.</p>
     % end
-
-    <div style="margin-top: 40px;">
-      <a href="/events/create" class="btn">+ Criar novo evento</a>
-    </div>
   </div>
 </section>

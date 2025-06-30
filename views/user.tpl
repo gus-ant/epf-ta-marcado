@@ -22,6 +22,10 @@
     <div class="profile-events">
       <h2 class="section-title">
         % if user.adm:
+          <div class="container">
+            <div style="margin-top: 40px; text-align: left;">
+              <a href="/events/create" class="btn" style="background-color: #3498db; color: white;">+ Criar novo evento</a>
+            </div>
           📢 Eventos que você criou
         % else:
            Eventos que você participa
