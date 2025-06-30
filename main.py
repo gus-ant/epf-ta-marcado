@@ -39,6 +39,7 @@ if __name__ == '__main__':
 
 #criar a /home:
 #-os usuarios vão direto pra /home ao abrir o programa
+#- Temos que fazer a lógica (rota) do botão de search na página de eventos 
 
 #criar e adicionar nossa logo no site 
 
@@ -49,3 +50,4 @@ if __name__ == '__main__':
 #-verificar email
 #-recuperar senha caso esqueca
 #-usar likes como "algoritmo" pra mostrar os eventos com mais likes no topo do /home
+

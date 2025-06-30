@@ -72,7 +72,7 @@ class EventController(BaseController):
         session = request.environ['beaker.session'] #puxa o user logado
         email = session['user']['email']
         if request.method == 'GET':
-            return self.render('event_form', action='/events/create', error = None)
+            return self.render('event_form', action='/events/create', event=None, error=None)
         else:
             try:
                 name = request.forms.get('name')
@@ -102,7 +102,10 @@ class EventController(BaseController):
 
                 return self.redirect('/events')
             except Exception as e:
-                return self.render('event_form', action='/events/create', error=str(e))
+                
+
+                return self.render('event_form', action='/events/create', event=None, error=str(e))
+
             
     def view_event(self, event_id):
         session = request.environ.get('beaker.session')

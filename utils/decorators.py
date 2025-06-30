@@ -25,7 +25,7 @@ def admin_required(func):
         session = request.environ.get('beaker.session')
         user = session.get('user') if session else None
         if not user:
-            return redirect('/login?error=o usuario precisa estar logado')
+            return redirect('/login?error= O usuário precisa estar logado')
 
         admin = user.get('adm')
         if not admin:

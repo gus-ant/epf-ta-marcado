@@ -531,5 +531,21 @@
         "participants_emails": [
             ""
         ]
+    },
+    {
+        "id": 34,
+        "name": "Competição de JYTHON",
+        "local": "Labs de IA de Caldas Novas",
+        "date": "2025-07-26",
+        "price": 27.9,
+        "max_capacity": 1000000,
+        "time": "23:01",
+        "current_capacity": 1000000,
+        "owner_email": "ta@gmail.com",
+        "description": "Competição de JYTHON",
+        "cover": "638ffe77ce274b5089156d510a84aa29.png",
+        "participants_emails": [
+            ""
+        ]
     }
 ]

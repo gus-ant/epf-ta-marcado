@@ -1,58 +1,598 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+<!--Coloquei o CSS no head do Layout.tpl pq não estava conseguindo modificar direto no arquivo style.css-->
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--acima foi definido o zoom, tamaho do site e charset-->
-    <title>Tá marcado - {{title or 'Sistema'}}</title>
-    <!--garante que sempre exista um titulo-->
-    <link rel="stylesheet" href="/static/css/style.css" />
-    <!--CSS no head-->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tá marcado - {{title or 'Sistema'}}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <style>
+    :root {
+      --primary-color: #6c5ce7;
+      --primary-color-hover: #5a4bcf;
+      --secondary-color: #00cec9;
+      --danger-color: #e74c3c;
+      --success-color: #2ecc71;
+      --text-color: #2c3e50;
+      --muted-text-color: #7f8c8d;
+      --light-gray: #f5f7fa;
+      --border-color: #e0e0e0;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      --radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      
+      background-color: var(--light-gray);
+      color: var(--text-color);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--primary-color-hover);
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    .navbar-toggler {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+    }
+
+    .navbar-nav {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .nav-item .nav-link {
+      font-size: 1rem;
+      color: var(--text-color);
+    }
+
+    .nav-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar-toggler {
+        display: block;
+      }
+
+      .collapse {
+        display: none;
+      }
+
+      .collapse.show {
+        display: block;
+      }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: var(--muted-text-color);
+    }
+
+    /* Botões */
+    .btn {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: var(--primary-color-hover);
+    }
+
+    .btn-sm {
+      padding: 6px 10px;
+      font-size: 0.85rem;
+      border-radius: 6px;
+    }
+
+    .btn-danger {
+      background-color: var(--danger-color);
+    }
+
+    .btn-danger:hover {
+      background-color: #c0392b;
+    }
+
+    .btn-edit {
+      background-color: #f1c40f;
+      color: white;
+    }
+
+    .btn-edit:hover {
+      background-color: #d4ac0d;
+    }
+
+    /* Section Title */
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+
+    /* Alert */
+    .alert {
+      background-color: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 12px;
+      border-radius: var(--radius);
+      color: #856404;
+      margin-top: 10px;
+    }
+
+    /* Grid para cards de evento */
+    .events-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 991px) {
+      .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .events-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .card-body h3 {
+      margin: 0;
+      color: var(--primary-color);
+    }
+
+    /* Hero banner */
+    .hero-banner {
+      background: url('/static/img/banner.png') center center / cover no-repeat;
+      padding: 80px 20px;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .hero-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-bar input[type="text"] {
+      padding: 12px 16px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      width: 70%;
+      max-width: 400px;
+      outline: none;
+    }
+
+    .search-bar button {
+      padding: 12px 20px;
+      font-size: 1rem;
+    }
+
+    .table-container {
+  overflow-x: auto;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.styled-table thead {
+  background: var(--primary-color);
+  color: white;
+  text-align: left;
+}
+
+.styled-table th, .styled-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.styled-table tr:hover {
+  background-color: var(--light-gray);
+}
+
+.styled-table a {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn-sm {
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.btn-edit {
+  background-color: #f1c40f;
+  color: #fff;
+}
+
+.btn-edit:hover {
+  background-color: #d4ac0d;
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+}
+
+.profile {
+  padding-top: 20px;
+}
+
+.profile-info {
+  padding: 24px;
+  background-color: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 40px;
+}
+
+.profile-info p {
+  margin-bottom: 10px;
+}
+
+.profile-events ul.event-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+
+.profile-events li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.profile-events li:last-child {
+  border-bottom: none;
+}
+
+.profile-events a {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.profile-events .muted {
+  color: var(--muted-text-color);
+  font-size: 0.9rem;
+  margin-left: 6px;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.btn-secondary {
+  background-color: var(--muted-text-color);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #636e72;
+}
+
+ /* PARTE DO LOGIN */
+
+ .login-section {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.login-card {
+  max-width: 500px;
+  padding: 32px;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  padding: 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+
+/* PARTE DO PAYMENT */
+
+.payment-section {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.payment-card {
+  max-width: 600px;
+  background: white;
+  padding: 32px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.payment-info {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+
+.payment-info li {
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+}
+
+.badge.paid {
+  background-color: var(--success-color);
+}
+
+.badge.pending {
+  background-color: var(--danger-color);
+}
+
+.success-msg {
+  color: var(--success-color);
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+// PARTE DO EVENT_FORM
+
+.form-section {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.form-card {
+  max-width: 700px;
+  background: white;
+  padding: 32px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+input[type="file"] {
+  padding: 10px 0;
+}
+
+  </style>
 </head>
+
 <body>
-<nav class="navbar">
-        <div class="container">
-            <a class="navbar-brand" href="/">Tá Marcado</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"> <a class="nav-link" href="/events">Eventos</a></li>
-                    % if session and session.get('user'):
-                        <!--quando tá logado-->
-                        <li class="nav-item"><span class="nav-link">
-                            % if session['user'].get('adm'):
-                                <!--se for admin aparece uma estrelinha dourada-->
-                                <span title="Admin" style="color: gold; margin-right: 5px;">&#11088;</span>
-                            % end
-                                Olá, <strong>{{session['user']['name']}}</strong> ({{session['user']['email']}}) </span></li>
-                        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a> </li>
-                        <li class="nav-item"><a class="nav-link" href="/user">Perfil</a></li>
-                        <!--falta fazer o /user com as coisas do user(poder ver eventos e sair)-->
-                    % else:
-                        <li class="nav-item">  <a class="nav-link" href="/login">Login</a> </li>
-                        <li class="nav-item"> <a class="nav-link" href="/users/add">Cadastrar</a> </li>
-                    % end
-                </ul>
-            </div>
-        </div>
+  <nav class="navbar">
+      <a class="navbar-brand" href="/">
+        <img src="/static/img/logo.png" alt="Tá Marcado Logo" style="height: 36px;" />
+        Tá Marcado
+      </a>
 
-        
-    </nav>
-    <div class="container">
-        {{!base}}  
-        <!-- O conteúdo das páginas filhas virá aqui -->
-        <!-- usar %rebase('layout.tpl', title='titulo-desejado') no arquivo que vai entrar aqui-->
-        <!--apos isso, basta escrever o site, olhar users.tpl para ver exemplo-->
-    </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="/events">Eventos</a></li>
+          % if session and session.get('user'):
+            <li class="nav-item"><span class="nav-link">
+              % if session['user'].get('adm'):
+                <span title="Admin" style="color: gold; margin-right: 5px;">&#11088;</span>
+              % end
+              Olá, <strong>{{session['user']['name']}}</strong> ({{session['user']['email']}})
+            </span></li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+            <li class="nav-item"><a class="nav-link" href="/user">Perfil</a></li>
+          % else:
+            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="/users/add">Cadastrar</a></li>
+          % end
+        </ul>
+      </div>
+    
+  </nav>
 
-    <footer> <!--aparece em toda pagina-->
-        <p>&copy; 2025, Tá marcado. Todos os direitos reservados.</p>
-    </footer>
 
-    <!-- Scripts JS no final do body -->
-    <script src="/static/js/main.js"></script>
+    {{!base}}
+    
+
+  <footer>
+    <p>&copy; 2025, Tá Marcado. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="/static/js/main.js"></script>
 </body>
 </html>
