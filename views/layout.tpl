@@ -515,7 +515,7 @@
   margin-top: 20px;
 }
 
-// PARTE DO EVENT_FORM
+ PARTE DO EVENT_FORM
 
 .form-section {
   display: flex;
@@ -574,8 +574,8 @@ input[type="file"] {
               % end
               Olá, <strong>{{session['user']['name']}}</strong> ({{session['user']['email']}})
             </span></li>
-            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
             <li class="nav-item"><a class="nav-link" href="/user">Perfil</a></li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
           % else:
             <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
             <li class="nav-item"><a class="nav-link" href="/users/add">Cadastrar</a></li>
