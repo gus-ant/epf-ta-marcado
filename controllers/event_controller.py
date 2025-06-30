@@ -24,8 +24,14 @@ class EventController(BaseController):
         self.app.route('/events/<event_id:int>', method='GET', callback=self.view_event)
 
     def list_events(self):
-        eventos = self.event_service.get_all()
-        return self.render('events', eventos=eventos)
+        session = request.environ.get('beaker.session')
+        user = None
+        if session and 'user' in session:
+            email = session['user']['email']
+            user = self.user_service.get_by_email(email)
+
+        events = self.event_service.get_all()
+        return self.render('events', events=events, user=user)
     
     @login_required
     def join_event(self, event_id):
@@ -35,6 +41,9 @@ class EventController(BaseController):
         event = self.event_service.get_by_id(event_id)
         if not event:
             return "Evento não encontrado", 404
+        
+        if email in self.event_service.get_participants(event.id):
+            return "Já participa do evento"
 
         # cria pagamento pendente caso tenha custo
         if event.price >0:
@@ -113,10 +122,10 @@ class EventController(BaseController):
         if session and 'user' in session:
             email = session['user']['email']
             user = self.user_service.get_by_email(email)
-        evento = self.event_service.get_by_id(event_id)
-        if not evento:
+        event = self.event_service.get_by_id(event_id)
+        if not event:
             return "Evento não encontrado"
-        return self.render('event_detail', event=evento, user=user)
+        return self.render('event_detail', event=event, user=user)
 
 
 event_routes = Bottle()

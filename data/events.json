@@ -235,12 +235,13 @@
         "price": 666.0,
         "max_capacity": 666,
         "time": "06:59",
-        "current_capacity": 666,
+        "current_capacity": 665,
         "owner_email": "gus@gmail.com",
         "description": "MEDO MUITO MEDO",
         "cover": "48f3af3586a84162ae939b1f4f274cc4.png",
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com"
         ]
     },
     {
@@ -251,13 +252,14 @@
         "price": 888.0,
         "max_capacity": 888,
         "time": "08:59",
-        "current_capacity": 887,
+        "current_capacity": 886,
         "owner_email": "adm@gmail.com",
         "description": "888",
         "cover": "7365f09df2d642b881d6c9a6c1558468.jpg",
         "participants_emails": [
             "",
-            "g@gmail.com"
+            "g@gmail.com",
+            "naoadm@gmail.com"
         ]
     },
     {
@@ -540,12 +542,13 @@
         "price": 27.9,
         "max_capacity": 1000000,
         "time": "23:01",
-        "current_capacity": 1000000,
+        "current_capacity": 999999,
         "owner_email": "ta@gmail.com",
         "description": "Competição de JYTHON",
         "cover": "638ffe77ce274b5089156d510a84aa29.png",
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com"
         ]
     }
 ]

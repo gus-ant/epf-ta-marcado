@@ -5,7 +5,7 @@
 
     <div class="event-detail-card">
       % if event.cover:
-        <img src="/static/uploads/event_covers/{{event.cover}}" alt="Capa do evento {{event.name}}">
+        <img src="/static/uploads/event_covers/{{event.cover}}" style="max-width: 400px; max-height: 300px;" alt="Capa do evento {{event.name}}">
       % else:
         <img src="/static/img/default-event.jpg" alt="Evento sem imagem">
       % end
@@ -28,14 +28,25 @@
           <strong>Email do criador:</strong> {{event.owner_email}}
         </p>
 
+        % if user and user.adm and user.email == event.owner_email:
+          <div class ="event-participants">
+            <h2 class="section-title">Email dos participantes do evento:</h2>
+            % for email in event.participants_emails:
+              <p class="text">{{ email }}</p>
+          </div>
+            % end
+        % end
+
         <!-- Lógica para botão ou mensagem -->
         <div style="margin-top: 20px;">
-          % if user and not user.adm:
+          % if user and not user.adm and user.email in event.participants_emails:
+            <p class="alert alert-warning"> ✅já participa do evento </p>
+          % elif user and not user.adm:
             <form action="/events/{{event.id}}/join" method="post">
               <button type="submit" class="btn">❤️ Quero ir</button>
             </form>
           % elif user and user.adm:
-            <p class="alert alert-warning">⚠️ Para se inscrever, use uma conta de cliente.</p>
+            <p class="alert alert-warning">⚠️ Para se inscrever, use um conta de cliente.</p>
           % else:
             <form action="/events/{{event.id}}/join" method="post">
               <button type="submit" class="btn">Faça login para garantir seu ingresso</button>

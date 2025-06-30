@@ -294,5 +294,37 @@
         "amount": 15.0,
         "status": "paid",
         "timestamp": "2025-06-30T15:38:12.267695"
+    },
+    {
+        "id": 38,
+        "event_id": 16,
+        "user_email": "naoadm@gmail.com",
+        "amount": 888.0,
+        "status": "paid",
+        "timestamp": "2025-06-30T18:31:41.251662"
+    },
+    {
+        "id": 39,
+        "event_id": 16,
+        "user_email": "naoadm@gmail.com",
+        "amount": 888.0,
+        "status": "paid",
+        "timestamp": "2025-06-30T18:33:31.199141"
+    },
+    {
+        "id": 40,
+        "event_id": 15,
+        "user_email": "g@gmail.com",
+        "amount": 666.0,
+        "status": "paid",
+        "timestamp": "2025-06-30T19:06:04.991365"
+    },
+    {
+        "id": 41,
+        "event_id": 34,
+        "user_email": "g@gmail.com",
+        "amount": 27.9,
+        "status": "paid",
+        "timestamp": "2025-06-30T19:07:11.887148"
     }
 ]

@@ -22,6 +22,10 @@
     <div class="profile-events">
       <h2 class="section-title">
         % if user.adm:
+          <div class="container">
+            <div style="margin-top: 40px; text-align: left;">
+              <a href="/events/create" class="btn" style="background-color: #3498db; color: white;">+ Criar novo evento</a>
+            </div>
           📢 Eventos que você criou
         % else:
            Eventos que você participa
@@ -31,7 +35,12 @@
       % if events:
         <ul class="event-list">
           % for event in events:
-            <li>
+            <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+              % if event.cover:
+                <img src="/static/uploads/event_covers/{{event.cover}}" alt="cover" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">
+              % else:
+                <div style="width: 50px; height: 50px; background: #ccc; border-radius: 4px;"></div>
+              % end
               <a href="/events/{{event.id}}">{{event.name}}</a>
               <span class="muted">— {{event.date}} às {{event.time}} ({{event.local}})</span>
             </li>

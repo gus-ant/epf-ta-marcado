@@ -106,7 +106,8 @@ class UserService:
         return user and user.adm
     
     def get_events_user_participates(self, user_email: str):
-        return [e for e in self.event_service.get_all() if user_email in e.participants_emails] #lista de todos os eventos que tem um participante com o mesmo email
+        self.event_model.events = self.event_model._load()
+        return [e for e in self.event_model.events if user_email in e.participants_emails] #lista de todos os eventos que tem um participante com o mesmo email
     
     def get_events_by_owner(self, owner_email: str):
         self.event_model.events = self.event_model._load()

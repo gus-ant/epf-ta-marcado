@@ -141,3 +141,8 @@ class EventModel:
         self.events = [e for e in self.events if e.id !=event_id] #troca por uma nova lista sem o item com mesmo id
         self._save() #salva
         self.events = self._load()
+    
+    def get_participants(self, event_id:int):
+        self._load()
+        event = self.get_by_id(event_id)
+        return event.participants_emails if event else []  
