@@ -24,8 +24,14 @@ class EventController(BaseController):
         self.app.route('/events/<event_id:int>', method='GET', callback=self.view_event)
 
     def list_events(self):
+        session = request.environ.get('beaker.session')
+        user = None
+        if session and 'user' in session:
+            email = session['user']['email']
+            user = self.user_service.get_by_email(email)
+
         events = self.event_service.get_all()
-        return self.render('events', events=events)
+        return self.render('events', events=events, user=user)
     
     @login_required
     def join_event(self, event_id):

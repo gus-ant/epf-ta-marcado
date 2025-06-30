@@ -11,10 +11,14 @@
     </form>
   </div>
 </div>
-  <div class="container">
-  <div style="margin-top: 40px; text-align: right;">
-    <a href="/events/create" class="btn">+ Criar novo evento</a>
-  </div>
+% if user:
+  % if user.adm:
+    <div class="container">
+    <div style="margin-top: 40px; text-align: right;">
+      <a href="/events/create" class="btn">+ Criar novo evento</a>
+    </div>
+  % end
+% end
 
   <div class="container">
 
