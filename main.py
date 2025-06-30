@@ -41,4 +41,6 @@ if __name__ == '__main__':
 # colocar um método para modificar as infos dos eventos
 #--(podemos colocar como o clima vai estar no dia do evento)
 #--(podemos colocar qrcode)
+#quando um evento for apagado, mandar email pra todo mundo que se inscreveu E reembolsar
+
 
