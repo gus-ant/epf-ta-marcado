@@ -28,6 +28,15 @@
           <strong>Email do criador:</strong> {{event.owner_email}}
         </p>
 
+        % if user.adm and user.email == event.owner_email:
+          <div class ="event-participants">
+            <h2 class="section-title">Email dos participantes do evento:</h2>
+            % for email in event.participants_emails:
+              <p class="text">{{ email }}</p>
+          </div>
+            % end
+        % end
+
         <!-- Lógica para botão ou mensagem -->
         <div style="margin-top: 20px;">
           % if user and not user.adm and user.email in event.participants_emails:
