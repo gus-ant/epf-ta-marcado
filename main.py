@@ -7,28 +7,29 @@ if __name__ == '__main__':
 #LISTA TO-DO:
 
 #criar os outros tipos de erro em exceptions.py
-#criar uma pagina de erro, pra quando der erro, o user ser redirecionado corretamente de volta pra home
 
 #adicionar eventos no sistema:
+#adicionar opção de sair do evento
+#adicionar opção do dono excluir o evento
 #-talvez adicionar outros tipos de ingresso (meia entrada e tals)
 #ter likes no evento (cada user só pode dar 1 like)
 
 #login
 #assim que criar conta, logar
-#quando um user normal tentar fazer evento, aparecer o erro e voltar pra /home
 
 #BUG FIX
 #-não permitir mais que o user troque o email (ou quando ele trocar, todos os lugares onde aparece mudam tmb)
+#--colocar uma confirmação de email (igual tem pra senha)
+#-avisar na hora de fazer evento que não dá pra mudar as coisas do evento, explicar o pq
 
 #criar a /home:
-#-os usuarios vão direto pra /home ao abrir o programa
-#- Temos que fazer a lógica (rota) do botão de search na página de eventos 
+#/events é a home fds
 
-#criar e adicionar nossa logo no site 
 
 #formatar o valor da entrada do evento pro formato R$
 
 #metas pro projeto já pronto:
+#-fazer o readme e rever as metas do projeto no github do prof
 #-criptografar as senhas dos users no banco de dados JSON (muito importante)
 #-verificar email
 #-recuperar senha caso esqueca

@@ -28,7 +28,7 @@
           <strong>Email do criador:</strong> {{event.owner_email}}
         </p>
 
-        % if user.adm and user.email == event.owner_email:
+        % if user and user.adm and user.email == event.owner_email:
           <div class ="event-participants">
             <h2 class="section-title">Email dos participantes do evento:</h2>
             % for email in event.participants_emails:
