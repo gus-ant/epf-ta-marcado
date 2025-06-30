@@ -10,7 +10,7 @@ if __name__ == '__main__':
 #criar uma pagina de erro, pra quando der erro, o user ser redirecionado corretamente de volta pra home
 
 #adicionar eventos no sistema:
-# quando alguém comprar o ingresso, tirar uma vaga
+# quando o user tentar entrar em um evento que já participa, ñ conseguir, aparecer na pagina de detalhes do evento
 #lista com todos os participantes no evento visivel pro adm
 #-adm/events (pagina onde um adm pode ver os eventos que tem) 
 #-na pagina do user, é possivel ver todos os eventos que participa

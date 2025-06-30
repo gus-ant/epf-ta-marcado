@@ -22,14 +22,14 @@
       <!-- Título do evento -->
       <div class="form-group">
         <label for="name">Nome do Evento:</label>
-        <input type="text" id="name" name="name" required 
+        <input type="text" id="name" name="name" minlength="3" maxlength="20" required 
                value="{{event.name if event else ''}}" placeholder="Ex: Festa de Aniversário">
       </div>
 
       <!-- Local do evento -->
       <div class="form-group">
         <label for="local">Local:</label>
-        <input type="text" id="local" name="local" required 
+        <input type="text" id="local" name="local" minlength="3" maxlength="20" required 
                value="{{event.local if event else ''}}" placeholder="Ex: Salão de festas, Brasília - DF">
       </div>
 
@@ -65,7 +65,7 @@
       <!-- Descrição -->
       <div class="form-group">
         <label for="description">Descrição:</label>
-        <textarea id="description" name="description" rows="4" placeholder="Descrição do evento...">{{event.description if event else ''}}</textarea>
+        <textarea id="description" name="description" rows="4" maxlength="200" placeholder="Descrição do evento...">{{event.description if event else ''}}</textarea>
       </div>
 
       <!-- Capa -->

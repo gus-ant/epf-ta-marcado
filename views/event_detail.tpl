@@ -30,12 +30,14 @@
 
         <!-- Lógica para botão ou mensagem -->
         <div style="margin-top: 20px;">
-          % if user and not user.adm:
+          % if user and not user.adm and user.email in event.participants_emails:
+            <p class="alert alert-warning"> ✅já participa do evento </p>
+          % elif user and not user.adm:
             <form action="/events/{{event.id}}/join" method="post">
               <button type="submit" class="btn">❤️ Quero ir</button>
             </form>
           % elif user and user.adm:
-            <p class="alert alert-warning">⚠️ Para se inscrever, use uma conta de cliente.</p>
+            <p class="alert alert-warning">⚠️ Para se inscrever, use um conta de cliente.</p>
           % else:
             <form action="/events/{{event.id}}/join" method="post">
               <button type="submit" class="btn">Faça login para garantir seu ingresso</button>

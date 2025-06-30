@@ -35,6 +35,9 @@ class EventController(BaseController):
         event = self.event_service.get_by_id(event_id)
         if not event:
             return "Evento não encontrado", 404
+        
+        if email in self.event_service.get_participants(event.id):
+            return "Já participa do evento"
 
         # cria pagamento pendente caso tenha custo
         if event.price >0:

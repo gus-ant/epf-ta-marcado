@@ -113,9 +113,7 @@ class EventService:
                 self.remove_participant(event.id, user_email) #tira ele
 
     def get_participants(self, event_id:int):
-        self.event_model._load()
-        event = self.get_by_id(event_id)
-        return event.participants_emails if event else []        
+        return self.event_model.get_participants(event_id)     
         #retorna uma lista com todos os users que estiverem no evento
 
     
