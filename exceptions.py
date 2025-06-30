@@ -13,3 +13,5 @@ class EmailAlreadyUsedException(BaseException):
 
         super().__init__(self.mensagem)
         self.email = email
+
+        

@@ -18,6 +18,8 @@
                 <a href="/events/{{evento.id}}">{{evento.name}}</a>
                 % if evento.cover:
                     <img src="/static/uploads/event_covers/{{evento.cover}}" style="max-width: 150px;">
+                % else:
+                    <img src="static/img/BottleLogo.png" style="max-width: 300px;">
                 % end
 
             </h2>

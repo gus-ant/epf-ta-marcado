@@ -7,12 +7,14 @@
         "price": 15.0,
         "max_capacity": 200,
         "time": "22:00",
-        "current_capacity": 150,
+        "current_capacity": 148,
         "owner_email": "organizacao@festas.com",
         "description": ",",
         "cover": "",
         "participants_emails": [
-            ""
+            "",
+            "ta@gmail.com",
+            "g@gmail.com"
         ]
     },
     {
@@ -23,12 +25,13 @@
         "price": 50.0,
         "max_capacity": 500,
         "time": "21:00",
-        "current_capacity": 400,
+        "current_capacity": 399,
         "owner_email": "rock@eventos.com",
         "description": ",",
         "cover": "",
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com"
         ]
     },
     {
@@ -55,12 +58,13 @@
         "price": 12000.0,
         "max_capacity": 90,
         "time": "21:02",
-        "current_capacity": 1,
+        "current_capacity": 0,
         "owner_email": "anon@anon.com",
         "description": ",",
         "cover": "",
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com"
         ]
     },
     {
@@ -247,12 +251,13 @@
         "price": 888.0,
         "max_capacity": 888,
         "time": "08:59",
-        "current_capacity": 888,
+        "current_capacity": 887,
         "owner_email": "adm@gmail.com",
         "description": "888",
         "cover": "7365f09df2d642b881d6c9a6c1558468.jpg",
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com"
         ]
     },
     {
