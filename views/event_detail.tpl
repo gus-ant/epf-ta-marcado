@@ -5,7 +5,7 @@
 
     <div class="event-detail-card">
       % if event.cover:
-        <img src="/static/uploads/event_covers/{{event.cover}}" alt="Capa do evento {{event.name}}">
+        <img src="/static/uploads/event_covers/{{event.cover}}" style="max-width: 400px; max-height: 300px;" alt="Capa do evento {{event.name}}">
       % else:
         <img src="/static/img/default-event.jpg" alt="Evento sem imagem">
       % end

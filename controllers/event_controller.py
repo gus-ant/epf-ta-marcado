@@ -24,8 +24,8 @@ class EventController(BaseController):
         self.app.route('/events/<event_id:int>', method='GET', callback=self.view_event)
 
     def list_events(self):
-        eventos = self.event_service.get_all()
-        return self.render('events', eventos=eventos)
+        events = self.event_service.get_all()
+        return self.render('events', events=events)
     
     @login_required
     def join_event(self, event_id):
@@ -116,10 +116,10 @@ class EventController(BaseController):
         if session and 'user' in session:
             email = session['user']['email']
             user = self.user_service.get_by_email(email)
-        evento = self.event_service.get_by_id(event_id)
-        if not evento:
+        event = self.event_service.get_by_id(event_id)
+        if not event:
             return "Evento não encontrado"
-        return self.render('event_detail', event=evento, user=user)
+        return self.render('event_detail', event=event, user=user)
 
 
 event_routes = Bottle()

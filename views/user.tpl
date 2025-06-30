@@ -31,7 +31,12 @@
       % if events:
         <ul class="event-list">
           % for event in events:
-            <li>
+            <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+              % if event.cover:
+                <img src="/static/uploads/event_covers/{{event.cover}}" alt="cover" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">
+              % else:
+                <div style="width: 50px; height: 50px; background: #ccc; border-radius: 4px;"></div>
+              % end
               <a href="/events/{{event.id}}">{{event.name}}</a>
               <span class="muted">— {{event.date}} às {{event.time}} ({{event.local}})</span>
             </li>
