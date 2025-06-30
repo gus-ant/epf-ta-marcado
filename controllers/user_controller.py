@@ -3,6 +3,8 @@ from .base_controller import BaseController
 from services.user_service import UserService
 from utils.decorators import login_required
 from services.event_service import EventService
+from exceptions import EmailAlreadyUsedException, PasswordMismatchException
+
 
 class UserController(BaseController): #herda de BaseController
 
@@ -30,7 +32,9 @@ class UserController(BaseController): #herda de BaseController
 
     def add_user(self):
         if request.method == 'GET':
-            return self.render('user_form', user=None, action="/users/add", error=None) #faz o formulario vazio para o novo usuario
+            session = request.environ.get('beaker.session')
+
+            return self.render('user_form', user=None, action="/users/add", error=None, session=session) #faz o formulario vazio para o novo usuario
         else:
             # POST - salvar usuário
             try:
@@ -38,9 +42,10 @@ class UserController(BaseController): #herda de BaseController
                 if result: #trata os erros
                     return result
                 self.redirect('/users') #apos salvar manda de volta pra users
-            except ValueError as e:
+            except (ValueError, EmailAlreadyUsedException, PasswordMismatchException) as e:
+                session = request.environ.get('beaker.session')
                 # para tratar os erros
-                return self.render('user_form', user=None, action='/users/add', error=str(e))
+                return self.render('user_form', user=None, action='/users/add', error=str(e), session=session)
             
     @login_required
     def view_profile(self):

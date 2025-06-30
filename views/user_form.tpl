@@ -13,11 +13,6 @@
       <p class="alert">{{error}}</p>
     % end
 
-    % if defined('error') and error:
-      <div class="alert">
-        <p><strong>Erro:</strong> {{error}}</p>
-      </div>
-    % end
 
     <!-- formulário de cadastro/edição -->
     <form action="{{action}}" method="post" class="form">

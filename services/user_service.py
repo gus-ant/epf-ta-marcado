@@ -3,13 +3,14 @@ from models.user import UserModel, User
 from exceptions import EmailAlreadyUsedException
 from models.events import EventModel
 from services.event_service import EventService
+from exceptions import EmailAlreadyUsedException, PasswordMismatchException
 
 class UserService:
     # Esta classe atua como uma camada intermediária entre o controlador (rotas)
     # E o modelo de dados, implementando a lógica de negócio.: 
 
     def __init__(self):
-        self.user_model = UserModel() #acessa o usermodel de user.py
+        self.user_model = UserModel() # acessa o usermodel de user.py
         self.event_model = EventModel()
         self.event_service = EventService() 
 
@@ -28,7 +29,10 @@ class UserService:
         password = request.forms.get('password') #puxa a senha do formulario
         password_confirm = request.forms.get('password_confirm') #serve pra confirmar a senha
         if password != password_confirm:
-            return template('user_form', error='as senhas digitadas não coincidem', user = None, action = "/users/add")
+            session = request.environ.get('beaker.session')
+            raise PasswordMismatchException()
+
+            #Agora o Exception é utilizado corretamente
         adm = request.forms.get('adm') == 'on' #é um checkbox, on se marcado, none se não 
         
         if not password: #verifica se não foi colocada uma senha 

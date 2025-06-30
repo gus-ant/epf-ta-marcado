@@ -1,3 +1,5 @@
+# Usar mais as Exceptions
+
 class BaseException(Exception): #Excessão base
     def __init__(self, mensagem, detalhes=None):
         super().__init__(mensagem)
@@ -13,5 +15,10 @@ class EmailAlreadyUsedException(BaseException):
 
         super().__init__(self.mensagem)
         self.email = email
+
+class PasswordMismatchException(BaseException):
+    def __init__(self):
+        super().__init__("As senhas digitadas não coincidem")
+
 
         
