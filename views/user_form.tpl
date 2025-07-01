@@ -68,9 +68,12 @@
       % end
 
       <!-- botões -->
-      <div class="form-actions">
-        <button type="submit" class="btn">Salvar</button>
-        <a href="/users" class="btn btn-secondary">Voltar</a>
+      <div class="form-actions" style="display: flex; gap: 10px;">
+        <button type="submit" class="btn btn-secondary" style="color:black; background-color: blue; flex: 1;">Salvar</button>
+        <a href="/users" class="btn btn-secondary" style="flex: 1;">Voltar</a>
+        % if user:
+        <a href="/" class="btn btn-secondary" style="color:black; background-color: red; flex: 1;">Deletar conta</a>
+        % end
       </div>
 
     </form>

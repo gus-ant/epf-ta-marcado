@@ -30,7 +30,6 @@ class AuthController(BaseController):
 
             user1 = UserService()
             user = user1.authenticate(email, password) # AQUI O MÉTODO NÃO RETORNAVA NADA
-            print(user.email)
             if user: #conseguiu fazer o login
                 session['user'] = {
                     'email':user.email, #PODE ACESSAR O EMAIL DE QUALQUER LUGAR
