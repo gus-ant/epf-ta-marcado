@@ -35,5 +35,27 @@ class PaymentController(BaseController):
             return redirect(f'/payments/{payment_id}')   # volta a tela de detalhes do pagamento
         return "Erro ao confirmar pagamento"
 
+    def show_qr_code(self, payment_id):
+        payment = self.payment_service.get_by_id(payment_id)
+        if not payment or payment.status != 'paid':
+            return "QR Code indisponível. O pagamento precisa estar confirmado.", 400
+        event = self.event_service.get_by_id(payment.event_id)
+        dados_qr = {
+            "evento": event.name,
+            "data": event.date,
+            "hora": event.time,
+            "local": event.local,
+            "tipo_ingresso": payment.ticket_type,  # você precisa armazenar esse campo
+            "quantidade": payment.quantity,
+            "valor_total": payment.amount
+        }
+
+        conteudo_qr = f"{dados_qr['evento']} | {dados_qr['data']} às {dados_qr['hora']} | {dados_qr['local']} | {dados_qr['tipo_ingresso']} | Qtd: {dados_qr['quantidade']} | R$ {dados_qr['valor_total']:.2f}"
+
+        qr_base64 = gerar_qrcode_base64(conteudo_qr)
+
+
+        return
+
 payment_routes = Bottle()
 payment_controler = PaymentController(payment_routes)

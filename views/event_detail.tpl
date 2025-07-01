@@ -40,7 +40,7 @@
         <!-- Lógica para botão ou mensagem -->
         <div style="margin-top: 20px;">
           % if user and not user.adm and user.email in event.participants_emails:
-            <p class="alert alert-warning"> ✅já participa do evento </p>
+            <p class="alert alert-warning"> ✅ Você já participa do evento </p>
           % elif user and not user.adm:
             <form action="/events/{{event.id}}/join" method="post">
               <button type="submit" class="btn">❤️ Quero ir</button>

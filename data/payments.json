@@ -326,5 +326,13 @@
         "amount": 27.9,
         "status": "paid",
         "timestamp": "2025-06-30T19:07:11.887148"
+    },
+    {
+        "id": 42,
+        "event_id": 19,
+        "user_email": "g@gmail.com",
+        "amount": 3.0,
+        "status": "paid",
+        "timestamp": "2025-07-01T19:14:08.018489"
     }
 ]

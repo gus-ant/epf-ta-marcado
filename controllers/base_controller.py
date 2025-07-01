@@ -28,7 +28,7 @@ class BaseController: #classe base para todos os controllers
 
     def home_redirect(self):
         """Redireciona a rota raiz para /users"""
-        return self.redirect('/users') #em algum momento isso vai mudar para /home
+        return self.redirect('/events') #em algum momento isso vai mudar para /home
 
 
     def helper(self): #pagina de ajuda/documentação

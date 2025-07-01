@@ -302,12 +302,13 @@
         "price": 3.0,
         "max_capacity": 3,
         "time": "03:03",
-        "current_capacity": 3,
+        "current_capacity": 2,
         "owner_email": "adm@gmail.com",
         "description": "3",
         "cover": null,
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com"
         ]
     },
     {
