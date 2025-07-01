@@ -70,5 +70,13 @@
         "birthdate": "3333-03-31",
         "password": "123123123",
         "adm": true
+    },
+    {
+        "id": 10,
+        "name": "apagar33",
+        "email": "apagar@gmail.com",
+        "birthdate": "3333-03-31",
+        "password": "123123123",
+        "adm": false
     }
 ]

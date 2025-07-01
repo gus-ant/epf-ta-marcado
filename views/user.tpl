@@ -59,7 +59,7 @@
 
     <div class="profile-actions">
       <a class="btn btn-edit" href="/users/edit/{{user.id}}">✏️ Editar Perfil</a>
-      <a class="btn btn-secondary" href="/"> Voltar</a>
+      <a class="btn btn-secondary" href="/events"> Voltar</a>
     </div>
   </div>
 </section>
