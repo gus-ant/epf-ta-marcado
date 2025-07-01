@@ -41,7 +41,7 @@ class UserController(BaseController): #herda de BaseController
                 result = self.user_service.save()
                 if result: #trata os erros
                     return result
-                self.redirect('/users') #apos salvar manda de volta pra users
+                self.redirect('/login') #apos salvar manda para login pra fazer o login
             except (ValueError, EmailAlreadyUsedException, PasswordMismatchException) as e:
                 session = request.environ.get('beaker.session')
                 # para tratar os erros
@@ -75,14 +75,21 @@ class UserController(BaseController): #herda de BaseController
                 result = self.user_service.edit_user(user)
                 if result: #trata dos erros
                     return result
-                self.redirect('/users')
+                self.redirect('/user')
             except ValueError as e:
                 return self.render('user_form', user=user, action=f"/users/edit/{user_id}", error=None)
 
 
     def delete_user(self, user_id):
+        session = request.environ.get('beaker.session')
+
         self.user_service.delete_user(user_id) #remove o user
-        self.redirect('/users') #redireciona 
+
+        if session.get('user') and session['user']['id'] == user_id:
+            session.delete() #desloga da sessao
+            session.save()
+
+        self.redirect('/events') #redireciona 
 
 user_routes = Bottle()
 user_controller = UserController(user_routes)
