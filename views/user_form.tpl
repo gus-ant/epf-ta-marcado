@@ -1,44 +1,38 @@
 % rebase('layout', title='Formulário Usuário')
-<!-- entra na parte do !base em layout.tpl-->
 
 <section class="form-section">
   <div class="container form-card">
-    
+
     <h1 class="section-title">
       {{'✏️ Editar Usuário' if user else ' Cadastro de Usuário'}}
     </h1>
 
-    <!-- mensagens de erro -->
     % if error:
       <p class="alert">{{error}}</p>
     % end
 
-
-    <!-- formulário de cadastro/edição -->
+    <!-- Form principal -->
     <form action="{{action}}" method="post" class="form">
 
-      <!-- parte do nome -->
+      <!-- campos do form -->
       <div class="form-group">
         <label for="name">Nome Completo:</label>
-        <input type="text" id="name" name="name" required 
+        <input type="text" id="name" name="name" required
                value="{{user.name if user else ''}}" placeholder="Seu nome completo">
       </div>
 
-      <!-- parte do email -->
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required 
+        <input type="email" id="email" name="email" required
                value="{{user.email if user else ''}}" placeholder="email@exemplo.com">
       </div>
 
-      <!-- parte da data de nascimento -->
       <div class="form-group">
         <label for="birthdate">Data de Nascimento:</label>
-        <input type="date" id="birthdate" name="birthdate" required 
+        <input type="date" id="birthdate" name="birthdate" required
                value="{{user.birthdate if user else ''}}">
       </div>
 
-      <!-- parte da senha -->
       <div class="form-group">
         <label for="password">Senha:</label>
         <input type="password" id="password" name="password" minlength="8"
@@ -47,7 +41,6 @@
         <small>Mínimo de 8 caracteres</small>
       </div>
 
-      <!-- confirmação da senha -->
       <div class="form-group">
         <label for="password_confirm">Confirme a senha:</label>
         <input type="password" id="password_confirm" name="password_confirm" minlength="8"
@@ -56,26 +49,34 @@
         <small>Mínimo de 8 caracteres</small>
       </div>
 
-      <!-- parte do adm (só aparece no cadastro) -->
       % if not user:
-        <div class="form-group checkbox-group">
-          <label>
-            <input type="checkbox" name="adm" {{'checked' if user and user.adm else ''}}>
-            <span class="checkmark"></span>
-            Adm (pode criar eventos)
-          </label>
-        </div>
+      <div class="form-group checkbox-group">
+        <label>
+          <input type="checkbox" name="adm" {{'checked' if user and user.adm else ''}}>
+          <span class="checkmark"></span>
+          Adm (pode criar eventos)
+        </label>
+      </div>
       % end
 
       <!-- botões -->
-      <div class="form-actions" style="display: flex; gap: 10px;">
-        <button type="submit" class="btn btn-secondary" style="color:black; background-color: blue; flex: 1;">Salvar</button>
-        <a href="/users" class="btn btn-secondary" style="flex: 1;">Voltar</a>
-        % if user:
-        <a href="/" class="btn btn-secondary" style="color:black; background-color: red; flex: 1;">Deletar conta</a>
-        % end
+      <div class="form-actions" style="display: flex; gap: 10px; margin-top: 20px;">
+        <button type="submit" class="btn" style="flex: 1; color: white; background-color: blue;">Salvar</button>
+        <a href="/users" class="btn btn-secondary" style="flex: 1; display: flex; justify-content: center; align-items: center; text-decoration: none;">Voltar</a>
       </div>
-
     </form>
+
+    % if user:
+    <!-- Form de deletar fora do form principal -->
+    <div style="margin-top: 10px;">
+      <form action="/users/delete/{{user.id}}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir esta conta? Esta ação não pode ser desfeita.')" style="width: 100%;">
+        <button type="submit" class="btn btn-secondary" style="width: 100%; color: white; background-color: red;">
+          Deletar conta
+        </button>
+      </form>
+    </div>
+    % end
+    </form>
+
   </div>
 </section>

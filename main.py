@@ -16,6 +16,7 @@ if __name__ == '__main__':
 
 #login
 #assim que criar conta, logar
+#deslogar quando apagar a conta
 
 #BUG FIX
 #-não permitir mais que o user troque o email (ou quando ele trocar, todos os lugares onde aparece mudam tmb)
