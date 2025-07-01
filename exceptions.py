@@ -20,5 +20,9 @@ class PasswordMismatchException(BaseException):
     def __init__(self):
         super().__init__("As senhas digitadas não coincidem")
 
+class PaymentNotFoundException(BaseException):
+    def __init__(self):
+        super().__init__("O pagamento não foi encontrado")
+
 
         

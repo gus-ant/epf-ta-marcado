@@ -6,6 +6,7 @@ from utils.qr_code import gerar_qrcode_base64
 from io import BytesIO
 import base64
 import qrcode
+from io import BytesIO
 
 
 # ATENCAO: AINDA TEM UM CERTO DELAY QUANDO O USER CLICA NO CORACAO E ACESSA A PÁGINA DE PAYMENTS/<NUMBER>
@@ -35,7 +36,23 @@ class PaymentController(BaseController):
             # 404 padrão do Bottle
             return HTTPError(404, "Pagamento não encontrado.")
         # sucesso
-        return self.render('payment_detail', payment=payment)
+
+        qr_code = payment.qr_code if hasattr(payment, 'qr_code') else None
+
+        ticket_data = {
+                "evento": f"{payment.event_id}",
+                "usuario": payment.user_email,
+                "valor": f"R$ {payment.amount:.2f}",
+                "status": payment.status,
+                "data": payment.timestamp
+            }
+        
+        img = qrcode.make(ticket_data)
+        buffer = BytesIO()
+        img.save(buffer, format="PNG")
+        qr_code_base64 = base64.b64encode(buffer.getvalue()).decode()
+
+        return self.render('payment_detail', payment=payment, qr_code=qr_code_base64)
 
 
     def confirm_payment(self, payment_id):

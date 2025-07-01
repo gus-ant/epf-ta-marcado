@@ -23,15 +23,18 @@
     <form action="/payments/{{payment.id}}/confirm" method="POST">
         <button type="submit">Confirmar Pagamento</button>
     </form>
-% else:
-    <p>✅ Pagamento confirmado!</p>
+    % else:
+        <p>✅ Pagamento confirmado!</p>
+    
+        % if qr_code:
+            <h3>Seu Ingresso (QR Code):</h3>
+            <img src="{{qr_code}}" alt="QR Code do Ingresso">
+        % end
+    % end
 
     % if qr_code:
-        <h3>Seu Ingresso (QR Code):</h3>
-        <img src="{{qr_code}}" alt="QR Code do Ingresso">
-    % end
-% end
-
+    <img src="data:image/png;base64,{{qr_code}}" alt="QR Code do ingresso">
+  % end   
     % else:
       <p class="alert">⚠️ Pagamento não encontrado.</p>
     % end
