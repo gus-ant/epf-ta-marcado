@@ -75,12 +75,13 @@
         "price": 10.0,
         "max_capacity": 90,
         "time": "20:00",
-        "current_capacity": 90,
+        "current_capacity": 89,
         "owner_email": "anon@anon.com",
         "description": ",",
         "cover": "",
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com"
         ]
     },
     {
@@ -107,12 +108,13 @@
         "price": 1.0,
         "max_capacity": 1,
         "time": "11:11",
-        "current_capacity": 1,
+        "current_capacity": 0,
         "owner_email": "123@gmail.com",
         "description": "sim",
         "cover": "",
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com"
         ]
     },
     {
@@ -155,12 +157,13 @@
         "price": 14.0,
         "max_capacity": 1414,
         "time": "14:14",
-        "current_capacity": 1414,
+        "current_capacity": 1413,
         "owner_email": "123@gmail.com",
         "description": "14",
         "cover": "",
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com"
         ]
     },
     {
@@ -203,12 +206,13 @@
         "price": 0,
         "max_capacity": 3,
         "time": "03:33",
-        "current_capacity": 3,
+        "current_capacity": 2,
         "owner_email": "superadm@gmail.com",
         "description": "tem foto! legal...",
         "cover": "5326a489152247868b398ac5899cdeae.jpg",
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com"
         ]
     },
     {
@@ -270,12 +274,13 @@
         "price": 1.0,
         "max_capacity": 1,
         "time": "01:01",
-        "current_capacity": 1,
+        "current_capacity": 0,
         "owner_email": "adm@gmail.com",
         "description": "1",
         "cover": null,
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com"
         ]
     },
     {
@@ -463,12 +468,13 @@
         "price": 654654.0,
         "max_capacity": 6546,
         "time": "03:02",
-        "current_capacity": 6546,
+        "current_capacity": 6545,
         "owner_email": "adm@gmail.com",
         "description": "54654",
         "cover": null,
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com"
         ]
     },
     {

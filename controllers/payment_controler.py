@@ -1,7 +1,13 @@
 from bottle import Bottle, redirect, HTTPError
 from .base_controller import BaseController
 from services.payment_service import PaymentService
-from utils.decorators import login_required, admin_required
+from utils.decorators import login_required
+from utils.qr_code import gerar_qrcode_base64
+from io import BytesIO
+import base64
+import qrcode
+
+
 # ATENCAO: AINDA TEM UM CERTO DELAY QUANDO O USER CLICA NO CORACAO E ACESSA A PÁGINA DE PAYMENTS/<NUMBER>
 
 class PaymentController(BaseController):
@@ -13,11 +19,13 @@ class PaymentController(BaseController):
     def setup_routes(self):
         self.app.route('/<payment_id:int>', method='GET', callback=self.show_payment)
         self.app.route('/<payment_id:int>/confirm', method='POST', callback=self.confirm_payment)
+        self.app.route('/payments/<payment_id:int>/qrcode', method='GET', callback=self.show_qr_code)
+
 
 
     @login_required
     def show_payment(self, payment_id):
-        print("Ate aqui DA SIM")
+        
         pid = int(payment_id)
         
         print(pid)
@@ -32,7 +40,26 @@ class PaymentController(BaseController):
 
     def confirm_payment(self, payment_id):
         if self.payment_service.mark_as_paid(payment_id):
-            return redirect(f'/payments/{payment_id}')   # volta a tela de detalhes do pagamento
+            payment = self.payment_service.get_by_id(payment_id)
+            
+            # gera o QR Code com dados do ingresso
+            ticket_data = {
+                "evento": f"{payment.event_id}",
+                "usuario": payment.user_email,
+                "valor": f"R$ {payment.amount:.2f}",
+                "status": payment.status,
+                "data": payment.timestamp
+            }
+
+            qr = qrcode.make(str(ticket_data))
+            buffer = BytesIO()
+            qr.save(buffer, format="PNG")
+            qr_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
+            qr_url = f"data:image/png;base64,{qr_base64}"
+
+            # renderiza a tela com QR Code embutido
+            return self.render('payment_detail', payment=payment, qr_code=qr_url)
+
         return "Erro ao confirmar pagamento"
 
     def show_qr_code(self, payment_id):
@@ -45,17 +72,16 @@ class PaymentController(BaseController):
             "data": event.date,
             "hora": event.time,
             "local": event.local,
-            "tipo_ingresso": payment.ticket_type,  # você precisa armazenar esse campo
-            "quantidade": payment.quantity,
+            #"tipo_ingresso": payment.ticket_type,  # você precisa armazenar esse campo
+            #"quantidade": payment.quantity,
             "valor_total": payment.amount
         }
 
         conteudo_qr = f"{dados_qr['evento']} | {dados_qr['data']} às {dados_qr['hora']} | {dados_qr['local']} | {dados_qr['tipo_ingresso']} | Qtd: {dados_qr['quantidade']} | R$ {dados_qr['valor_total']:.2f}"
 
         qr_base64 = gerar_qrcode_base64(conteudo_qr)
+        return self.render('ticket.tpl', qr=qr_base64, dados=dados_qr)
 
-
-        return
 
 payment_routes = Bottle()
 payment_controler = PaymentController(payment_routes)
