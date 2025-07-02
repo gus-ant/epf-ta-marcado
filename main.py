@@ -9,6 +9,10 @@ if __name__ == '__main__':
 #criar os outros tipos de erro em exceptions.py
 
 #CRIEI UM ADM, FUI NA PAGINA DE EVENTOS E NÃO APARECEU A OPÇÃO DE FAZER EVENTO (SÓ QUANDO DERRUBA E VOLTA O SERVER)
+#TEMOS QUE MUDAR ONDE PUXA POR EMAIL PRA PUXAR POR ID (explicação):
+#- quando puxa por email, e se o user fizer a conta, apagar e fizer outra conta com o mesmo email, algumas infos podem ser puxadas do email antigo
+#- mas o id é sempre atualizado MESMO SE APAGAR A CONTA E FIZER OUTRA o id nunca vai ser o mesmo
+#- 
 
 #adicionar eventos no sistema:
 #adicionar opção de sair do evento
