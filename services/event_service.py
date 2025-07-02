@@ -1,6 +1,7 @@
 from bottle import request #usado pra acessar dados de formularios HTTP
 from models.events import EventModel, Event
 from models.user import UserModel
+from utils.id_tracker import get_next_id
 
 class EventService:
     # Esta classe atua como uma camada intermediaria entre o controller (rotas)
@@ -37,9 +38,8 @@ class EventService:
         return self.event_model.get_open_events()
     
     def add_event(self, name, local, date, time, price, max_capacity, owner_email, description='', cover=None, ):
-        # gera um novo ID automaticamente com base nos eventos já existentes
-        events = self.event_model.get_all()
-        new_id = max([e.id for e in events], default=0) + 1
+        # gera um novo ID automaticamente com base nos eventos já existentes (correto mesmo caso um evento seja apagado)
+        new_id = get_next_id('event_id')
 
         event = Event(
             id=new_id,
@@ -105,6 +105,9 @@ class EventService:
             event.participants_emails.remove(user_email)
             self.increase_capacity(event_id)
             self.event_model.update_event(event)
+            #falta marcar no pagamento que saiu do evento, 'refund_requested'
+            #quando reembolsado 'refunded'
+            #adicionar a opção de cancelar pagamento, cancelled
 
     def remove_user_from_all_events(self, user_email: str): #util pra quando apagar o user
         events = self.event_model.get_all()

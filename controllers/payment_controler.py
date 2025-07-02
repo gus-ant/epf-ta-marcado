@@ -9,9 +9,6 @@ import qrcode
 from io import BytesIO
 from exceptions import PaymentNotFoundException
 
-
-# ATENCAO: AINDA TEM UM CERTO DELAY QUANDO O USER CLICA NO CORACAO E ACESSA A PÁGINA DE PAYMENTS/<NUMBER>
-
 class PaymentController(BaseController):
     def __init__(self, app):
         super().__init__(app)
@@ -34,7 +31,7 @@ class PaymentController(BaseController):
         payment = self.payment_service.get_by_id(pid)
         print(payment)
         if not payment:
-            # adição do método raisepaymentexception
+            # adição do método raise paymentexception
             raise PaymentNotFoundException()
 
 

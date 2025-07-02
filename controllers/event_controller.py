@@ -62,6 +62,22 @@ class EventController(BaseController):
         self.event_service.add_participant(event_id, email) #coloca ele no evento
         return redirect(f'/payments/{int(payment.id)}')
 
+    @login_required
+    def exit_event(self, event_id):
+        session = request.environ['beaker.session']
+        email = session['user']['email']
+
+        event = self.event_service.get_by_id(event_id)
+        if not event:
+            return "Evento não encontrado", 404
+        self.event_service.remove_participant(event_id, email) #tira ele do evento
+        #buscar pagamento, caso fosse paid, marcar refund_requested
+        #caso pending, marcar cancelled
+
+        return redirect(f'/user')
+            #falta marcar no pagamento que saiu do evento, 'refund_requested'
+            #quando reembolsado 'refunded'
+            #adicionar a opção de cancelar pagamento, cancelled
 
 
     def payment_page(self, payment_id):

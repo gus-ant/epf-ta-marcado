@@ -571,5 +571,21 @@
             "g@gmail.com",
             "t@gmail.com"
         ]
+    },
+    {
+        "id": 35,
+        "name": "evento fds",
+        "local": "ali",
+        "date": "2235-03-23",
+        "price": 0.0,
+        "max_capacity": 3,
+        "time": "12:33",
+        "current_capacity": 3,
+        "owner_email": "fds@gmail.com",
+        "description": "pode apagar",
+        "cover": null,
+        "participants_emails": [
+            ""
+        ]
     }
 ]

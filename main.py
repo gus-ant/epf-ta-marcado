@@ -8,6 +8,8 @@ if __name__ == '__main__':
 
 #criar os outros tipos de erro em exceptions.py
 
+#CRIEI UM ADM, FUI NA PAGINA DE EVENTOS E NÃO APARECEU A OPÇÃO DE FAZER EVENTO (SÓ QUANDO DERRUBA E VOLTA O SERVER)
+
 #adicionar eventos no sistema:
 #adicionar opção de sair do evento
 #adicionar opção do dono excluir o evento

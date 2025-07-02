@@ -31,3 +31,27 @@ class PaymentService:
             self.payment_model.update(payment)
             return True
         return False
+    
+    def mark_as_refund_requested(self, pid):
+        payment = self.get_by_id(pid)
+        if payment:
+            payment.status = 'refund_requested'
+            self.payment_model.update(payment)
+            return True
+        return False
+    
+    def mark_as_refunded(self, pid):
+        payment = self.get_by_id(pid)
+        if payment:
+            payment.status = 'refunded'
+            self.payment_model.update(payment)
+            return True
+        return False
+    
+    def mark_as_cancelled(self, pid):
+        payment = self.get_by_id(pid)
+        if payment:
+            payment.status = 'cancelled'
+            self.payment_model.update(payment)
+            return True
+        return False
