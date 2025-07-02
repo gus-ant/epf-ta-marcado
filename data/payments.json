@@ -454,5 +454,29 @@
         "amount": 0,
         "status": "paid",
         "timestamp": "2025-07-02T09:51:18.498073"
+    },
+    {
+        "id": 58,
+        "event_id": 24,
+        "user_email": "g@gmail.com",
+        "amount": 8.0,
+        "status": "pending",
+        "timestamp": "2025-07-02T11:06:54.194290"
+    },
+    {
+        "id": 59,
+        "event_id": 9,
+        "user_email": "g@gmail.com",
+        "amount": 0,
+        "status": "paid",
+        "timestamp": "2025-07-02T11:20:47.436095"
+    },
+    {
+        "id": 60,
+        "event_id": 12,
+        "user_email": "g@gmail.com",
+        "amount": 0,
+        "status": "paid",
+        "timestamp": "2025-07-02T11:21:23.695791"
     }
 ]

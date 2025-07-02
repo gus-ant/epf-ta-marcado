@@ -7,7 +7,7 @@
         "price": 15.0,
         "max_capacity": 200,
         "time": "22:00",
-        "current_capacity": 148,
+        "current_capacity": 198,
         "owner_email": "organizacao@festas.com",
         "description": ",",
         "cover": "",
@@ -145,12 +145,13 @@
         "price": 0,
         "max_capacity": 123123112313,
         "time": "12:33",
-        "current_capacity": 123123112313,
+        "current_capacity": 123123112312,
         "owner_email": "123@gmail.com",
         "description": "nao",
         "cover": "",
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com"
         ]
     },
     {
@@ -194,12 +195,13 @@
         "price": 0,
         "max_capacity": 2,
         "time": "22:22",
-        "current_capacity": 2,
+        "current_capacity": 1,
         "owner_email": "superadm@gmail.com",
         "description": "nao tem foto pq no piaui só tem wifi via radio",
         "cover": null,
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com"
         ]
     },
     {
@@ -396,12 +398,13 @@
         "price": 8.0,
         "max_capacity": 8,
         "time": "08:08",
-        "current_capacity": 8,
+        "current_capacity": 7,
         "owner_email": "adm@gmail.com",
         "description": "8",
         "cover": null,
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com"
         ]
     },
     {
