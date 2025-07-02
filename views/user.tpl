@@ -32,6 +32,14 @@
         % end
       </h2>
 
+      % if not user.adm:
+      <div style="margin-bottom: 20px;">
+        <a href="/user/payments" class="btn" style="background-color: #f39c12; color: white">
+          💳🧾 Ver meus pagamentos
+        </a>
+      </div>
+      % end
+
       % if events:
         <ul class="event-list">
           % for event in events:

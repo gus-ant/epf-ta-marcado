@@ -20,6 +20,12 @@ class PaymentService:
     def get_by_id(self, pid):
         return self.payment_model.get_by_id(pid)
     
+    def get_by_event_participant(self, event_id, user_email):
+        return self.payment_model.get_by_event_participant(event_id, user_email)
+    
+    def get_all_from_user(self, user_email):
+        return self.payment_model.get_all_from_user(user_email)
+    
     def get_all(self):
         payments = self.payment_model._load()
         return payments

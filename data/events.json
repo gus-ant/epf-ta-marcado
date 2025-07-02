@@ -7,14 +7,13 @@
         "price": 15.0,
         "max_capacity": 200,
         "time": "22:00",
-        "current_capacity": 198,
+        "current_capacity": 199,
         "owner_email": "organizacao@festas.com",
         "description": ",",
         "cover": "",
         "participants_emails": [
             "",
-            "ta@gmail.com",
-            "g@gmail.com"
+            "ta@gmail.com"
         ]
     },
     {
