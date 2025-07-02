@@ -54,11 +54,27 @@ class UserController(BaseController): #herda de BaseController
         user = self.user_service.get_by_email(email) #puxa o user
         if user:
             from services.event_service import EventService
+            from services.payment_service import PaymentService
+
+            payment_service = PaymentService()
+            user_payments = payment_service.get_all()  # ou crie um método como get_by_user_id(user.id)
+
+            # Filtro apenas dos pagamentos desse user
+            # user_payments = [p for p in user_payments if p.user_email == user.email and p.status == "paid"]
+            user_payments = [p for p in user_payments if p.user_email == user.email]
+
+            # Eventos que o usuário participa ou criou
             if not user.adm:
                 events = self.user_service.get_events_user_participates(email)
-            if user.adm:
+            else:
                 events = self.user_service.get_events_by_owner(email)
-            return self.render('user', user=user, events=events) #vai pra pagina do user.tpl
+
+            # Adiciona o ID do pagamento ao evento (para usar no botão)
+            for event in events:
+                matching_payment = next((p for p in user_payments if p.event_id == event.id), None)
+                event.payment_id = matching_payment.id if matching_payment else None
+
+            return self.render('user', user=user, events=events)
         return "user not found"
 
 

@@ -26,9 +26,9 @@
             <div style="margin-top: 40px; text-align: left;">
               <a href="/events/create" class="btn" style="background-color: #3498db; color: white;">+ Criar novo evento</a>
             </div>
-          📢 Eventos que você criou
+          📢 Eventos que você criou:
         % else:
-           Eventos que você participa
+           Eventos que você participa:
         % end
       </h2>
 
@@ -43,6 +43,11 @@
               % end
               <a href="/events/{{event.id}}">{{event.name}}</a>
               <span class="muted">— {{event.date}} às {{event.time}} ({{event.local}})</span>
+             
+              <a href="/payments/{{event.payment_id}}" class="btn">
+                Ver QR Code
+              </a>
+              
             </li>
           % end
         </ul>

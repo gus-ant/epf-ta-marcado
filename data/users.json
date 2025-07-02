@@ -53,7 +53,7 @@
         "email": "t@gmail.com",
         "birthdate": "2005-03-21",
         "password": "123123123",
-        "adm": true
+        "adm": false
     },
     {
         "id": 8,

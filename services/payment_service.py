@@ -16,6 +16,10 @@ class PaymentService:
 
     def get_by_id(self, pid):
         return self.payment_model.get_by_id(pid)
+    
+    def get_all(self):
+        payments = self.payment_model._load()
+        return payments
 
     def mark_as_paid(self, pid):
         payment = self.get_by_id(pid)

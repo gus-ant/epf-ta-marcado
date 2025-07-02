@@ -7,6 +7,7 @@ from io import BytesIO
 import base64
 import qrcode
 from io import BytesIO
+from exceptions import PaymentNotFoundException
 
 
 # ATENCAO: AINDA TEM UM CERTO DELAY QUANDO O USER CLICA NO CORACAO E ACESSA A PÁGINA DE PAYMENTS/<NUMBER>
@@ -33,11 +34,9 @@ class PaymentController(BaseController):
         payment = self.payment_service.get_by_id(pid)
         print(payment)
         if not payment:
-            # 404 padrão do Bottle
-            return HTTPError(404, "Pagamento não encontrado.")
-        # sucesso
+            # adição do método raisepaymentexception
+            raise PaymentNotFoundException()
 
-        qr_code = payment.qr_code if hasattr(payment, 'qr_code') else None
 
         ticket_data = {
                 "evento": f"{payment.event_id}",
@@ -54,7 +53,7 @@ class PaymentController(BaseController):
 
         return self.render('payment_detail', payment=payment, qr_code=qr_code_base64)
 
-
+    # esse método foi modificado múltiplas vezes para correção de erros, então ficar ligado no que ele pode dar
     def confirm_payment(self, payment_id):
         if self.payment_service.mark_as_paid(payment_id):
             payment = self.payment_service.get_by_id(payment_id)
@@ -73,12 +72,12 @@ class PaymentController(BaseController):
             qr.save(buffer, format="PNG")
             qr_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
             qr_url = f"data:image/png;base64,{qr_base64}"
-
+            
             # renderiza a tela com QR Code embutido
-            return self.render('payment_detail', payment=payment, qr_code=qr_url)
+            return self.render('payment_success', payment=payment, qr_code=qr_url)
 
         return "Erro ao confirmar pagamento"
-
+    # esse método é simples até, mas precisa da biblioteca qrcode e pillow para funcionar
     def show_qr_code(self, payment_id):
         payment = self.payment_service.get_by_id(payment_id)
         if not payment or payment.status != 'paid':
@@ -89,8 +88,8 @@ class PaymentController(BaseController):
             "data": event.date,
             "hora": event.time,
             "local": event.local,
-            #"tipo_ingresso": payment.ticket_type,  # você precisa armazenar esse campo
-            #"quantidade": payment.quantity,
+            #"tipo_ingresso": payment.ticket_type,  #  precisa armazenar (modificar payments) para armazenar esse campo
+            #"quantidade": payment.quantity,  # add se necessário (sugestão)
             "valor_total": payment.amount
         }
 

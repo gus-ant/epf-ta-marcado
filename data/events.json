@@ -25,13 +25,14 @@
         "price": 50.0,
         "max_capacity": 500,
         "time": "21:00",
-        "current_capacity": 399,
+        "current_capacity": 398,
         "owner_email": "rock@eventos.com",
         "description": ",",
         "cover": "",
         "participants_emails": [
             "",
-            "g@gmail.com"
+            "g@gmail.com",
+            "t@gmail.com"
         ]
     },
     {
@@ -92,12 +93,13 @@
         "price": 6969.0,
         "max_capacity": 3,
         "time": "14:42",
-        "current_capacity": 3,
+        "current_capacity": 2,
         "owner_email": "anon@anon.com",
         "description": "vamos andar atÃ© a china mesmo, vai ser uma caminhada bem legal :)",
         "cover": "",
         "participants_emails": [
-            ""
+            "",
+            "t@gmail.com"
         ]
     },
     {
@@ -125,12 +127,13 @@
         "price": 33.0,
         "max_capacity": 123,
         "time": "12:21",
-        "current_capacity": 123,
+        "current_capacity": 122,
         "owner_email": "123@gmail.com",
         "description": "bla bla bla",
         "cover": "",
         "participants_emails": [
-            ""
+            "",
+            "t@gmail.com"
         ]
     },
     {
@@ -223,12 +226,13 @@
         "price": 900.0,
         "max_capacity": 100000,
         "time": "09:00",
-        "current_capacity": 100000,
+        "current_capacity": 99999,
         "owner_email": "superadm@gmail.com",
         "description": "O melhor evento de Física do DF, imperdível.\r\nParticipantes:\r\n-Elon Mosca\r\n-Donald Trumpo",
         "cover": "7b14bd9bd55a4b658f9d23922b3d11ed.png",
         "participants_emails": [
-            ""
+            "",
+            "t@gmail.com"
         ]
     },
     {
@@ -280,7 +284,8 @@
         "cover": null,
         "participants_emails": [
             "",
-            "g@gmail.com"
+            "g@gmail.com",
+            "t@gmail.com"
         ]
     },
     {
@@ -372,12 +377,14 @@
         "price": 0,
         "max_capacity": 7,
         "time": "07:07",
-        "current_capacity": 7,
+        "current_capacity": 5,
         "owner_email": "adm@gmail.com",
         "description": "",
         "cover": null,
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com",
+            "t@gmail.com"
         ]
     },
     {
@@ -420,12 +427,13 @@
         "price": 12121.0,
         "max_capacity": 21212,
         "time": "12:12",
-        "current_capacity": 21212,
+        "current_capacity": 21211,
         "owner_email": "adm@gmail.com",
         "description": "2121212",
         "cover": null,
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com"
         ]
     },
     {
@@ -468,13 +476,14 @@
         "price": 654654.0,
         "max_capacity": 6546,
         "time": "03:02",
-        "current_capacity": 6545,
+        "current_capacity": 6544,
         "owner_email": "adm@gmail.com",
         "description": "54654",
         "cover": null,
         "participants_emails": [
             "",
-            "g@gmail.com"
+            "g@gmail.com",
+            "t@gmail.com"
         ]
     },
     {
@@ -501,12 +510,14 @@
         "price": 0,
         "max_capacity": 333,
         "time": "10:48",
-        "current_capacity": 333,
+        "current_capacity": 331,
         "owner_email": "adm@gmail.com",
         "description": "simsim",
         "cover": null,
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com",
+            "t@gmail.com"
         ]
     },
     {
@@ -517,12 +528,13 @@
         "price": 78.0,
         "max_capacity": 444,
         "time": "09:59",
-        "current_capacity": 444,
+        "current_capacity": 443,
         "owner_email": "adm@gmail.com",
         "description": "nnn",
         "cover": null,
         "participants_emails": [
-            ""
+            "",
+            "t@gmail.com"
         ]
     },
     {
@@ -549,13 +561,14 @@
         "price": 27.9,
         "max_capacity": 1000000,
         "time": "23:01",
-        "current_capacity": 999999,
+        "current_capacity": 999998,
         "owner_email": "ta@gmail.com",
         "description": "Competição de JYTHON",
         "cover": "638ffe77ce274b5089156d510a84aa29.png",
         "participants_emails": [
             "",
-            "g@gmail.com"
+            "g@gmail.com",
+            "t@gmail.com"
         ]
     }
 ]
