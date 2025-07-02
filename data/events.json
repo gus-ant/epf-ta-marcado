@@ -43,12 +43,13 @@
         "price": 0.0,
         "max_capacity": 1000,
         "time": "09:00",
-        "current_capacity": 990,
+        "current_capacity": 989,
         "owner_email": "feira@tech.com",
         "description": ",",
         "cover": "",
         "participants_emails": [
-            ""
+            "",
+            "g@gmail.com"
         ]
     },
     {

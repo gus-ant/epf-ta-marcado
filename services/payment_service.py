@@ -7,7 +7,10 @@ class PaymentService:
     def create_payment(self, event_id, user_email, amount): #rever isso aqui
         old_id = int(max([p.id for p in self.payment_model.payments], default=0))
         new_id = old_id+1
-        payment = Payment(new_id, event_id, user_email, amount)
+        if amount >0:
+            payment = Payment(new_id, event_id, user_email, amount)
+        else:
+            payment = Payment(new_id, event_id, user_email, 0, 'paid')
         self.payment_model.add(payment)
         return payment
     

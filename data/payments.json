@@ -12,7 +12,7 @@
         "event_id": 1,
         "user_email": "g@gmail.com",
         "amount": 15.0,
-        "status": "pending",
+        "status": "paid",
         "timestamp": "2025-06-25T19:40:08.072145"
     },
     {
@@ -52,7 +52,7 @@
         "event_id": 3,
         "user_email": "g@gmail.com",
         "amount": 0.0,
-        "status": "pending",
+        "status": "paid",
         "timestamp": "2025-06-26T10:30:07.136895"
     },
     {
@@ -446,5 +446,13 @@
         "amount": 33.0,
         "status": "paid",
         "timestamp": "2025-07-01T22:29:11.562422"
+    },
+    {
+        "id": 57,
+        "event_id": 3,
+        "user_email": "g@gmail.com",
+        "amount": 0,
+        "status": "paid",
+        "timestamp": "2025-07-02T09:51:18.498073"
     }
 ]

@@ -40,7 +40,7 @@
     % end
     </br>
     <div class="form-actions">
-      <a href="/events" class="btn ">← Voltar para eventos</a>
+      <a href="/user" class="btn ">← Voltar para o perfil</a>
     </div>
 
   </div>

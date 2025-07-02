@@ -54,9 +54,13 @@ class EventController(BaseController):
             )
             self.event_service.add_participant(event_id, email) #coloca ele no evento
             return redirect(f'/payments/{int(payment.id)}')
-        
+        payment = self.payment_service.create_payment(
+            event_id=event.id,
+            user_email=email,
+            amount=0
+        )
         self.event_service.add_participant(event_id, email) #coloca ele no evento
-        return redirect('/events')
+        return redirect(f'/payments/{int(payment.id)}')
 
 
 

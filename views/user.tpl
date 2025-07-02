@@ -44,7 +44,7 @@
               <a href="/events/{{event.id}}">{{event.name}}</a>
               <span class="muted">— {{event.date}} às {{event.time}} ({{event.local}})</span>
              
-              <a href="/payments/{{event.payment_id}}" class="btn">
+              <a href="/payments/{{event.payment_id}}" class="btn" style="background-color: #4caf50; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none;">
                 Ver QR Code
               </a>
               
