@@ -12,8 +12,11 @@ if __name__ == '__main__':
 
 #fazer a pesquisa existir
 
-#quando voltar continuar na coisa de sair do evento
-#e dos diferentes tipos de pagamentos
+#fazer:
+#botão de sair do evento
+#fazer o botão de cancelar pagamento 
+#SÓ COLOCAR O USER NO EVENTO QUANDO CONFIRMAR PAGAMENTO
+#adm poder ver todos os pagamentos dos eventos dele
 
 #CRIEI UM ADM, FUI NA PAGINA DE EVENTOS E NÃO APARECEU A OPÇÃO DE FAZER EVENTO (SÓ QUANDO DERRUBA E VOLTA O SERVER)
 #TEMOS QUE MUDAR ONDE PUXA POR EMAIL PRA PUXAR POR ID (explicação):
@@ -22,7 +25,7 @@ if __name__ == '__main__':
 
 #adicionar eventos no sistema:
 #adicionar opção de sair do evento
-#adicionar opção do dono excluir o evento (quando excluir o evento, aparecer pros users a opção de reembolso pendente)
+#adicionar opção do dono excluir o evento (quando excluir o evento, aparecer pros users a opção de reembolso pendente pros que ja pagaram, pros que ainda não, cancelled)
 #-talvez adicionar outros tipos de ingresso (meia entrada e tals)
 #ter likes no evento (cada user só pode dar 1 like)
 

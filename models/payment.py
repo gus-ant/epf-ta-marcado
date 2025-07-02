@@ -30,7 +30,7 @@ class Payment:
             event_id = data['event_id'],
             user_email = data['user_email'],
             amount = data['amount'],
-            event_name = '',
+            event_name = data.get('event_name', ''),
             status = data['status'],
             timestamp = data['timestamp']
         )
@@ -75,6 +75,7 @@ class PaymentModel:
         #serve pra quando um user sair de um evento, poder pedir reembolso
 
     def get_all_from_user(self, user_email):
+        self.payments = self._load()
         return [p for p in self.payments if p.user_email == user_email]
         #devolve uma lista com todos os pagamentos do user
 
