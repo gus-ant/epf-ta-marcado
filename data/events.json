@@ -76,13 +76,14 @@
         "price": 10.0,
         "max_capacity": 90,
         "time": "20:00",
-        "current_capacity": 89,
+        "current_capacity": 88,
         "owner_email": "anon@anon.com",
         "description": ",",
         "cover": "",
         "participants_emails": [
             "",
-            "g@gmail.com"
+            "g@gmail.com",
+            "t@gmail.com"
         ]
     },
     {
@@ -127,13 +128,12 @@
         "price": 33.0,
         "max_capacity": 123,
         "time": "12:21",
-        "current_capacity": 121,
+        "current_capacity": 122,
         "owner_email": "123@gmail.com",
         "description": "bla bla bla",
         "cover": "",
         "participants_emails": [
             "",
-            "t@gmail.com",
             "g@gmail.com"
         ]
     },
@@ -416,13 +416,14 @@
         "price": 9.0,
         "max_capacity": 9,
         "time": "09:09",
-        "current_capacity": 8,
+        "current_capacity": 7,
         "owner_email": "adm@gmail.com",
         "description": "9",
         "cover": null,
         "participants_emails": [
             "",
-            "g@gmail.com"
+            "g@gmail.com",
+            "t@gmail.com"
         ]
     },
     {
@@ -589,6 +590,22 @@
         "owner_email": "fds@gmail.com",
         "description": "pode apagar",
         "cover": null,
+        "participants_emails": [
+            ""
+        ]
+    },
+    {
+        "id": 36,
+        "name": "Sinucastigo 2000",
+        "local": "São Paulo",
+        "date": "2025-08-09",
+        "price": 90.0,
+        "max_capacity": 90,
+        "time": "10:00",
+        "current_capacity": 90,
+        "owner_email": "ta@gmail.com",
+        "description": "O melhor evento de sinuca da Atualidade, com convidados surpresa.",
+        "cover": "71ff991cc2984261a3a211fe6a79fef9.jpg",
         "participants_emails": [
             ""
         ]

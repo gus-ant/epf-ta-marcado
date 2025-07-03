@@ -8,9 +8,6 @@ if __name__ == '__main__':
 
 #criar os outros tipos de erro em exceptions.py
 
-#fazer a pesquisa existir
-#inverter a lista dos pagamentos do user (pagamento mais novo aparecer em cima)
-
 #fazer:
 #melhorar formatacao de /payments (ta tudo mto junto)
 #editar payment_success

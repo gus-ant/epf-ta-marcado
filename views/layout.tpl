@@ -551,6 +551,144 @@ input[type="file"] {
   padding: 10px 0;
 }
 
+.event-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 32px;
+  margin-top: 24px;
+  align-items: start;
+}
+
+.event-cover-box {
+  max-width: 100%;
+}
+
+.event-cover-img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  object-fit: cover;
+}
+
+.event-content-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+}
+
+.event-title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.event-meta {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+.event-description h3,
+.event-info-box h3 {
+  margin-top: 12px;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.event-info-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.event-info-box li {
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.event-actions {
+  margin-top: 20px;
+}
+
+.event-actions .btn {
+  margin-top: 10px;
+}
+
+.event-participants ul {
+  list-style: none;
+  margin-top: 8px;
+  padding: 0;
+}
+
+.event-participants li {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.payment-card-centered {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+}
+
+.payment-info {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.payment-info li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.badge.paid { background: #d4edda; color: #155724; }
+.badge.pending { background: #fff3cd; color: #856404; }
+.badge.refunding { background: #d1ecf1; color: #0c5460; }
+.badge.refunded { background: #f8d7da; color: #721c24; }
+.badge.cancelled { background: #f5c6cb; color: #721c24; }
+
+.payment-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centraliza horizontalmente */
+  justify-content: center;
+  gap: 10px; /* espaço entre os formulários/botões */
+  margin-top: 20px;
+}
+
+
+.qr-code-img {
+  max-width: 200px;
+  margin: 10px 0;
+  display: block;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-success { background: #28a745; color: white; }
+.btn-danger { background: #dc3545; color: white; }
+.btn-warning { background: #ffc107; color: black; }
+.btn-info { background: #17a2b8; color: white; }
+.btn-outline { background: none; border: 1px solid #ccc; color: #333; }
+
   </style>
 </head>
 
@@ -572,7 +710,7 @@ input[type="file"] {
               % if session['user'].get('adm'):
                 <span title="Admin" style="color: gold; margin-right: 5px;">&#11088;</span>
               % end
-              Olá, <strong>{{session['user']['name']}}</strong> ({{session['user']['email']}})
+              Olá, <strong>{{session['user']['name']}}</strong> 
             </span></li>
             <li class="nav-item"><a class="nav-link" href="/user">Perfil</a></li>
             <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>

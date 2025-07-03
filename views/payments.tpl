@@ -5,7 +5,9 @@
     <h2 class="section-title">Meus Pagamentos</h2>
 
     % if payments:
-      <table class="table">
+
+    <div style="overflow-x: auto; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-top: 20px;">
+      <table class="styled-table">
         <thead>
           <tr>
             <th>Evento</th>
@@ -16,7 +18,7 @@
         </thead>
         <tbody>
           % for payment in payments:
-            <tr>
+            <tr >
               <td>{{payment.event_name}}</td>
               <td>R$ {{'%.2f' % payment.amount}}</td>
               <td>
@@ -49,6 +51,7 @@
           % end
         </tbody>
       </table>
+    </div>
     % else:
       <p class="muted">Você ainda não realizou nenhum pagamento.</p>
     % end
