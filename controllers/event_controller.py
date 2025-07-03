@@ -36,6 +36,8 @@ class EventController(BaseController):
         events = self.event_service.get_all()
         return self.render('events', events=events, user=user)
     
+    #join event será modificado:
+    #agora só cria o pagamento, para entrar no evento, deve confirmar o pagamento (payment_controller)
     @login_required
     def join_event(self, event_id):
         session = request.environ['beaker.session']
@@ -48,25 +50,24 @@ class EventController(BaseController):
         if email in self.event_service.get_participants(event.id):
             return "Já participa do evento"
 
-        # cria pagamento pendente caso tenha custo
         if event.price >0:
             payment = self.payment_service.create_payment(
                 event_id=event.id,
                 user_email=email,
                 amount=event.price
             )
-            self.event_service.add_participant(event_id, email) #coloca ele no evento
             return redirect(f'/payments/{int(payment.id)}')
         payment = self.payment_service.create_payment(
             event_id=event.id,
             user_email=email,
             amount=0
         )
-        self.event_service.add_participant(event_id, email) #coloca ele no evento
         return redirect(f'/payments/{int(payment.id)}')
 
+    #o exit event é usado quando o user sai do evento
+    #quando o user pede reembolso o metodo usado tá em payment_controller
     @login_required
-    def exit_event(self, event_id):
+    def exit_event(self, event_id): 
         session = request.environ['beaker.session']
         email = session['user']['email']
 
@@ -91,9 +92,6 @@ class EventController(BaseController):
                 self.payment_service.mark_as_refund_requested(pid) #buscar pagamento, caso fosse paid, marcar refund_requested
 
         return redirect(f'/user')
-            
-            #quando reembolsado 'refunded'
-            #adicionar a opção de cancelar pagamento, cancelled
 
     def payment_page(self, payment_id):
         payment = self.payment_service.get_by_id(int(payment_id))

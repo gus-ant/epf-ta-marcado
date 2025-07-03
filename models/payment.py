@@ -61,21 +61,22 @@ class PaymentModel:
     def add(self, payment):
         self.payments.append(payment)
         self._save()
-        self.payments = self._load()
+        self.payments = self._load() #atualiza
 
     def get_by_id(self, pid):
-        self.payments = self._load()
+        self.payments = self._load() #atualiza
         print(f"[DEBUG] Procurando pagamento com ID: {pid}")
         print(f"[DEBUG] IDs disponíveis: {[p.id for p in self.payments]}")
         return next((p for p in self.payments if p.id == pid), None)
     
     def get_by_event_participant(self, event_id, user_email):
+        self.payments = self._load() #atualiza
         return next((p for p in self.payments if p.event_id == event_id and p.user_email == user_email and (p.status != 'cancelled' and p.status != 'refunded')), None)
         #vai pegar um pagamento com mesmo email, event_id E que não esteja cancelado nem reembolsado
         #serve pra quando um user sair de um evento, poder pedir reembolso
 
     def get_all_from_user(self, user_email):
-        self.payments = self._load()
+        self.payments = self._load() #atualiza
         return [p for p in self.payments if p.user_email == user_email]
         #devolve uma lista com todos os pagamentos do user
 
@@ -84,5 +85,6 @@ class PaymentModel:
             if p.id == payment.id:
                 self.payments[i] = payment
                 self._save()
+                self.payments = self._load()
                 return True
         return False

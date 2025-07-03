@@ -86,5 +86,13 @@
         "birthdate": "3412-02-04",
         "password": "123123123",
         "adm": true
+    },
+    {
+        "id": 12,
+        "name": "user novo para testes",
+        "email": "test@gmail.com",
+        "birthdate": "3543-05-04",
+        "password": "123123123",
+        "adm": false
     }
 ]
