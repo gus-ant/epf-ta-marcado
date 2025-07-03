@@ -8,8 +8,6 @@ if __name__ == '__main__':
 
 #criar os outros tipos de erro em exceptions.py
 
-#fazer a pesquisa existir
-
 #fazer:
 #editar payment_success
 #botão de sair do evento

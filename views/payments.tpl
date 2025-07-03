@@ -5,7 +5,7 @@
     <h2 class="section-title">Meus Pagamentos</h2>
 
     % if payments:
-      <table class="table">
+      <table class="styled-table">
         <thead>
           <tr>
             <th>Evento</th>
@@ -16,7 +16,7 @@
         </thead>
         <tbody>
           % for payment in payments:
-            <tr>
+            <tr >
               <td>{{payment.event_name}}</td>
               <td>R$ {{'%.2f' % payment.amount}}</td>
               <td>

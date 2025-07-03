@@ -565,5 +565,23 @@
         "event_name": "6",
         "status": "pending",
         "timestamp": "2025-07-02T16:40:46.677558"
+    },
+    {
+        "id": 64,
+        "event_id": 5,
+        "user_email": "t@gmail.com",
+        "amount": 10.0,
+        "event_name": "Campeonato de Sinuca",
+        "status": "pending",
+        "timestamp": "2025-07-03T13:06:04.220969"
+    },
+    {
+        "id": 65,
+        "event_id": 25,
+        "user_email": "t@gmail.com",
+        "amount": 9.0,
+        "event_name": "9",
+        "status": "pending",
+        "timestamp": "2025-07-03T14:02:55.601028"
     }
 ]
