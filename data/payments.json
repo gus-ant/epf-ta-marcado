@@ -584,22 +584,6 @@
         "event_name": "9",
         "status": "pending",
         "timestamp": "2025-07-03T14:02:55.601028"
-=======
-        "event_id": 13,
-        "user_email": "test@gmail.com",
-        "amount": 0,
-        "event_name": "evento com foto",
-        "status": "paid",
-        "timestamp": "2025-07-03T12:11:03.197792"
-    },
-    {
-        "id": 65,
-        "event_id": 3,
-        "user_email": "test@gmail.com",
-        "amount": 0,
-        "event_name": "Feira de Tecnologia",
-        "status": "refunded",
-        "timestamp": "2025-07-03T12:14:44.451287"
     },
     {
         "id": 66,

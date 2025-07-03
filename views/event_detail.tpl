@@ -43,7 +43,7 @@
         <!-- Botões de interação -->
         <div class="event-actions">
           % if user and not user.adm and user.email in event.participants_emails:
-            <p class="alert alert-success">✅ Você já participa do evento.</p>
+            <p class="alert alert-success">✅ Você já participa do evento</p>
             <form action="/events/{{event.id}}/leave" method="post">
               <button type="submit" class="btn btn-danger">🚪 Sair do evento</button>
             </form>
@@ -52,7 +52,7 @@
               <button type="submit" class="btn btn-primary">❤️ Quero ir</button>
             </form>
           % elif user and user.adm:
-            <p class="alert alert-warning">⚠️ Para se inscrever, use uma conta de cliente.</p>
+            <p class="alert alert-warning">⚠️ Para se inscrever, use uma conta de cliente</p>
           % else:
             <form action="/events/{{event.id}}/join" method="post">
               <button type="submit" class="btn btn-outline">🔐 Faça login para garantir seu ingresso</button>
@@ -63,15 +63,18 @@
         <!-- Participantes (somente admin) -->
         % if user and user.adm and user.email == event.owner_email:
           <div class="event-participants">
-            <h3>Participantes</h3>
-            
+            <h3>Participantes:</h3>
+
               <ul>
+              % if len(event.participants_emails)>1:
                 % for email in event.participants_emails:
-                  <li>📧 {{ email }}</li>
+                  <li> {{ email }}</li>
                 % end
+              % else:
+                <p class="alert alert-warning"> Esse evento ainda não tem inscritos</p>
+
               </ul>
-            // % else:
-            //   Esse Evento ainda não tem participantes
+              
           </div>
         % end
       </div>
