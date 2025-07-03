@@ -9,11 +9,11 @@ if __name__ == '__main__':
 #criar os outros tipos de erro em exceptions.py
 
 #fazer a pesquisa existir
+#inverter a lista dos pagamentos do user (pagamento mais novo aparecer em cima)
 
 #fazer:
+#melhorar formatacao de /payments (ta tudo mto junto)
 #editar payment_success
-#botão de sair do evento
-#SÓ COLOCAR O USER NO EVENTO QUANDO CONFIRMAR PAGAMENTO
 #adm poder ver todos os pagamentos dos eventos dele
 
 #CRIEI UM ADM, FUI NA PAGINA DE EVENTOS E NÃO APARECEU A OPÇÃO DE FAZER EVENTO (SÓ QUANDO DERRUBA E VOLTA O SERVER)

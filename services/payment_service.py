@@ -1,12 +1,15 @@
+from bottle import request
 from models.payment import PaymentModel, Payment
 from models.events import EventModel
+from services.event_service import EventService
 
 class PaymentService:
     def __init__(self):
         self.payment_model = PaymentModel()
         self.event_model = EventModel()
+        self.event_service = EventService()
 
-    def create_payment(self, event_id, user_email, amount): #rever isso aqui
+    def create_payment(self, event_id, user_email, amount):
         old_id = int(max([p.id for p in self.payment_model.payments], default=0))
         new_id = old_id+1
         event = self.event_model.get_by_id(event_id)
@@ -15,6 +18,13 @@ class PaymentService:
             payment = Payment(new_id, event_id, user_email, amount, event_name)
         else:
             payment = Payment(new_id, event_id, user_email, 0, event_name, 'paid')
+
+            #AQUI O USER ENTRA NO EVENTO
+            event_id = payment.event_id
+            session = request.environ.get('beaker.session')
+            email = session['user']['email']
+            self.event_service.add_participant(event_id, email) 
+
         self.payment_model.add(payment)
         return payment
     
@@ -42,7 +52,7 @@ class PaymentService:
             return True
         return False
     
-    def mark_as_refund_requested(self, pid):
+    def mark_as_refund_requested(self, pid): 
         payment = self.get_by_id(pid)
         if payment:
             payment.status = 'refund_requested'
