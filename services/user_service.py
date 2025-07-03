@@ -4,6 +4,7 @@ from exceptions import EmailAlreadyUsedException
 from models.events import EventModel
 from services.event_service import EventService
 from exceptions import EmailAlreadyUsedException, PasswordMismatchException
+from utils.id_tracker import get_next_id 
 
 class UserService:
     # Esta classe atua como uma camada intermediária entre o controlador (rotas)
@@ -21,8 +22,7 @@ class UserService:
 
 
     def save(self):
-        last_id = max([u.id for u in self.user_model.get_all()], default=0) #encontra o id mais alto do sistema
-        new_id = last_id + 1 #soma 1 ao ultimo id gerado
+        new_id = get_next_id('user_id') #agora usa um metodo novo que garante que mesmo apagando user, o id vai ser sempre o mais atualizado
         name = request.forms.get('name') #pega esse dado diretamente do formulario http
         email = request.forms.get('email')
         birthdate = request.forms.get('birthdate')

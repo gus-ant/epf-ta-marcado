@@ -78,5 +78,13 @@
         "birthdate": "3333-03-31",
         "password": "123123123",
         "adm": false
+    },
+    {
+        "id": 11,
+        "name": "usuario fds",
+        "email": "fds@gmail.com",
+        "birthdate": "3412-02-04",
+        "password": "123123123",
+        "adm": true
     }
 ]

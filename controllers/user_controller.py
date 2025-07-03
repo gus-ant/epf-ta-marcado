@@ -3,6 +3,7 @@ from .base_controller import BaseController
 from services.user_service import UserService
 from utils.decorators import login_required
 from services.event_service import EventService
+from services.payment_service import PaymentService
 from exceptions import EmailAlreadyUsedException, PasswordMismatchException
 
 
@@ -14,6 +15,7 @@ class UserController(BaseController): #herda de BaseController
         self.setup_routes()
         self.user_service = UserService()
         self.event_service = EventService()
+        self.payment_service = PaymentService()
 
 
     
@@ -23,6 +25,7 @@ class UserController(BaseController): #herda de BaseController
         self.app.route('/users/add', method=['GET', 'POST'], callback=self.add_user) #Registra rota /users/add que aceita GET (mostrar formulário) e POST (salvar usuário)
         self.app.route('/users/edit/<user_id:int>', method=['GET', 'POST'], callback=self.edit_user) #Registra rota /users/edit/<user_id> com parâmetro inteiro para editar usuário específico
         self.app.route('/users/delete/<user_id:int>', method='POST', callback=self.delete_user) #Registra rota POST /users/delete/<user_id> para deletar usuário específico
+        self.app.route('/user/payments', method='GET', callback=self.view_payments)
 
 
     def list_users(self):
@@ -76,6 +79,15 @@ class UserController(BaseController): #herda de BaseController
 
             return self.render('user', user=user, events=events)
         return "user not found"
+    
+    @login_required
+    def view_payments(self):
+        session = request.environ.get('beaker.session')
+        email = session['user']['email']
+        user = self.user_service.get_by_email(email)
+        payments = self.payment_service.get_all_from_user(email)
+
+        return self.render('payments', user=user, payments=payments)
 
 
     def edit_user(self, user_id): #serve pra editar um usuario existente, usa o id

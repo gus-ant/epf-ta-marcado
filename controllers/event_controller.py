@@ -2,6 +2,7 @@ from bottle import Bottle, request, redirect
 from .base_controller import BaseController
 from services.event_service import EventService
 from services.user_service import UserService
+from services.payment_service import PaymentService
 from utils.decorators import login_required, admin_required
 from services.payment_service import PaymentService
 import os, uuid
@@ -22,6 +23,7 @@ class EventController(BaseController):
         self.app.route('/events/create', method=['GET', 'POST'], callback=self.create_event)
         self.app.route('/events/<event_id:int>/join', method='POST', callback=self.join_event)
         self.app.route('/events/<event_id:int>', method='GET', callback=self.view_event)
+        self.app.route('/events/<event_id:int>/leave', method='POST', callback=self.exit_event)
 
     def list_events(self):
         session = request.environ.get('beaker.session')
@@ -62,7 +64,35 @@ class EventController(BaseController):
         self.event_service.add_participant(event_id, email) #coloca ele no evento
         return redirect(f'/payments/{int(payment.id)}')
 
+    @login_required
+    def exit_event(self, event_id):
+        session = request.environ['beaker.session']
+        email = session['user']['email']
 
+        event = self.event_service.get_by_id(event_id)
+        if not event:
+            return "Evento não encontrado", 404
+        
+        if email not in event.participants_emails:
+            return "Você não participa desse evento"
+        
+        self.event_service.remove_participant(event_id, email) #tira ele do evento
+
+        last_payment = self.payment_service.get_by_event_participant(event_id, email)
+        if last_payment:
+            pid = last_payment.id
+
+            if last_payment.status == 'pending': #caso pending, marcar cancelled
+                self.payment_service.mark_as_cancelled(pid)
+            elif event.price == 0:#caso de graça marcar refunded
+                self.payment_service.mark_as_refunded(pid) 
+            elif last_payment.status == 'paid':
+                self.payment_service.mark_as_refund_requested(pid) #buscar pagamento, caso fosse paid, marcar refund_requested
+
+        return redirect(f'/user')
+            
+            #quando reembolsado 'refunded'
+            #adicionar a opção de cancelar pagamento, cancelled
 
     def payment_page(self, payment_id):
         payment = self.payment_service.get_by_id(int(payment_id))
