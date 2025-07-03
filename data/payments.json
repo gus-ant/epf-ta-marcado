@@ -500,7 +500,7 @@
         "user_email": "t@gmail.com",
         "amount": 33.0,
         "event_name": "",
-        "status": "paid",
+        "status": "refunded",
         "timestamp": "2025-07-01T22:29:11.562422"
     },
     {

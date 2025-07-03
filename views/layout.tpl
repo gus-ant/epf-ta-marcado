@@ -710,7 +710,7 @@ input[type="file"] {
               % if session['user'].get('adm'):
                 <span title="Admin" style="color: gold; margin-right: 5px;">&#11088;</span>
               % end
-              Olá, <strong>{{session['user']['name']}}</strong> ({{session['user']['email']}})
+              Olá, <strong>{{session['user']['name']}}</strong> 
             </span></li>
             <li class="nav-item"><a class="nav-link" href="/user">Perfil</a></li>
             <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>

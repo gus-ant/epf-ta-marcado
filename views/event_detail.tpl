@@ -64,11 +64,14 @@
         % if user and user.adm and user.email == event.owner_email:
           <div class="event-participants">
             <h3>Participantes</h3>
-            <ul>
-              % for email in event.participants_emails:
-                <li>📧 {{ email }}</li>
-              % end
-            </ul>
+            
+              <ul>
+                % for email in event.participants_emails:
+                  <li>📧 {{ email }}</li>
+                % end
+              </ul>
+            // % else:
+            //   Esse Evento ainda não tem participantes
           </div>
         % end
       </div>

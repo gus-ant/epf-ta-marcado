@@ -21,9 +21,7 @@
       <h2 class="section-title">
         % if user.adm:
           <div class="container">
-            <div style="margin-top: 40px; text-align: left;">
-              <a href="/events/create" class="btn" style="background-color: #3498db; color: white;">+ Criar novo evento</a>
-            </div>
+            
           📢 Eventos que você criou:
         % else:
            Eventos que você participa:
@@ -35,7 +33,7 @@
         <a href="/user/payments" class="btn" style="background-color: #f39c12; color: white">
           💳 Ver meus pagamentos
         </a>
-      </div>
+    </div>
       % end
 
       % if events:
@@ -89,10 +87,15 @@
         </p>
       % end
     </div>
-
+  %if user.adm:
+    <div style="margin-top: 40px; text-align: left;">
+              <a href="/events/create" class="btn" style="background-color: #6c5ce7; color: white;">+ Criar novo evento</a>
+    </div>
+  % end
     <div class="profile-actions">
       <a class="btn btn-edit" href="/users/edit/{{user.id}}">✏️ Editar Perfil</a>
       <a class="btn btn-secondary" href="/events"> Voltar</a>
+
     </div>
   </div>
 </section>

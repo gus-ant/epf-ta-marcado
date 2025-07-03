@@ -5,6 +5,8 @@
     <h2 class="section-title">Meus Pagamentos</h2>
 
     % if payments:
+
+    <div style="overflow-x: auto; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-top: 20px;">
       <table class="styled-table">
         <thead>
           <tr>
@@ -49,6 +51,7 @@
           % end
         </tbody>
       </table>
+    </div>
     % else:
       <p class="muted">Você ainda não realizou nenhum pagamento.</p>
     % end
