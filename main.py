@@ -6,15 +6,13 @@ if __name__ == '__main__':
     
 #LISTA TO-DO:
 
-#adicionar no user uma lista com todos os pagamentos do user
-
 #criar os outros tipos de erro em exceptions.py
 
 #fazer a pesquisa existir
 
 #fazer:
+#editar payment_success
 #botão de sair do evento
-#fazer o botão de cancelar pagamento 
 #SÓ COLOCAR O USER NO EVENTO QUANDO CONFIRMAR PAGAMENTO
 #adm poder ver todos os pagamentos dos eventos dele
 

@@ -47,6 +47,9 @@ class PaymentService:
         if payment:
             payment.status = 'refund_requested'
             self.payment_model.update(payment)
+            if payment.amount == 0: #quando é de graça
+                payment.status = 'refunded'
+                self.payment_model.update(payment)
             return True
         return False
     

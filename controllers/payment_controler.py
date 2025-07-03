@@ -18,6 +18,9 @@ class PaymentController(BaseController):
     def setup_routes(self):
         self.app.route('/<payment_id:int>', method='GET', callback=self.show_payment)
         self.app.route('/<payment_id:int>/confirm', method='POST', callback=self.confirm_payment)
+        self.app.route('/<payment_id:int>/cancel', method='POST', callback=self.cancel_payment)
+        self.app.route('/<payment_id:int>/request_refund', method='POST', callback=self.request_refund)
+        self.app.route('/<payment_id:int>/confirm_refund', method='POST', callback=self.confirm_refund)
         self.app.route('/payments/<payment_id:int>/qrcode', method='GET', callback=self.show_qr_code)
 
 
@@ -50,6 +53,52 @@ class PaymentController(BaseController):
 
         return self.render('payment_detail', payment=payment, qr_code=qr_code_base64)
     
+    def cancel_payment(self, payment_id):
+        if self.payment_service.mark_as_cancelled(payment_id):
+            payment = self.payment_service.get_by_id(payment_id)
+                # gera o QR Code com dados do ingresso
+            ticket_data = {
+                "evento": f"{payment.event_id}",
+                "usuario": payment.user_email,
+                "valor": f"R$ {payment.amount:.2f}",
+                "status": payment.status,
+                "data": payment.timestamp
+            }
+
+            qr = qrcode.make(str(ticket_data))
+            buffer = BytesIO()
+            qr.save(buffer, format="PNG")
+            qr_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
+            qr_url = f"data:image/png;base64,{qr_base64}"
+            
+            # renderiza a tela com QR Code embutido
+            return self.render('payment_success', payment=payment, qr_code=qr_url)
+
+        return "Erro ao cancelar pagamento"
+    
+    def request_refund(self, payment_id):
+        if self.payment_service.mark_as_refund_requested(payment_id):
+            payment = self.payment_service.get_by_id(payment_id)
+                # gera o QR Code com dados do ingresso
+            ticket_data = {
+                "evento": f"{payment.event_id}",
+                "usuario": payment.user_email,
+                "valor": f"R$ {payment.amount:.2f}",
+                "status": payment.status,
+                "data": payment.timestamp
+            }
+
+            qr = qrcode.make(str(ticket_data))
+            buffer = BytesIO()
+            qr.save(buffer, format="PNG")
+            qr_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
+            qr_url = f"data:image/png;base64,{qr_base64}"
+            
+            # renderiza a tela com QR Code embutido
+            return self.render('payment_success', payment=payment, qr_code=qr_url)
+
+        return "Erro ao pedir reembolso"
+    
     def confirm_refund(self, payment_id):
         if self.payment_service.mark_as_refunded(payment_id):
             payment = self.payment_service.get_by_id(payment_id)
@@ -71,7 +120,7 @@ class PaymentController(BaseController):
             # renderiza a tela com QR Code embutido
             return self.render('payment_success', payment=payment, qr_code=qr_url)
 
-        return "Erro ao confirmar pagamento"
+        return "Erro ao confirmar reembolso"
 
     # esse método foi modificado múltiplas vezes para correção de erros, então ficar ligado no que ele pode dar
     def confirm_payment(self, payment_id):
