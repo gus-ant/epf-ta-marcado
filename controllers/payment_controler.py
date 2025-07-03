@@ -1,6 +1,7 @@
-from bottle import Bottle, redirect, HTTPError
+from bottle import Bottle, redirect, request, HTTPError
 from .base_controller import BaseController
 from services.payment_service import PaymentService
+from services.event_service import EventService
 from utils.decorators import login_required
 from utils.qr_code import gerar_qrcode_base64
 from io import BytesIO
@@ -13,6 +14,7 @@ class PaymentController(BaseController):
     def __init__(self, app):
         super().__init__(app)
         self.payment_service = PaymentService()
+        self.event_service = EventService()
         self.setup_routes()
 
     def setup_routes(self):
@@ -94,6 +96,12 @@ class PaymentController(BaseController):
             qr_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
             qr_url = f"data:image/png;base64,{qr_base64}"
             
+            #AQUI O USER SAI DO EVENTO
+            event_id = payment.event_id
+            session = request.environ.get('beaker.session')
+            email = session['user']['email']
+            self.event_service.remove_participant(event_id, email)
+
             # renderiza a tela com QR Code embutido
             return self.render('payment_success', payment=payment, qr_code=qr_url)
 
@@ -122,8 +130,7 @@ class PaymentController(BaseController):
 
         return "Erro ao confirmar reembolso"
 
-    # esse método foi modificado múltiplas vezes para correção de erros, então ficar ligado no que ele pode dar
-    def confirm_payment(self, payment_id):
+    def confirm_payment(self, payment_id): 
         if self.payment_service.mark_as_paid(payment_id):
             payment = self.payment_service.get_by_id(payment_id)
             
@@ -141,7 +148,13 @@ class PaymentController(BaseController):
             qr.save(buffer, format="PNG")
             qr_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
             qr_url = f"data:image/png;base64,{qr_base64}"
-            
+
+            #AQUI O USER ENTRA NO EVENTO
+            event_id = payment.event_id
+            session = request.environ.get('beaker.session')
+            email = session['user']['email']
+            self.event_service.add_participant(event_id, email) 
+
             # renderiza a tela com QR Code embutido
             return self.render('payment_success', payment=payment, qr_code=qr_url)
 

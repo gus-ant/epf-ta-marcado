@@ -51,6 +51,7 @@ class UserService:
         return self.user_model.get_by_id(user_id) #usa o metodo de user.py
     
     def get_by_email(self, email):
+        self.user_model.users = self.user_model._load() #atualiza
         return self.user_model.get_by_email(email) #usa o metodo de user.py
 
 

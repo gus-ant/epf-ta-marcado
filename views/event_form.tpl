@@ -58,7 +58,7 @@
       <!-- Capacidade -->
       <div class="form-group">
         <label for="max_capacity">Capacidade Máxima:</label>
-        <input type="number" id="max_capacity" name="max_capacity" min="1" required 
+        <input type="number" id="max_capacity" name="max_capacity" min="1" step="1" required 
                value="{{event.max_capacity if event else 1}}">
       </div>
 

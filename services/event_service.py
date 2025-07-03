@@ -13,12 +13,12 @@ class EventService:
         self.event_model._load() #atualiza o sistema quando criar um evento novo
 
     def get_all(self):
-        self.event_model._load()
+        self.event_model.events = self.event_model._load()
         events = self.event_model.get_all()
         return events
     
     def get_by_id(self, event_id):
-        self.event_model._load()
+        self.event_model.events = self.event_model._load()
         return self.event_model.get_by_id(event_id)
     
     def get_by_owner_email(self, event_owner_email):
@@ -70,7 +70,7 @@ class EventService:
         local = request.forms.get('local')
         date = request.forms.get('date')
         price = request.forms.get('price')
-        max_capacity = request.forms.get('max_capacity')
+        max_capacity = int(request.forms.get('max_capacity'))
         time = request.forms.get('time')
         description = request.forms.get('description')
 
