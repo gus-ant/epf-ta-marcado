@@ -5,7 +5,7 @@
         "user_email": "g@gmail.com",
         "amount": 14.0,
         "event_name": "",
-        "status": "pending",
+        "status": "refund_requested",
         "timestamp": "2025-06-25T19:40:08.072106"
     },
     {
@@ -14,7 +14,7 @@
         "user_email": "g@gmail.com",
         "amount": 15.0,
         "event_name": "",
-        "status": "paid",
+        "status": "refunded",
         "timestamp": "2025-06-25T19:40:08.072145"
     },
     {
@@ -23,7 +23,7 @@
         "user_email": "g@gmail.com",
         "amount": 10.0,
         "event_name": "",
-        "status": "pending",
+        "status": "cancelled",
         "timestamp": "2025-06-26T10:30:07.136895"
     },
     {
@@ -32,7 +32,7 @@
         "user_email": "g@gmail.com",
         "amount": 50.0,
         "event_name": "",
-        "status": "pending",
+        "status": "cancelled",
         "timestamp": "2025-06-26T10:30:07.136895"
     },
     {
@@ -50,7 +50,7 @@
         "user_email": "g@gmail.com",
         "amount": 6969.0,
         "event_name": "",
-        "status": "pending",
+        "status": "paid",
         "timestamp": "2025-06-26T10:30:07.136895"
     },
     {
@@ -59,7 +59,7 @@
         "user_email": "g@gmail.com",
         "amount": 0.0,
         "event_name": "",
-        "status": "paid",
+        "status": "refunded",
         "timestamp": "2025-06-26T10:30:07.136895"
     },
     {

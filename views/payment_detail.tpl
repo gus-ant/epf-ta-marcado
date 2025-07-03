@@ -7,34 +7,61 @@
 
     % if payment:
       <ul class="payment-info">
+        <li><strong>Nome do evento:</strong> {{payment.event_name}}</li>
         <li><strong>ID do Pagamento:</strong> {{payment.id}}</li>
         <li><strong>ID do Evento:</strong> {{payment.event_id}}</li>
         <li><strong>Email do Usuário:</strong> {{payment.user_email}}</li>
         <li><strong>Valor:</strong> R$ {{payment.amount}}</li>
         <li>
           <strong>Status:</strong> 
-          <span class="badge {{'paid' if payment.status == 'paid' else 'pending'}}">
-            {{'Pago' if payment.status == 'paid' else 'Pendente'}}
-          </span>
+          % if payment.status == 'paid':
+            <span style="color: green;">✅ Pago</span>
+          % elif payment.status == 'pending':
+            <span style="color: orange;">⏳ Pendente</span>
+          % elif payment.status == 'refund_requested':
+            <span style="color: darkblue;">🔄 Reembolso em andamento</span>
+          % elif payment.status == 'refunded':
+            <span style="color: red;">💸 Reembolsado</span>
+          % elif payment.status == 'cancelled':
+            <span style="color: red;">❌ Cancelado</span> 
+          % else:
+            <span>{{payment.status}}</span>
+          % end
         </li>
       </ul>
 
-      % if payment.status != 'paid':
+      <!--as diferentes açoes dependendo do estado do pagamento-->
+
+      % if payment.status == 'pending':
     <form action="/payments/{{payment.id}}/confirm" method="POST">
-        <button type="submit">Confirmar Pagamento</button>
+        <button type="submit" class="btn" style="background-color: green; color: white;">✅ Confirmar Pagamento</button>
     </form>
-    % else:
-        <p>✅ Pagamento confirmado!</p>
-    
+    <form action="/payments/{{payment.id}}/cancel" method="POST">
+      <button type="submit" class="btn" style="background-color: red; color: white;">❌ Cancelar Pagamento</button>
+    </form>
+
+      % elif payment.status == 'paid':
+      <p>✅ Pagamento confirmado!</p>
         % if qr_code:
             <h3>Seu Ingresso (QR Code):</h3>
-            <img src="{{qr_code}}" alt="QR Code do Ingresso">
+            <img src="data:image/png;base64,{{qr_code}}" alt="QR Code do ingresso">
         % end
-    % end
+        <form action="/payments/{{payment.id}}/request_refund" method="POST" style="margin-top: 10px;">
+          <button type="submit" class="btn" style="background-color: orange; color: white;">🔁 Solicitar Reembolso</button>
+        </form>
 
-    % if qr_code:
-    <img src="data:image/png;base64,{{qr_code}}" alt="QR Code do ingresso">
-  % end   
+      % elif payment.status == 'refund_requested':
+        <p>🔄 Seu reembolso está em andamento...</p>
+        <form action="/payments/{{payment.id}}/confirm_refund" method="POST">
+          <button type="submit" class="btn" style="background-color: blue; color: white;">💸 Confirmar Reembolso</button>
+        </form>
+
+      % elif payment.status == 'refunded':
+        <p>💸 Este pagamento foi reembolsado com sucesso.</p>
+
+      % elif payment.status == 'cancelled':
+        <p>❌ Este pagamento foi cancelado.</p>
+      % end
     % else:
       <p class="alert">⚠️ Pagamento não encontrado.</p>
     % end
