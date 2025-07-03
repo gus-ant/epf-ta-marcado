@@ -24,6 +24,7 @@ class EventController(BaseController):
         self.app.route('/events/<event_id:int>/join', method='POST', callback=self.join_event)
         self.app.route('/events/<event_id:int>', method='GET', callback=self.view_event)
         self.app.route('/events/<event_id:int>/leave', method='POST', callback=self.exit_event)
+        self.app.route('/events/search', method='GET', callback=self.search_event)
 
     def list_events(self):
         session = request.environ.get('beaker.session')
@@ -160,6 +161,21 @@ class EventController(BaseController):
         if not event:
             return "Evento não encontrado"
         return self.render('event_detail', event=event, user=user)
+
+    def search_event(self):
+        pesquisa = request.query.get("q", "").lower()
+
+        # para buscar todos os eventos
+        eventos = self.event_service.get_all()
+
+        eventos_filtrados = [
+            e for e in eventos
+            if pesquisa in str(e.name).lower() or
+               pesquisa in str(e.local).lower() or
+               pesquisa in str(e.description).lower()
+        ]
+        
+        return self.render('event_search', events=eventos_filtrados, query=pesquisa)
 
 
 event_routes = Bottle()
