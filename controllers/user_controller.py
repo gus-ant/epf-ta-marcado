@@ -87,7 +87,7 @@ class UserController(BaseController): #herda de BaseController
         user = self.user_service.get_by_email(email)
         payments = self.payment_service.get_all_from_user(email)
 
-        return self.render('payments', user=user, payments=payments)
+        return self.render('payments', user=user, payments=payments[::-1]) #envia a lista ao contrario pra facilitar visualização 
 
 
     def edit_user(self, user_id): #serve pra editar um usuario existente, usa o id
