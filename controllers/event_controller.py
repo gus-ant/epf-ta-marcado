@@ -50,7 +50,7 @@ class EventController(BaseController):
         if email in self.event_service.get_participants(event.id):
             return "Já participa do evento"
 
-        if event.price >0:
+        if event.price == None or event.price > 0:
             payment = self.payment_service.create_payment(
                 event_id=event.id,
                 user_email=email,
@@ -60,7 +60,7 @@ class EventController(BaseController):
         payment = self.payment_service.create_payment(
             event_id=event.id,
             user_email=email,
-            amount=0
+            amount= 0
         )
         return redirect(f'/payments/{int(payment.id)}')
 

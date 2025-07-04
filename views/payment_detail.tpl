@@ -12,7 +12,9 @@
           <li><strong>ID do Pagamento:</strong> {{payment.id}}</li>
           <li><strong>ID do Evento:</strong> {{payment.event_id}}</li>
           <li><strong>Email do Usuário:</strong> {{payment.user_email}}</li>
-          <li><strong>Valor:</strong> R$ {{payment.amount}}</li>
+          % if payment.amount != None:
+            <li><strong>Valor:</strong> R$ {{'%.2f' % payment.amount}}</li>
+          % end
           <li>
             <strong>Status:</strong> 
             % if payment.status == 'paid':

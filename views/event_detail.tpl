@@ -30,10 +30,10 @@
         <div class="event-info-box">
           <h3>Informações do Evento</h3>
           <ul>
-            % if event.price == 0:
+            % if event.price == 0 or event.price == None:
               <li><strong>Entrada:</strong> Grátis</li>
             % else:
-              <li><strong>Valor:</strong> R$ {{event.price}}</li>
+              <li><strong>Valor:</strong> R$ {{'%.2f' % event.price}}</li>
             % end
             <li><strong>Capacidade:</strong> {{event.current_capacity}} / {{event.max_capacity}}</li>
             <li><strong>Email do organizador:</strong> {{event.owner_email}}</li>

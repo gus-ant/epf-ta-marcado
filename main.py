@@ -12,8 +12,8 @@ if __name__ == '__main__':
 #melhorar formatacao de /payments (ta tudo mto junto)
 #editar payment_success
 #adm poder ver todos os pagamentos dos eventos dele
-
-#CRIEI UM ADM, FUI NA PAGINA DE EVENTOS E NÃO APARECEU A OPÇÃO DE FAZER EVENTO (SÓ QUANDO DERRUBA E VOLTA O SERVER)
+#COLOCAR O STYLE NO STYLE.CSS EM VEZ DE LAYOUT
+#COMEÇAR O README
 
 #TEMOS QUE MUDAR ONDE PUXA POR EMAIL PRA PUXAR POR ID (explicação):
 #- quando puxa por email, e se o user fizer a conta, apagar e fizer outra conta com o mesmo email, algumas infos podem ser puxadas do email antigo

@@ -28,10 +28,10 @@
             <h3><a href="/events/{{event.id}}">{{event.name}}</a></h3>
             <p><strong>Local:</strong> {{event.local}}</p>
 
-            % if event.price == 0:
+            % if event.price == 0 or None:
               <p><strong>Entrada grátis</strong></p>
             % else:
-              <p><strong>Preço:</strong> R$ {{event.price}}</p>
+              <p><strong>Preço:</strong> R$ {{'%.2f' % event.price}}</p>
             % end
 
             <a href="/events/{{event.id}}" class="btn">Ver Detalhes</a>
