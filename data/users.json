@@ -94,13 +94,5 @@
         "birthdate": "3543-05-04",
         "password": "123123123",
         "adm": false
-    },
-    {
-        "id": 12,
-        "name": "GUGUzai",
-        "email": "m@hotmail.com",
-        "birthdate": "2025-06-29",
-        "password": "123123123",
-        "adm": false
     }
 ]

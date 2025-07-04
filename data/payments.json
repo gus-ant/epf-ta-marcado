@@ -637,41 +637,5 @@
         "event_name": "3",
         "status": "refunded",
         "timestamp": "2025-07-03T12:32:27.954941"
-    },
-    {
-        "id": 72,
-        "event_id": 35,
-        "user_email": "t@gmail.com",
-        "amount": 0,
-        "event_name": "evento fds",
-        "status": "refunded",
-        "timestamp": "2025-07-03T19:20:41.792831"
-    },
-    {
-        "id": 73,
-        "event_id": 11,
-        "user_email": "t@gmail.com",
-        "amount": null,
-        "event_name": "",
-        "status": "pending",
-        "timestamp": "2025-07-03T23:41:49.997918"
-    },
-    {
-        "id": 74,
-        "event_id": 11,
-        "user_email": "t@gmail.com",
-        "amount": null,
-        "event_name": "",
-        "status": "paid",
-        "timestamp": "2025-07-03T23:44:11.608446"
-    },
-    {
-        "id": 75,
-        "event_id": 3,
-        "user_email": "t@gmail.com",
-        "amount": 0,
-        "event_name": "Feira de Tecnologia",
-        "status": "refunded",
-        "timestamp": "2025-07-03T23:46:27.585174"
     }
 ]
