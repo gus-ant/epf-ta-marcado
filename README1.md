@@ -1,8 +1,22 @@
 #  Tá Marcado
 
-Sistema de gestão e compra de ingressos para eventos, com suporte a geração de QR Code como ingresso, login de usuários e painel administrativo. Desenvolvido com Python (Bottle), HTML/CSS e persistência em JSON.
+## ✅ Objetivo:
+O projeto Tá Marcado é um sistema de gestão e compra de ingressos para eventos, que tem suporte a geração de QR Code como ingresso, login de usuários e painel administrativo e foi desenvolvido com Python (Bottle), HTML/CSS e persistência em JSON. 
 
-![Python](https://img.shields.io/badge/python-3.12-blue)
+Esse projeto tem como objetivo aplicar os conceitos de Programação Orientada a Objetos na construção de uma aplicação web realista e funcional utilizando Python com o microframework Bottle. A proposta é desenvolver um sistema completo de gerenciamento de eventos e vendas de ingressos, com funcionalidades como:
+
+    Criação e administração de eventos;
+
+    Cadastro e login de usuários com controle de permissões (cliente e administrador);
+
+    Compra de ingressos com geração de QR Code;
+
+    Interface com templates e persistência de dados em arquivos JSON.
+
+A aplicação serve como base didática e extensível para estudos práticos de organização em camadas (MVC), uso de sessões, tratamento de exceções, manipulação de arquivos e interação com usuários por meio de uma interface web.
+
+
+
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 
 ---
@@ -159,13 +173,9 @@ Estão no arquivo requirements.txt com:
 
     Filtros avançados na busca
 
-### 📄 Licença
-
-Este projeto está licenciado sob a licença MIT.
 
 ### 🙋‍♂️ Autor
 
-Feito com dedicação por Gustavo Rodrigues
+Feito com dedicação por Gabriel Velho e Gustavo Antonio
 
 📚 Engenharia - FGA/UnB
-🔗 GitHub | LinkedIn
