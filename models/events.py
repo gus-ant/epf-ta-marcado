@@ -104,6 +104,7 @@ class EventModel:
         return self.events
     
     def get_by_id(self, event_id:int):
+        self.events = self._load()
         return next((e for e in self.events if e.id == event_id), None)
     #retorna o evento com o mesmo id, caso não exista, None
     #next é otimizado, por parar quando acha

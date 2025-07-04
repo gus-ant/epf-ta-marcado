@@ -32,12 +32,16 @@ class PaymentController(BaseController):
         
         pid = int(payment_id)
         
-        print(pid)
+        
         payment = self.payment_service.get_by_id(pid)
-        print(payment)
+
         if not payment:
             # adição do método raise paymentexception
             raise PaymentNotFoundException()
+        
+        payment = self.payment_service.get_by_event_participant(payment.event_id,payment.user_email)
+        if payment == None:
+            payment = self.payment_service.get_by_id(pid)
 
         if payment.amount == None:
             payment.amount = 0
