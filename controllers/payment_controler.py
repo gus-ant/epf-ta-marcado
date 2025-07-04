@@ -39,6 +39,8 @@ class PaymentController(BaseController):
             # adição do método raise paymentexception
             raise PaymentNotFoundException()
 
+        if payment.amount == None:
+            payment.amount = 0
 
         ticket_data = {
                 "evento": f"{payment.event_id}",
@@ -59,6 +61,10 @@ class PaymentController(BaseController):
         if self.payment_service.mark_as_cancelled(payment_id):
             payment = self.payment_service.get_by_id(payment_id)
                 # gera o QR Code com dados do ingresso
+
+            if payment.amount == None:
+                payment.amount = 0
+
             ticket_data = {
                 "evento": f"{payment.event_id}",
                 "usuario": payment.user_email,
@@ -135,6 +141,10 @@ class PaymentController(BaseController):
             payment = self.payment_service.get_by_id(payment_id)
             
             # gera o QR Code com dados do ingresso
+
+            if payment.amount == None:
+                payment.amount = 0
+
             ticket_data = {
                 "evento": f"{payment.event_id}",
                 "usuario": payment.user_email,

@@ -609,5 +609,21 @@
         "participants_emails": [
             ""
         ]
+    },
+    {
+        "id": 37,
+        "name": "Revisão de Menção",
+        "local": "Casa do Russo",
+        "date": "2025-08-01",
+        "price": 0.0,
+        "max_capacity": 1,
+        "time": "21:03",
+        "current_capacity": 1,
+        "owner_email": "ta@gmail.com",
+        "description": "asd",
+        "cover": null,
+        "participants_emails": [
+            ""
+        ]
     }
 ]
