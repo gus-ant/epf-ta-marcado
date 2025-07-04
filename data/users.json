@@ -94,13 +94,5 @@
         "birthdate": "3543-05-04",
         "password": "123123123",
         "adm": false
-    },
-    {
-        "id": 12,
-        "name": "adimililson",
-        "email": "admnovo@gmail.com",
-        "birthdate": "1999-04-23",
-        "password": "123123123",
-        "adm": true
     }
 ]

@@ -9,6 +9,7 @@ if __name__ == '__main__':
 #fazer:
 #adm poder ver todos os pagamentos dos eventos dele
 
+
 #fazer as coisas pra eventos expirados:
 # não aparecer nos top 15 nem no todos os eventos
 # quando for ver details aparecer na data EXPIRADO em vermelho ao lado da data
@@ -27,6 +28,9 @@ if __name__ == '__main__':
 #ver se o user sai de todos os eventos
 #rever as coisas que puxam user por email e trocar pra puxar por ID 
 #}
+#COLOCAR O STYLE NO STYLE.CSS EM VEZ DE LAYOUT
+#COMEÇAR O README
+
 
 #TEMOS QUE MUDAR ONDE PUXA POR EMAIL PRA PUXAR POR ID (explicação):
 #- quando puxa por email, e se o user fizer a conta, apagar e fizer outra conta com o mesmo email, algumas infos podem ser puxadas do email antigo

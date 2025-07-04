@@ -14,7 +14,7 @@ class PaymentService:
         new_id = old_id+1
         event = self.event_model.get_by_id(event_id)
         event_name = event.name
-        if amount >0:
+        if amount == None or  amount > 0:
             payment = Payment(new_id, event_id, user_email, amount, event_name)
         else:
             payment = Payment(new_id, event_id, user_email, 0, event_name, 'paid')
