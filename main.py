@@ -9,7 +9,24 @@ if __name__ == '__main__':
 #fazer:
 #adm poder ver todos os pagamentos dos eventos dele
 
-#CRIEI UM ADM, FUI NA PAGINA DE EVENTOS E NÃO APARECEU A OPÇÃO DE FAZER EVENTO (SÓ QUANDO DERRUBA E VOLTA O SERVER)
+#fazer as coisas pra eventos expirados:
+# não aparecer nos top 15 nem no todos os eventos
+# quando for ver details aparecer na data EXPIRADO em vermelho ao lado da data
+# não poder pedir reembolso do pagamento
+
+#na /events fazer nessa ordem:
+# top 15 eventos com mais pessoas inscritas (vai entrar no lugar do like)
+# top 15 eventos mais proximos (data)
+# todos os eventos
+# eventos expirados
+
+#checar o que acontece quando deleta conta
+#{
+#avisar quando for deletar que ainda tem pagamentos possiveis em andamento
+#fazer uma pagina pra confirmar o delete, onde o user tem que informar a senha e confirmar (botão com timer)
+#ver se o user sai de todos os eventos
+#rever as coisas que puxam user por email e trocar pra puxar por ID 
+#}
 
 #TEMOS QUE MUDAR ONDE PUXA POR EMAIL PRA PUXAR POR ID (explicação):
 #- quando puxa por email, e se o user fizer a conta, apagar e fizer outra conta com o mesmo email, algumas infos podem ser puxadas do email antigo
