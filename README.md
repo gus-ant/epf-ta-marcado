@@ -1,6 +1,6 @@
 #  Tá Marcado
 
- ![Logo Tá Marcado](/epf-ta-marcado/static/img/new_logo.png)
+ ![Logo Tá Marcado](/static/img/new_logo.png)
 
 ## ✅ Objetivo:
 O projeto Tá Marcado é um sistema de gestão e compra de ingressos para eventos, que tem suporte a geração de QR Code como ingresso, login de usuários e painel administrativo e foi desenvolvido com Python (Bottle), HTML/CSS e persistência em JSON. 
