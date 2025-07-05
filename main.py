@@ -8,15 +8,11 @@ if __name__ == '__main__':
 
 
 #fazer as coisas pra eventos expirados:
-# não aparecer nos top 15 nem no todos os eventos
 # quando for ver details aparecer na data EXPIRADO em vermelho ao lado da data
 # não poder pedir reembolso do pagamento
 
-#na /events fazer nessa ordem:
-# top 15 eventos com mais pessoas inscritas (vai entrar no lugar do like)
-# top 15 eventos mais proximos (data)
-# todos os eventos
-# eventos expirados
+#nao permitir o user entrar em um evento encerrado OU com maximo excedido
+#quando não couber mais participantes colocar isso em event details e quando tiver obsoleto colocar tmb
 
 #checar o que acontece quando deleta conta
 #{

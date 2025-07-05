@@ -33,8 +33,11 @@ class EventController(BaseController):
             email = session['user']['email']
             user = self.user_service.get_by_email(email)
 
-        events = self.event_service.get_all()
-        return self.render('events', events=events, user=user)
+        top15_events = self.event_service.get_top_15_events()
+        next_15_events = self.event_service.get_15_next_events()
+        future_events = self.event_service.get_future_events()
+        past_events = self.event_service.get_past_events()
+        return self.render('events', top15_events=top15_events, next_15_events=next_15_events, future_events=future_events, past_events=past_events, user=user)
     
     #join event será modificado:
     #agora só cria o pagamento, para entrar no evento, deve confirmar o pagamento (payment_controller)

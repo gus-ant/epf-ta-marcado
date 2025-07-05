@@ -2,6 +2,7 @@ import json
 import os
 from dataclasses import dataclass, asdict
 from typing import List
+from datetime import datetime
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 # Define o diretório onde os arquivos de dados serão armazenados
@@ -144,6 +145,40 @@ class EventModel:
         self.events = self._load()
     
     def get_participants(self, event_id:int):
-        self._load()
+        self.events = self._load()
         event = self.get_by_id(event_id)
         return event.participants_emails if event else []  
+    
+    def get_participants_number(self, event_id:int):
+        self.events = self._load()
+        event = self.get_by_id(event_id)
+        if not event:
+            return 0
+        return len([e for e in event.participants_emails if e.strip()]) #só pega emails não vazios
+    
+    def get_15_next_events(self):
+        self.events = self._load()
+        hoje = datetime.today().date() #pega o dia atual
+        eventos_futuros = [e for e in self.events if datetime.strptime(e.date, "%Y-%m-%d").date() >= hoje] #só eventos que ainda não ocorreram
+        eventos_em_ordem = sorted(eventos_futuros, key=lambda e: datetime.strptime(e.date, "%Y-%m-%d").date()) #ordena por data
+        return eventos_em_ordem[:15] #retorna os 15 mais novos 
+    
+    def get_future_events(self):
+        hoje = datetime.today().date()
+        return [e for e in self.events if datetime.strptime(e.date, "%Y-%m-%d").date() >= hoje]
+    
+    def get_past_events(self):
+        hoje = datetime.today().date()
+        return [e for e in self.events if datetime.strptime(e.date, "%Y-%m-%d").date() < hoje]
+    
+    def get_top_15_events(self):
+        self.events = self._load()
+        eventos = self.get_future_events() #só usa eventos que ainda n ocorreram
+
+        eventos_ordem_participantes = sorted(
+            eventos, #usa eventos
+            key=lambda e: self.get_participants_number(e.id), #ordena por quantos participantes tem
+            reverse=True #inverte, pra manter a ordem certa
+        )
+
+        return eventos_ordem_participantes[:15]

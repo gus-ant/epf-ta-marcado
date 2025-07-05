@@ -34,10 +34,13 @@
       </div>
 
       <!-- Data -->
+      <!-- minimo, dia atual e maximo 10 anos no futuro-->
       <div class="form-group">
         <label for="date">Data:</label>
         <input type="date" id="date" name="date" required 
-               value="{{event.date if event else ''}}">
+               value="{{event.date if event else ''}}"
+               min="{{datetime.today().strftime('%Y-%m-%d')}}"
+               max="{{(datetime.today() + timedelta(days=365*10)).strftime('%Y-%m-%d')}}">
       </div>
 
       <!-- Hora -->

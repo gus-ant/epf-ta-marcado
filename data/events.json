@@ -173,22 +173,6 @@
         ]
     },
     {
-        "id": 11,
-        "name": null,
-        "local": null,
-        "date": null,
-        "price": null,
-        "max_capacity": null,
-        "time": null,
-        "current_capacity": null,
-        "owner_email": "falta aqui",
-        "description": null,
-        "cover": "",
-        "participants_emails": [
-            ""
-        ]
-    },
-    {
         "id": 12,
         "name": "evento sem foto",
         "local": "Piaui",
@@ -464,7 +448,7 @@
         "id": 28,
         "name": "123123",
         "local": "1231231",
-        "date": "123123-03-21",
+        "date": "1231-03-21",
         "price": 123123.0,
         "max_capacity": 123123,
         "time": "12:31",
@@ -514,7 +498,7 @@
         "id": 31,
         "name": "simsimsim",
         "local": "sim",
-        "date": "123987-03-12",
+        "date": "1239-03-12",
         "price": 0,
         "max_capacity": 333,
         "time": "10:48",

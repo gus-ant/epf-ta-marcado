@@ -119,4 +119,20 @@ class EventService:
         return self.event_model.get_participants(event_id)     
         #retorna uma lista com todos os users que estiverem no evento
 
+    def get_participants_number(self, event_id:int):
+        return self.event_model.get_participants_number(event_id)
+    
+    def get_15_next_events(self):
+        return self.event_model.get_15_next_events()
+    
+    def get_future_events(self):
+        return self.event_model.get_future_events()
+    
+    def get_past_events(self):
+        return self.event_model.get_past_events()
+    
+    def get_top_15_events(self):
+        return self.event_model.get_top_15_events()
+    
+
     
