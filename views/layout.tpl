@@ -16,7 +16,7 @@
 <body>
   <nav class="navbar">
       <a class="navbar-brand" href="/">
-        <img src="/static/img/logo.png" alt="Tá Marcado Logo" style="height: 36px;" />
+        <img src="/static/img/new_logo.png" alt="Tá Marcado Logo" style="height: 36px;" />
         Tá Marcado
       </a>
 

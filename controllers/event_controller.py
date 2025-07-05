@@ -142,10 +142,9 @@ class EventController(BaseController):
 
                 self.event_service.add_event(name, local, date, time, price, max_capacity, owner_email, description, cover=filename)
 
-                return self.redirect('/user')
-            except Exception as e:
-                
+                return redirect('/user')
 
+            except Exception as e:
                 return self.render('event_form', action='/events/create', event=None, error=str(e))
 
             

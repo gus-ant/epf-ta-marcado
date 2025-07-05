@@ -441,7 +441,8 @@
         "cover": null,
         "participants_emails": [
             "",
-            "g@gmail.com"
+            "g@gmail.com",
+            "t@gmail.com"
         ]
     },
     {
@@ -622,6 +623,198 @@
         "current_capacity": 1,
         "owner_email": "ta@gmail.com",
         "description": "asd",
+        "cover": null,
+        "participants_emails": [
+            ""
+        ]
+    },
+    {
+        "id": 41,
+        "name": "Pizza Boa XIV",
+        "local": "pizzaria",
+        "date": "2025-07-25",
+        "price": 0.0,
+        "max_capacity": 1,
+        "time": "22:22",
+        "current_capacity": 1,
+        "owner_email": "ta@gmail.com",
+        "description": "mas",
+        "cover": "a152ebd21a0d41ee8d169a8ee301fb0f.jpg",
+        "participants_emails": [
+            ""
+        ]
+    },
+    {
+        "id": 42,
+        "name": "a312123",
+        "local": "aasdd",
+        "date": "0213-04-10",
+        "price": 3120.0,
+        "max_capacity": 1,
+        "time": "12:03",
+        "current_capacity": 1,
+        "owner_email": "ta@gmail.com",
+        "description": "mm",
+        "cover": null,
+        "participants_emails": [
+            ""
+        ]
+    },
+    {
+        "id": 43,
+        "name": "a312123",
+        "local": "aasdd",
+        "date": "0213-04-10",
+        "price": 3120.0,
+        "max_capacity": 1,
+        "time": "12:03",
+        "current_capacity": 1,
+        "owner_email": "ta@gmail.com",
+        "description": "mm",
+        "cover": null,
+        "participants_emails": [
+            ""
+        ]
+    },
+    {
+        "id": 44,
+        "name": "a312123",
+        "local": "aasdd",
+        "date": "0213-04-10",
+        "price": 3120.0,
+        "max_capacity": 1,
+        "time": "12:03",
+        "current_capacity": 1,
+        "owner_email": "ta@gmail.com",
+        "description": "mm",
+        "cover": null,
+        "participants_emails": [
+            ""
+        ]
+    },
+    {
+        "id": 45,
+        "name": "a312123",
+        "local": "aasdd",
+        "date": "0213-04-10",
+        "price": 3120.0,
+        "max_capacity": 1,
+        "time": "12:03",
+        "current_capacity": 1,
+        "owner_email": "ta@gmail.com",
+        "description": "mm",
+        "cover": null,
+        "participants_emails": [
+            ""
+        ]
+    },
+    {
+        "id": 46,
+        "name": "asd",
+        "local": "asd",
+        "date": "2900-01-20",
+        "price": 123213.0,
+        "max_capacity": 122,
+        "time": "23:21",
+        "current_capacity": 122,
+        "owner_email": "ta@gmail.com",
+        "description": "nmkjgig",
+        "cover": null,
+        "participants_emails": [
+            ""
+        ]
+    },
+    {
+        "id": 47,
+        "name": "asd",
+        "local": "asd",
+        "date": "2900-01-20",
+        "price": 123213.0,
+        "max_capacity": 122,
+        "time": "23:21",
+        "current_capacity": 122,
+        "owner_email": "ta@gmail.com",
+        "description": "nmkjgig",
+        "cover": null,
+        "participants_emails": [
+            ""
+        ]
+    },
+    {
+        "id": 48,
+        "name": "sdqwdqwd",
+        "local": "sdqwdqwd2",
+        "date": "2222-12-22",
+        "price": 222.0,
+        "max_capacity": 1,
+        "time": "12:32",
+        "current_capacity": 1,
+        "owner_email": "ta@gmail.com",
+        "description": "sdqwdqwd",
+        "cover": null,
+        "participants_emails": [
+            ""
+        ]
+    },
+    {
+        "id": 49,
+        "name": "wdwwwdw3",
+        "local": "dsdasdwdwd",
+        "date": "2222-02-12",
+        "price": 231231230.0,
+        "max_capacity": 1,
+        "time": "12:02",
+        "current_capacity": 1,
+        "owner_email": "ta@gmail.com",
+        "description": "asdasdsadad",
+        "cover": null,
+        "participants_emails": [
+            ""
+        ]
+    },
+    {
+        "id": 50,
+        "name": "wdwwwdw3",
+        "local": "dsdasdwdwd",
+        "date": "2222-02-12",
+        "price": 231231230.0,
+        "max_capacity": 1,
+        "time": "12:02",
+        "current_capacity": 1,
+        "owner_email": "ta@gmail.com",
+        "description": "asdasdsadad",
+        "cover": null,
+        "participants_emails": [
+            ""
+        ]
+    },
+    {
+        "id": 51,
+        "name": "wdwwwdw3",
+        "local": "dsdasdwdwd",
+        "date": "2222-02-12",
+        "price": 231231230.0,
+        "max_capacity": 1,
+        "time": "12:02",
+        "current_capacity": 1,
+        "owner_email": "ta@gmail.com",
+        "description": "asdasdsadad",
+        "cover": null,
+        "participants_emails": [
+            ""
+        ]
+    },
+    {
+        "id": 52,
+        "name": "Festa da IAOP",
+        "local": "Festa da IAOP",
+        "date": "0022-03-02",
+        "price": 222.0,
+        "max_capacity": 1,
+        "time": "22:02",
+        "current_capacity": 1,
+        "owner_email": "ta@gmail.com",
+        "description": "asdasd",
         "cover": null,
         "participants_emails": [
             ""
