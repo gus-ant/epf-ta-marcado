@@ -17,8 +17,20 @@
       <div class="event-content-box">
         <h1 class="event-title">{{event.name}}</h1>
         
-        <p class="event-meta">
-          📅 {{event.date}} às {{event.time}} <br>
+        % from datetime import datetime, timedelta
+        % event_date = datetime.strptime(event.date, '%Y-%m-%d').date()
+        % today = datetime.today().date()
+        % if event_date < today:
+            % label = '<span style="color: red; font-weight: bold;">(EXPIRADO)</span>'
+        % elif event_date == today:
+            % label = '<span style="color: green; font-weight: bold;">(HOJE)</span>'
+        % elif event_date == today + timedelta(days=1):
+            % label = '<span style="color: orange; font-weight: bold;">(AMANHÃ)</span>'
+        % else:
+            % label = ''
+        % end
+        <p>
+          📅 {{event.date}} às {{event.time}} {{!label}} <br>
           📍 {{event.local}}
         </p>
 
@@ -35,28 +47,42 @@
             % else:
               <li><strong>Valor:</strong> R$ {{'%.2f' % event.price}}</li>
             % end
-            <li><strong>Capacidade:</strong> {{event.current_capacity}} / {{event.max_capacity}}</li>
+            <li>
+              <strong>Capacidade:</strong> {{event.current_capacity}} / {{event.max_capacity}}
+              % if event.current_capacity <= 0:
+                <span style="color: red; font-weight: bold; margin-left: 10px;">(Ingressos Esgotados)</span>
+              % end
+            </li>
             <li><strong>Email do organizador:</strong> {{event.owner_email}}</li>
           </ul>
         </div>
 
         <!-- Botões de interação -->
+        % expired = event_date < today
+        % sold_out = event.current_capacity <= 0
+
         <div class="event-actions">
-          % if user and not user.adm and user.email in event.participants_emails:
-            <p class="alert alert-success">✅ Você já participa do evento</p>
-            <form action="/events/{{event.id}}/leave" method="post">
-              <button type="submit" class="btn btn-danger">🚪 Sair do evento</button>
-            </form>
-          % elif user and not user.adm:
-            <form action="/events/{{event.id}}/join" method="post">
-              <button type="submit" class="btn btn-primary">❤️ Quero ir</button>
-            </form>
-          % elif user and user.adm:
-            <p class="alert alert-warning">⚠️ Para se inscrever, use uma conta de cliente</p>
+          % if expired:
+            <p class="alert alert-danger">⚠️ Evento Expirado. Inscrições encerradas.</p>
+          % elif sold_out:
+            <p class="alert alert-danger">⚠️ Acabaram os ingressos!</p>
           % else:
-            <form action="/events/{{event.id}}/join" method="post">
-              <button type="submit" class="btn btn-outline">🔐 Faça login para garantir seu ingresso</button>
-            </form>
+            % if user and not user.adm and user.email in event.participants_emails:
+              <p class="alert alert-success">✅ Você já participa do evento, Tá Marcado!</p>
+              <form action="/events/{{event.id}}/leave" method="post">
+                <button type="submit" class="btn btn-danger">🚪 Sair do evento</button>
+              </form>
+            % elif user and not user.adm:
+              <form action="/events/{{event.id}}/join" method="post">
+                <button type="submit" class="btn btn-primary">❤️ Quero ir</button>
+              </form>
+            % elif user and user.adm:
+              <p class="alert alert-warning">⚠️ Para se inscrever, use uma conta de usuario</p>
+            % else:
+              <form action="/events/{{event.id}}/join" method="post">
+                <button type="submit" class="btn btn-outline">🔐 Faça login para garantir seu ingresso</button>
+              </form>
+            % end
           % end
         </div>
 

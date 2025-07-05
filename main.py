@@ -5,14 +5,7 @@ if __name__ == '__main__':
     app.run()
     
 #LISTA TO-DO:
-
-
-#fazer as coisas pra eventos expirados:
-# quando for ver details aparecer na data EXPIRADO em vermelho ao lado da data
-# não poder pedir reembolso do pagamento
-
-#nao permitir o user entrar em um evento encerrado OU com maximo excedido
-#quando não couber mais participantes colocar isso em event details e quando tiver obsoleto colocar tmb
+#formatar o forms do evento pro formato R$
 
 #checar o que acontece quando deleta conta
 #{
@@ -49,5 +42,3 @@ if __name__ == '__main__':
 #--(podemos colocar como o clima vai estar no dia do evento)
 #quando um evento for apagado, mandar email pra todo mundo que se inscreveu E reembolsar
 #ter likes no evento (cada user só pode dar 1 like)
-
-

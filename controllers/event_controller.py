@@ -5,7 +5,9 @@ from services.user_service import UserService
 from services.payment_service import PaymentService
 from utils.decorators import login_required, admin_required
 from services.payment_service import PaymentService
+from datetime import datetime, timedelta
 import os, uuid
+
 
 UPLOAD_DIR = './static/uploads/event_covers' #local onde as capas de eventos são salvas
 
@@ -53,6 +55,9 @@ class EventController(BaseController):
         if email in self.event_service.get_participants(event.id):
             return "Já participa do evento"
 
+        if event.current_capacity <= 0:
+            return "Evento sem vagas disponíveis", 400
+    
         if event.price == None or event.price > 0:
             payment = self.payment_service.create_payment(
                 event_id=event.id,
@@ -117,7 +122,7 @@ class EventController(BaseController):
         session = request.environ['beaker.session'] #puxa o user logado
         email = session['user']['email']
         if request.method == 'GET':
-            return self.render('event_form', action='/events/create', event=None, error=None)
+            return self.render('event_form', action='/events/create', event=None, error=None, datetime=datetime, timedelta=timedelta)
         else:
             try:
                 name = request.forms.get('name')
@@ -148,8 +153,7 @@ class EventController(BaseController):
                 return self.redirect('/user')
             except Exception as e:
                 
-
-                return self.render('event_form', action='/events/create', event=None, error=str(e))
+                return self.render('event_form', action='/events/create', event=None, error=str(e), datetime=datetime, timedelta=timedelta)
 
             
     def view_event(self, event_id):
@@ -161,7 +165,7 @@ class EventController(BaseController):
         event = self.event_service.get_by_id(event_id)
         if not event:
             return "Evento não encontrado"
-        return self.render('event_detail', event=event, user=user)
+        return self.render('event_detail', event=event, user=user, datetime=datetime, timedelta=timedelta)
 
     def search_event(self):
         pesquisa = request.query.get("q", "").lower()
