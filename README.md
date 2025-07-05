@@ -41,10 +41,10 @@ A aplicação serve como base didática e extensível para estudos práticos de 
 ## 🧠 Tecnologias Utilizadas
 
 - **Backend:** Python + Bottle
-- **Templates:** Bottle `template()` com estilo Jinja2
+- **Templates:** Bottle `template()` com extensão .tpl
 - **Banco de Dados:** Simulação com arquivos `.json`
-- **Frontend:** HTML5, CSS3, Bootstrap
-- **Outros:** Beaker Session, QRCode e Pillow
+- **Frontend:** HTML, CSS, Bootstrap e Javascript
+- **Outros:** Beaker Session, QRCode, Pylint, Pillow, os e Qrcode
 
 ---
 
@@ -77,9 +77,17 @@ epf-ta-marcado/
 │ ├── layout.tpl
 │ ├── event_detail.tpl
 │ ├── event_search.tpl
+│ ├── events.tpl
+│ ├── helper-final.tpl
+│ ├── layout.tpl
 │ ├── payment_detail.tpl
+│ ├── payment_form.tpl
+│ ├── payment_succes.tpl
+│ ├── payments.tpl
+│ ├── tickets.tpl
+│ ├── user_form.tpl
 │ ├── user.tpl
-│ └── ...
+│ └── users.tpl
 │
 ├── static/ # CSS, imagens e assets
 │ ├── css/
@@ -88,12 +96,15 @@ epf-ta-marcado/
 │
 ├── utils/ # Funções utilitárias
 │ ├── decorators.py
+│ ├── id_tracker.py
 │ └── qr_code.py
 │
 └── data/ # Arquivos JSON com dados persistentes
 ├── users.json
 ├── events.json
+├── last_ids.json
 └── payments.json 
+
 ```
 
 
@@ -106,7 +117,6 @@ Ao confirmar o pagamento, o usuário recebe um QR Code com os dados do ingresso:
 🎭 Musical Broadway: O Fantasma da Ópera
 📅 Data: 19/02/2024 às 20:00
 📍 Local: Teatro Municipal
-🎟️ Ingresso: student /// Sugestão
 
 💰 Total: R$ 300.00
 
@@ -151,7 +161,8 @@ Estão no arquivo requirements.txt com:
     bottle
     beaker
     qrcode
-    Pillow
+    pillow
+    pylint
 
 ### 🧪 Testes manuais
 
@@ -176,8 +187,8 @@ Estão no arquivo requirements.txt com:
     Filtros avançados na busca
 
 
-### 🙋‍♂️ Autor
+### 🙋‍♂️ Autores
 
 Feito com dedicação por Gabriel Velho e Gustavo Antonio
 
-📚 Engenharia - FGA/UnB
+📚 Engenharia - FCTE/UnB
