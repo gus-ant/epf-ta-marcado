@@ -1,105 +1,183 @@
-# Projeto Template: POO com Python + Bottle + JSON
+#  Tá Marcado
 
-Este é um projeto de template educacional voltado para o ensino de **Programação Orientada a Objetos (POO)** do Prof. Lucas Boaventura, Universidade de Brasília (UnB).
+ ![Logo Tá Marcado](/static/img/new_logo.png)
 
-Utiliza o microframework **Bottle**. Ideal para uso em disciplinas introdutórias de Engenharia de Software ou Ciência da Computação.
+## ✅ Objetivo:
+O projeto Tá Marcado é um sistema de gestão e compra de ingressos para eventos, que tem suporte a geração de QR Code como ingresso, login de usuários e painel administrativo e foi desenvolvido com Python (Bottle), HTML/CSS e persistência em JSON. 
 
-## 💡 Objetivo
+Esse projeto tem como objetivo aplicar os conceitos de Programação Orientada a Objetos na construção de uma aplicação web realista e funcional utilizando Python com o microframework Bottle. A proposta é desenvolver um sistema completo de gerenciamento de eventos e vendas de ingressos, com funcionalidades como:
 
-Fornecer uma base simples, extensível e didática para construção de aplicações web orientadas a objetos com aplicações WEB em Python, ideal para trabalhos finais ou exercícios práticos.
+    Criação e administração de eventos;
+
+    Cadastro e login de usuários com controle de permissões (cliente e administrador);
+
+    Compra de ingressos com geração de QR Code;
+
+    Interface com templates e persistência de dados em arquivos JSON.
+
+A aplicação serve como base didática e extensível para estudos práticos de organização em camadas (MVC), uso de sessões, tratamento de exceções, manipulação de arquivos e interação com usuários por meio de uma interface web.
+
+
+
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 
 ---
 
-## 🗂 Estrutura de Pastas
+## 🚀 Funcionalidades
 
-```bash
-poo-python-bottle-template/
-├── app.py # Ponto de entrada do sistema
-├── config.py # Configurações e caminhos do projeto
-├── main.py # Inicialização da aplicação
-├── requirements.txt # Dependências do projeto
-├── README.md # Este arquivo
-├── controllers/ # Controladores e rotas
-├── models/ # Definição das entidades (ex: User)
-├── services/ # Lógica de persistência (JSON)
-├── views/ # Arquivos HTML (Bottle Templating)
-├── static/ # CSS, JS e imagens
-├── data/ # Arquivos JSON de dados
-└── .vscode/ # Configurações opcionais do VS Code
+- ✅ Cadastro e login de usuários (clientes e administradores)
+- 🔍 Busca de eventos por nome ou local (`/events/search?q=`)
+- 🎫 Compra de ingressos com QR Code gerado automaticamente
+- 📍 Detalhes completos do evento e endereço
+- 🧾 Detalhamento do pagamento e download do ingresso
+- 🔐 Proteção de rotas por tipo de usuário
+- 🖼️ Upload de imagem de capa para os eventos
+- 📑 Visualização do perfil com histórico de eventos
+- 📈 Painel do administrador para criação de eventos
+- ❤️ Curtidas nos eventos
+
+---
+
+## 🧠 Tecnologias Utilizadas
+
+- **Backend:** Python + Bottle
+- **Templates:** Bottle `template()` com estilo Jinja2
+- **Banco de Dados:** Simulação com arquivos `.json`
+- **Frontend:** HTML5, CSS3, Bootstrap
+- **Outros:** Beaker Session, QRCode e Pillow
+
+---
+
+## 📂 Estrutura de Pastas
+
+```
+
+epf-ta-marcado/
+│
+├── app.py # Inicialização da aplicação
+├── controllers/ # Controladores de rotas
+│ ├── auth_controller.py
+│ ├── base_controller.py
+│ ├── event_controller.py
+│ ├── payment_controller.py
+│ └── user_controller.py
+│
+├── models/ # Classes de domínio
+│ ├── event.py
+│ ├── payment.py
+│ └── user.py
+│
+├── services/ # Lógica de negócio
+│ ├── auth_service.py
+│ ├── event_service.py
+│ ├── payment_service.py
+│ └── user_service.py
+│
+├── views/ # Páginas .tpl (templates Bottle)
+│ ├── layout.tpl
+│ ├── event_detail.tpl
+│ ├── event_search.tpl
+│ ├── payment_detail.tpl
+│ ├── user.tpl
+│ └── ...
+│
+├── static/ # CSS, imagens e assets
+│ ├── css/
+│ ├── img/
+│ └── uploads/
+│
+├── utils/ # Funções utilitárias
+│ ├── decorators.py
+│ └── qr_code.py
+│
+└── data/ # Arquivos JSON com dados persistentes
+├── users.json
+├── events.json
+└── payments.json 
 ```
 
 
 ---
 
-## 📁 Descrição das Pastas
+## Exemplo de Ingresso com QR Code
 
-### `controllers/`
-Contém as classes responsáveis por lidar com as rotas da aplicação. Exemplos:
-- `user_controller.py`: rotas para listagem, adição, edição e remoção de usuários.
-- `base_controller.py`: classe base com utilitários comuns.
+Ao confirmar o pagamento, o usuário recebe um QR Code com os dados do ingresso:
 
-### `models/`
-Define as classes que representam os dados da aplicação. Exemplo:
-- `user.py`: classe `User`, com atributos como `id`, `name`, `email`, etc.
+🎭 Musical Broadway: O Fantasma da Ópera
+📅 Data: 19/02/2024 às 20:00
+📍 Local: Teatro Municipal
+🎟️ Ingresso: student /// Sugestão
 
-### `services/`
-Responsável por salvar, carregar e manipular dados usando arquivos JSON. Exemplo:
-- `user_service.py`: contém métodos como `get_all`, `add_user`, `delete_user`.
+💰 Total: R$ 300.00
 
-### `views/`
-Contém os arquivos `.tpl` utilizados pelo Bottle como páginas HTML:
-- `layout.tpl`: estrutura base com navegação e bloco `content`.
-- `users.tpl`: lista os usuários.
-- `user_form.tpl`: formulário para adicionar/editar usuário.
-
-### `static/`
-Arquivos estáticos como:
-- `css/style.css`: estilos básicos.
-- `js/main.js`: scripts JS opcionais.
-- `img/BottleLogo.png`: exemplo de imagem.
-
-### `data/`
-Armazena os arquivos `.json` que simulam o banco de dados:
-- `users.json`: onde os dados dos usuários são persistidos.
 
 ---
 
-## ▶️ Como Executar
+# 📦 Como executar:
 
-1. Crie o ambiente virtual na pasta fora do seu projeto:
+1. **Clone o repositório:**
+
 ```bash
-python -m venv venv
+git clone https://github.com/gus-ant/epf-ta-marcado.git
+cd epf-ta-marcado
+```
+
+### Crie e ative o ambiente virtual:
+
+```bash
+python3 -m venv venv
 source venv/bin/activate  # Linux/Mac
-venv\\Scripts\\activate     # Windows
+venv\Scripts\activate     # Windows
 ```
 
-2. Entre dentro do seu projeto criado a partir do template e instale as dependências:
+### Instale as dependências:
+
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Rode a aplicação:
+### Execute a aplicação:
+
 ```bash
-python main.py
+python app.py
 ```
 
-4. Accese sua aplicação no navegador em: [http://localhost:8080](http://localhost:8080)
+Abra no navegador: http://localhost:8080
 
----
+# 📜 Requisitos
 
-## ✍️ Personalização
-Para adicionar novos modelos (ex: Atividades):
+Estão no arquivo requirements.txt com:
 
-1. Crie a classe no diretório **models/**.
+    bottle
+    beaker
+    qrcode
+    Pillow
 
-2. Crie o service correspondente para manipulação do JSON.
+### 🧪 Testes manuais
 
-3. Crie o controller com as rotas.
+    Acesse como visitante, cliente e administrador
 
-4. Crie as views .tpl associadas.
+    Crie eventos e tente realizar compras
 
----
+    Veja o funcionamento do QR Code e login
 
-## 🧠 Autor e Licença
-Projeto desenvolvido como template didático para disciplinas de Programação Orientada a Objetos, baseado no [BMVC](https://github.com/hgmachine/bmvc_start_from_this).
-Você pode reutilizar, modificar e compartilhar livremente.
+    Busque por eventos em /events/search?q=
+
+### 🛠️ Possíveis melhorias futuras
+
+    Integração com banco de dados real (SQLite, PostgreSQL)
+
+    Upload de PDF dos ingressos
+
+    Responsividade para mobile
+
+    Sistema de cupons de desconto
+
+    Filtros avançados na busca
+
+
+### 🙋‍♂️ Autor
+
+Feito com dedicação por Gabriel Velho e Gustavo Antonio
+
+📚 Engenharia - FGA/UnB
