@@ -26,6 +26,10 @@
                value="{{event.name if event else ''}}" placeholder="Ex: Festa de Aniversário">
       </div>
 
+      % if error:
+        <p style="color: red;">Erro: {{error}}</p>
+      % end
+
       <!-- Local do evento -->
       <div class="form-group">
         <label for="local">Local:</label>

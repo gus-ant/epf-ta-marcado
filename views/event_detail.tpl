@@ -1,6 +1,6 @@
 %rebase('layout', title=event.name)
 
-<section class="section">
+
   <div class="container">
     <div class="event-detail-grid">
       
@@ -106,4 +106,4 @@
       </div>
     </div>
   </div>
-</section>
+  
