@@ -53,9 +53,18 @@
       <!-- Preço -->
       <div class="form-group">
         <label for="price">Preço (R$):</label>
-        <input type="number" step="0.01" id="price" name="price" min="0" required 
-               value="{{event.price if event else 0}}">
-        <small>Coloque 0 para evento gratuito</small>
+        <input type="text"
+              id="price"
+              name="price"
+              required
+              inputmode="numeric"
+              pattern="^R\$ ?\d{1,3}(\.\d{3})*(,\d{2})?$|^R\$ ?\d+(,\d{2})?$"
+              title="Formato inválido. Use o formato R$ 0,00"
+              oninvalid="this.setCustomValidity('Formato inválido. Ex: R$ 10,00')"
+              oninput="this.setCustomValidity('')"
+              value="{{ ('R$ %.2f' % event.price).replace('.', ',') if event and event.price != None else 'R$ 0,00' }}"
+              placeholder="R$ 0,00">
+        <small>deixe 0 para evento gratuito</small>
       </div>
 
       <!-- Capacidade -->

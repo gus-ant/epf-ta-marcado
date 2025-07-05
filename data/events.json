@@ -610,5 +610,37 @@
         "participants_emails": [
             ""
         ]
+    },
+    {
+        "id": 41,
+        "name": "karn",
+        "local": "brasilia",
+        "date": "2025-07-31",
+        "price": 5444.05,
+        "max_capacity": 1,
+        "time": "23:15",
+        "current_capacity": 1,
+        "owner_email": "fds@gmail.com",
+        "description": "",
+        "cover": null,
+        "participants_emails": [
+            ""
+        ]
+    },
+    {
+        "id": 42,
+        "name": "🎆 AMO EMOJIS 🎟🖼🎨",
+        "local": "brasilia",
+        "date": "2025-07-08",
+        "price": 0.0,
+        "max_capacity": 1,
+        "time": "21:18",
+        "current_capacity": 1,
+        "owner_email": "fds@gmail.com",
+        "description": "",
+        "cover": null,
+        "participants_emails": [
+            ""
+        ]
     }
 ]
