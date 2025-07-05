@@ -5,7 +5,9 @@ from services.user_service import UserService
 from services.payment_service import PaymentService
 from utils.decorators import login_required, admin_required
 from services.payment_service import PaymentService
+from datetime import datetime, timedelta
 import os, uuid
+
 
 UPLOAD_DIR = './static/uploads/event_covers' #local onde as capas de eventos são salvas
 
@@ -33,8 +35,11 @@ class EventController(BaseController):
             email = session['user']['email']
             user = self.user_service.get_by_email(email)
 
-        events = self.event_service.get_all()
-        return self.render('events', events=events, user=user)
+        top15_events = self.event_service.get_top_15_events()
+        next_15_events = self.event_service.get_15_next_events()
+        future_events = self.event_service.get_future_events()
+        past_events = self.event_service.get_past_events()
+        return self.render('events', top15_events=top15_events, next_15_events=next_15_events, future_events=future_events, past_events=past_events, user=user)
     
     #join event será modificado:
     #agora só cria o pagamento, para entrar no evento, deve confirmar o pagamento (payment_controller)
@@ -50,6 +55,9 @@ class EventController(BaseController):
         if email in self.event_service.get_participants(event.id):
             return "Já participa do evento"
 
+        if event.current_capacity <= 0:
+            return "Evento sem vagas disponíveis", 400
+    
         if event.price == None or event.price > 0:
             payment = self.payment_service.create_payment(
                 event_id=event.id,
@@ -114,16 +122,22 @@ class EventController(BaseController):
         session = request.environ['beaker.session'] #puxa o user logado
         email = session['user']['email']
         if request.method == 'GET':
-            return self.render('event_form', action='/events/create', event=None, error=None)
+            return self.render('event_form', action='/events/create', event=None, error=None, datetime=datetime, timedelta=timedelta)
         else:
             try:
                 name = request.forms.get('name')
                 local = request.forms.get('local')
                 date = request.forms.get('date')  # formato obrigatório yyyy-mm-dd
                 time = request.forms.get('time')  # formato obrigatorio hh:mm
+
                 price = 0 
                 if request.forms.get('price'): #só coloca preço caso tenha
-                    price = float(request.forms.get('price'))
+                    price = str(request.forms.get('price'))
+                    price = price.replace('R$', '').strip() #tira espaço e o simbolo
+                    price = price.replace('.','') #tira os separadores de tamanho
+                    price = price.replace(',','.') #troca a virgula por ponto
+                    price = float(price) #converte o preço limpo 
+
                 max_capacity = int(request.forms.get('max_capacity'))
                 owner_email = email #agora puxa automatico
                 description = request.forms.get('description')
@@ -143,9 +157,9 @@ class EventController(BaseController):
                 self.event_service.add_event(name, local, date, time, price, max_capacity, owner_email, description, cover=filename)
 
                 return redirect('/user')
-
             except Exception as e:
-                return self.render('event_form', action='/events/create', event=None, error=str(e))
+                
+                return self.render('event_form', action='/events/create', event=None, error=str(e), datetime=datetime, timedelta=timedelta)
 
             
     def view_event(self, event_id):
@@ -157,7 +171,7 @@ class EventController(BaseController):
         event = self.event_service.get_by_id(event_id)
         if not event:
             return "Evento não encontrado"
-        return self.render('event_detail', event=event, user=user)
+        return self.render('event_detail', event=event, user=user, datetime=datetime, timedelta=timedelta)
 
     def search_event(self):
         pesquisa = request.query.get("q", "").lower()

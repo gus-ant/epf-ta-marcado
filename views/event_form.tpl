@@ -22,7 +22,7 @@
       <!-- Título do evento -->
       <div class="form-group">
         <label for="name">Nome do Evento:</label>
-        <input type="text" id="name" name="name" minlength="3" maxlength="20" required 
+        <input type="text" id="name" name="name" minlength="3" maxlength="30" required 
                value="{{event.name if event else ''}}" placeholder="Ex: Festa de Aniversário">
       </div>
 
@@ -33,15 +33,18 @@
       <!-- Local do evento -->
       <div class="form-group">
         <label for="local">Local:</label>
-        <input type="text" id="local" name="local" minlength="3" maxlength="20" required 
+        <input type="text" id="local" name="local" minlength="3" maxlength="40" required 
                value="{{event.local if event else ''}}" placeholder="Ex: Salão de festas, Brasília - DF">
       </div>
 
       <!-- Data -->
+      <!-- minimo, dia atual e maximo 10 anos no futuro-->
       <div class="form-group">
         <label for="date">Data:</label>
         <input type="date" id="date" name="date" required 
-               value="{{event.date if event else ''}}">
+               value="{{event.date if event else ''}}"
+               min="{{datetime.today().strftime('%Y-%m-%d')}}"
+               max="{{(datetime.today() + timedelta(days=365*10)).strftime('%Y-%m-%d')}}">
       </div>
 
       <!-- Hora -->
@@ -54,9 +57,18 @@
       <!-- Preço -->
       <div class="form-group">
         <label for="price">Preço (R$):</label>
-        <input type="number" step="0.01" id="price" name="price" min="0" required 
-               value="{{event.price if event else 0}}">
-        <small>Coloque 0 para evento gratuito</small>
+        <input type="text"
+              id="price"
+              name="price"
+              required
+              inputmode="numeric"
+              pattern="^R\$ ?\d{1,3}(\.\d{3})*(,\d{2})?$|^R\$ ?\d+(,\d{2})?$"
+              title="Formato inválido. Use o formato R$ 0,00"
+              oninvalid="this.setCustomValidity('Formato inválido. Ex: R$ 10,00')"
+              oninput="this.setCustomValidity('')"
+              value="{{ ('R$ %.2f' % event.price).replace('.', ',') if event and event.price != None else 'R$ 0,00' }}"
+              placeholder="R$ 0,00">
+        <small>deixe 0 para evento gratuito</small>
       </div>
 
       <!-- Capacidade -->

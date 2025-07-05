@@ -19,7 +19,7 @@
       <div class="form-group">
         <!--nome-->
         <label for="name">Nome Completo:</label>
-        <input type="text" id="name" name="name" required
+        <input type="text" id="name" name="name" required maxlength="64"
                value="{{user.name if user else ''}}" placeholder="Seu nome completo">
       </div>
 
@@ -83,7 +83,6 @@
       </form>
     </div>
     % end
-    </form>
 
   </div>
 </section>
