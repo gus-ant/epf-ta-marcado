@@ -637,5 +637,68 @@
         "event_name": "3",
         "status": "refunded",
         "timestamp": "2025-07-03T12:32:27.954941"
+    },
+    {
+        "id": 72,
+        "event_id": 6,
+        "user_email": "test@gmail.com",
+        "amount": 6969.0,
+        "event_name": "caminhada atÃ© a China",
+        "status": "refunded",
+        "timestamp": "2025-07-04T15:08:50.479227"
+    },
+    {
+        "id": 73,
+        "event_id": 6,
+        "user_email": "test@gmail.com",
+        "amount": 6969.0,
+        "event_name": "caminhada atÃ© a China",
+        "status": "cancelled",
+        "timestamp": "2025-07-04T15:17:58.776024"
+    },
+    {
+        "id": 74,
+        "event_id": 6,
+        "user_email": "test@gmail.com",
+        "amount": 6969.0,
+        "event_name": "caminhada atÃ© a China",
+        "status": "cancelled",
+        "timestamp": "2025-07-04T15:21:12.426802"
+    },
+    {
+        "id": 75,
+        "event_id": 6,
+        "user_email": "test@gmail.com",
+        "amount": 6969.0,
+        "event_name": "caminhada atÃ© a China",
+        "status": "cancelled",
+        "timestamp": "2025-07-04T15:23:28.850262"
+    },
+    {
+        "id": 76,
+        "event_id": 6,
+        "user_email": "test@gmail.com",
+        "amount": 6969.0,
+        "event_name": "caminhada atÃ© a China",
+        "status": "cancelled",
+        "timestamp": "2025-07-04T15:28:07.955436"
+    },
+    {
+        "id": 77,
+        "event_id": 6,
+        "user_email": "test@gmail.com",
+        "amount": 6969.0,
+        "event_name": "caminhada atÃ© a China",
+        "status": "paid",
+        "timestamp": "2025-07-04T15:31:22.196171"
+    },
+    {
+        "id": 78,
+        "event_id": 15,
+        "user_email": "test@gmail.com",
+        "amount": 666.0,
+        "event_name": "zoologico de quimeras",
+        "status": "cancelled",
+        "timestamp": "2025-07-04T15:33:27.887541"
     }
 ]

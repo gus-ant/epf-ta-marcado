@@ -65,9 +65,8 @@ class PaymentModel:
 
     def get_by_id(self, pid):
         self.payments = self._load() #atualiza
-        print(f"[DEBUG] Procurando pagamento com ID: {pid}")
-        print(f"[DEBUG] IDs disponíveis: {[p.id for p in self.payments]}")
         return next((p for p in self.payments if p.id == pid), None)
+        #ta puxand o pagamento antigo
     
     def get_by_event_participant(self, event_id, user_email):
         self.payments = self._load() #atualiza
@@ -81,6 +80,7 @@ class PaymentModel:
         #devolve uma lista com todos os pagamentos do user
 
     def update(self, payment):
+        self.payments = self._load()
         for i, p in enumerate(self.payments):
             if p.id == payment.id:
                 self.payments[i] = payment

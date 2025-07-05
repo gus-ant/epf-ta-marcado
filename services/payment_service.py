@@ -10,11 +10,12 @@ class PaymentService:
         self.event_service = EventService()
 
     def create_payment(self, event_id, user_email, amount):
+        self.payment_model.payments = self.payment_model._load()
         old_id = int(max([p.id for p in self.payment_model.payments], default=0))
         new_id = old_id+1
         event = self.event_model.get_by_id(event_id)
         event_name = event.name
-        if amount == None or  amount > 0:
+        if amount == None or amount > 0:
             payment = Payment(new_id, event_id, user_email, amount, event_name)
         else:
             payment = Payment(new_id, event_id, user_email, 0, event_name, 'paid')

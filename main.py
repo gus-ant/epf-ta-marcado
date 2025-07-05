@@ -6,9 +6,6 @@ if __name__ == '__main__':
     
 #LISTA TO-DO:
 
-#fazer:
-#adm poder ver todos os pagamentos dos eventos dele
-
 
 #fazer as coisas pra eventos expirados:
 # não aparecer nos top 15 nem no todos os eventos
