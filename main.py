@@ -5,10 +5,9 @@ if __name__ == '__main__':
     app.run()
     
 #LISTA TO-DO:
-
+# ao apagar o user ele não sai mais do evento (eu criei entrei e apaguei sem dar refresh no server)
 #checar o que acontece quando deleta conta
 #{
-#rever as coisas que puxam user por email e trocar pra puxar por ID 🧧 (lista de participantes do evento e id do pagamento do user) #TEMOS QUE MUDAR ONDE PUXA POR EMAIL PRA PUXAR POR ID (explicação): quando puxa por email, e se o user fizer a conta, apagar e fizer outra conta com o mesmo email, algumas infos podem ser puxadas do email antigo o user pode só trocar o email mas o id é sempre atualizado MESMO SE APAGAR A CONTA E FIZER OUTRA o id nunca vai ser o mesmo, o que garante sempre puxar o certo
 #adm conseguir apagar conta (apagar todos os eventos dele) 🧧
 #adicionar opção do dono excluir o evento 🧧
 #-(quando excluir o evento, aparecer pros users a opção de reembolso pendente pros que ja pagaram, pros que ainda não, cancelled, se for de graça, reembolsado)

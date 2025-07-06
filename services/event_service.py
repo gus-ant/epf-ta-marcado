@@ -50,7 +50,6 @@ class EventService:
             time=time,
             max_capacity=max_capacity,
             owner_id=owner_id,
-            current_capacity=max_capacity,
             description=description,
             cover = cover
         )
@@ -99,10 +98,13 @@ class EventService:
 
     def remove_user_from_all_events(self, user_id:int):
         self.event_model.events = self.event_model._load()
+        print(f"Removendo user_id: {user_id} de eventos...")
         for event in self.event_model.events:
-            if user_id in event.participants_ids:
+            print(f"Evento {event.id} participantes: {event.participants_ids}")
+            if event.participants_ids and user_id in event.participants_ids:
                 event.participants_ids.remove(user_id)
-        self.event_model._save()  # Salva a lista inteira após atualização
+                print(f'id removido do evento {event.id}')
+        self.event_model._save()
 
     def get_participants(self, event_id:int):
         return self.event_model.get_participants(event_id)     

@@ -17,7 +17,6 @@ class AuthController(BaseController):
 
     def setup_routes(self):
         self.app.route('/login', method=['GET', 'POST'], callback=self.login)
-        
         self.app.route('/logout', method='GET', callback=self.logout)
 
     def login(self):
@@ -28,8 +27,7 @@ class AuthController(BaseController):
             email = request.forms.get('email')
             password = request.forms.get('password')
 
-            user1 = UserService()
-            user = user1.authenticate(email, password) # AQUI O MÉTODO NÃO RETORNAVA NADA
+            user = self.user_service.authenticate(email, password)
             if user: #conseguiu fazer o login
                 session['user'] = {
                     'email':user.email, #PODE ACESSAR O EMAIL DE QUALQUER LUGAR

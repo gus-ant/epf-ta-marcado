@@ -64,46 +64,41 @@
         <div class="event-actions">
           % if expired:
             <p class="alert alert-danger">⚠️ Evento Expirado. Inscrições encerradas.</p>
+          % elif user and not user.adm and user.id in event.participants_ids:
+            <p class="alert alert-success">✅ Você já participa do evento, Tá Marcado!</p>
+            <form action="/events/{{event.id}}/leave" method="post">
+              <button type="submit" class="btn btn-danger">🚪 Sair do evento</button>
+            </form>
           % elif sold_out:
             <p class="alert alert-danger">⚠️ Acabaram os ingressos!</p>
+          % elif user and not user.adm:
+            <form action="/events/{{event.id}}/join" method="post">
+              <button type="submit" class="btn btn-primary">❤️ Quero ir</button>
+            </form>
+          % elif user and user.adm:
+            <p class="alert alert-warning">⚠️ Para se inscrever, use uma conta de usuário</p>
           % else:
-            % if user and not user.adm and user.id in event.participants_ids:
-              <p class="alert alert-success">✅ Você já participa do evento, Tá Marcado!</p>
-              <form action="/events/{{event.id}}/leave" method="post">
-                <button type="submit" class="btn btn-danger">🚪 Sair do evento</button>
-              </form>
-            % elif user and not user.adm:
-              <form action="/events/{{event.id}}/join" method="post">
-                <button type="submit" class="btn btn-primary">❤️ Quero ir</button>
-              </form>
-            % elif user and user.adm:
-              <p class="alert alert-warning">⚠️ Para se inscrever, use uma conta de usuario</p>
-            % else:
-              <form action="/events/{{event.id}}/join" method="post">
-                <button type="submit" class="btn">🔐 Faça login para garantir seu ingresso</button>
-              </form>
-            % end
+            <form action="/events/{{event.id}}/join" method="post">
+              <button type="submit" class="btn">🔐 Faça login para garantir seu ingresso</button>
+            </form>
           % end
         </div>
 
         <!-- Participantes (somente admin) -->
         % if user and user.adm and user.id == event.owner_id:
           <div class="event-participants">
-            <h3>id dos Participantes:</h3>
-
+            <h3>IDs dos Participantes:</h3>
+            % if event.participants_ids:
               <ul>
-              % if len(event.participants_ids)>1:
                 % for id in event.participants_ids:
-                  <li> {{ id }}</li>
+                  <li>{{ id }}</li>
                 % end
-              % else:
-                <p class="alert alert-warning"> Esse evento ainda não tem inscritos</p>
-
               </ul>
-              
+            % else:
+              <p class="alert alert-warning">Esse evento ainda não tem inscritos</p>
+            % end
           </div>
         % end
       </div>
     </div>
   </div>
-  

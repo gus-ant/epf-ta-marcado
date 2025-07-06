@@ -170,7 +170,7 @@ class EventController(BaseController):
         event = self.event_service.get_by_id(event_id)
         if not event:
             return "Evento não encontrado"
-        return self.render('event_detail', event=event, user=user, datetime=datetime, timedelta=timedelta)
+        return self.render('event_detail', event=event, user=user, datetime=datetime, timedelta=timedelta, session=session)
 
     def search_event(self):
         pesquisa = request.query.get("q", "").lower()

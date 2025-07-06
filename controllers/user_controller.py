@@ -45,18 +45,11 @@ class UserController(BaseController): #herda de BaseController
                 if not user:
                     return self.render('user_form', user=None, action='/users/add', error="Erro ao criar usuário.", session=request.environ.get('beaker.session'))
 
-                # vai autenticar o usuário automaticamente (mesmo processo que no login)
-                session = request.environ.get('beaker.session')
-                session['user'] = {
-                    'email': user.email,
-                    'name': user.name,
-                    'adm': user.adm,
-                    'id': user.id
-                }
-                session.save()
+                # Remover login automático: NÃO cria a sessão aqui
+                print(f"USER {user.name} CRIADO - REDIRECIONANDO PARA LOGIN")
 
-                print(f"USER {user.name} LOGADO AUTOMATICAMENTE")
-                return self.redirect('/user')  # Redireciona para o perfil
+                # Redirecionar para a página de login para o usuário autenticar manualmente
+                return self.redirect('/login')
 
             except (ValueError, EmailAlreadyUsedException, PasswordMismatchException) as e:
                 session = request.environ.get('beaker.session')
@@ -78,7 +71,7 @@ class UserController(BaseController): #herda de BaseController
 
             # Eventos que o usuário participa ou criou
             if not user.adm:
-                events = self.user_service.get_events_user_participates(user)
+                events = self.user_service.get_events_user_participates(user_id)
             else:
                 events = self.user_service.get_events_by_owner(user_id)
 

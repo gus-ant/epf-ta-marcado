@@ -33,7 +33,7 @@ class Event:
     def __repr__(self): #representação em string 
         return (f"Event(id={self.id}, name={self.name}, local={self.local},time={self.time} ,"
                 f"date={self.date}, price={self.price}, max_capacity={self.max_capacity},"
-                f"owner_id={self.owner_id}), current_capacity={self.current_capacity},"
+                f"owner_id={self.owner_id}),"
                 f"description={self.description}")
 
     def to_dict(self): #torna o objeto em um dicionario
