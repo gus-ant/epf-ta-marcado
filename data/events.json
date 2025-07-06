@@ -1,18 +1,808 @@
 [
     {
-        "id": 53,
-        "name": "sim",
-        "local": "sim",
-        "date": "2025-08-01",
-        "price": 22.0,
-        "max_capacity": 100,
-        "time": "23:00",
-        "current_capacity": 100,
-        "owner_email": "ta@gmail.com",
-        "description": "Sim",
-        "cover": null,
-        "participants_emails": [
-            ""
-        ]
-    }
+    "id": 1,
+    "name": "Festa Universitária",
+    "local": "Quadra da Engenharia",
+    "date": "2025-07-05",
+    "price": 15.0,
+    "max_capacity": 200,
+    "time": "22:00",
+    "current_capacity": 199,
+    "owner_email": "organizacao@festas.com",
+    "description": ",",
+    "cover": "",
+    "participants_emails": [
+    "",
+    "ta@gmail.com"
+    ]
+    },
+    {
+    "id": 2,
+    "name": "Show da Banda XYZ",
+    "local": "Ginásio de Esportes",
+    "date": "2025-07-10",
+    "price": 50.0,
+    "max_capacity": 500,
+    "time": "21:00",
+    "current_capacity": 398,
+    "owner_email": "rock@eventos.com",
+    "description": ",",
+    "cover": "",
+    "participants_emails": [
+    "",
+    "g@gmail.com",
+    "t@gmail.com"
+    ]
+    },
+    {
+    "id": 3,
+    "name": "Feira de Tecnologia",
+    "local": "Pavilhão ExpoCenter",
+    "date": "2025-07-02",
+    "price": 0.0,
+    "max_capacity": 1000,
+    "time": "09:00",
+    "current_capacity": 988,
+    "owner_email": "feira@tech.com",
+    "description": ",",
+    "cover": "",
+    "participants_emails": [
+    "",
+    "g@gmail.com"
+    ]
+    },
+    {
+    "id": 4,
+    "name": "Cruzeiro do Neymar",
+    "local": "Rio De Janeiro",
+    "date": "2025-06-29",
+    "price": 12000.0,
+    "max_capacity": 90,
+    "time": "21:02",
+    "current_capacity": 0,
+    "owner_email": "anon@anon.com",
+    "description": ",",
+    "cover": "",
+    "participants_emails": [
+    "",
+    "g@gmail.com"
+    ]
+    },
+    {
+    "id": 5,
+    "name": "Campeonato de Sinuca",
+    "local": "Bar do Mane",
+    "date": "2025-08-21",
+    "price": 10.0,
+    "max_capacity": 90,
+    "time": "20:00",
+    "current_capacity": 88,
+    "owner_email": "anon@anon.com",
+    "description": ",",
+    "cover": "",
+    "participants_emails": [
+    "",
+    "g@gmail.com",
+    "t@gmail.com"
+    ]
+    },
+    {
+    "id": 6,
+    "name": "caminhada atÃ© a China",
+    "local": "Piaui",
+    "date": "2031-10-15",
+    "price": 6969.0,
+    "max_capacity": 3,
+    "time": "14:42",
+    "current_capacity": 2,
+    "owner_email": "anon@anon.com",
+    "description": "vamos andar atÃ© a china mesmo, vai ser uma caminhada bem legal :)",
+    "cover": "",
+    "participants_emails": [
+    "",
+    "t@gmail.com",
+    "test@gmail.com"
+    ]
+    },
+    {
+    "id": 7,
+    "name": "sim",
+    "local": "sim",
+    "date": "1111-11-11",
+    "price": 1.0,
+    "max_capacity": 1,
+    "time": "11:11",
+    "current_capacity": 0,
+    "owner_email": "123@gmail.com",
+    "description": "sim",
+    "cover": "",
+    "participants_emails": [
+    "",
+    "g@gmail.com"
+    ]
+    },
+    {
+    "id": 8,
+    "name": "12",
+    "local": "21",
+    "date": "1221-02-12",
+    "price": 33.0,
+    "max_capacity": 123,
+    "time": "12:21",
+    "current_capacity": 122,
+    "owner_email": "123@gmail.com",
+    "description": "bla bla bla",
+    "cover": "",
+    "participants_emails": [
+    "",
+    "g@gmail.com"
+    ]
+    },
+    {
+    "id": 9,
+    "name": "13",
+    "local": "321123",
+    "date": "3123-03-12",
+    "price": 0,
+    "max_capacity": 123123112313,
+    "time": "12:33",
+    "current_capacity": 123123112312,
+    "owner_email": "123@gmail.com",
+    "description": "nao",
+    "cover": "",
+    "participants_emails": [
+    "",
+    "g@gmail.com"
+    ]
+    },
+    {
+    "id": 10,
+    "name": "14",
+    "local": "14",
+    "date": "1414-12-14",
+    "price": 14.0,
+    "max_capacity": 1414,
+    "time": "14:14",
+    "current_capacity": 1413,
+    "owner_email": "123@gmail.com",
+    "description": "14",
+    "cover": "",
+    "participants_emails": [
+    "",
+    "g@gmail.com"
+    ]
+    },
+    {
+    "id": 12,
+    "name": "evento sem foto",
+    "local": "Piaui",
+    "date": "2222-02-22",
+    "price": 0,
+    "max_capacity": 2,
+    "time": "22:22",
+    "current_capacity": 1,
+    "owner_email": "superadm@gmail.com",
+    "description": "nao tem foto pq no piaui só tem wifi via radio",
+    "cover": null,
+    "participants_emails": [
+    "",
+    "g@gmail.com"
+    ]
+    },
+    {
+    "id": 13,
+    "name": "evento com foto",
+    "local": "aqui",
+    "date": "3333-03-31",
+    "price": 0,
+    "max_capacity": 3,
+    "time": "03:33",
+    "current_capacity": 2,
+    "owner_email": "superadm@gmail.com",
+    "description": "tem foto! legal...",
+    "cover": "5326a489152247868b398ac5899cdeae.jpg",
+    "participants_emails": [
+    "",
+    "g@gmail.com"
+    ]
+    },
+    {
+    "id": 14,
+    "name": "ENCONTRO DE FÏsica AEROESPACIAL",
+    "local": "Casa do Russo",
+    "date": "2025-08-30",
+    "price": 900.0,
+    "max_capacity": 100000,
+    "time": "09:00",
+    "current_capacity": 99999,
+    "owner_email": "superadm@gmail.com",
+    "description": "O melhor evento de Física do DF, imperdível.\r\nParticipantes:\r\n-Elon Mosca\r\n-Donald Trumpo",
+    "cover": "7b14bd9bd55a4b658f9d23922b3d11ed.png",
+    "participants_emails": [
+    "",
+    "t@gmail.com"
+    ]
+    },
+    {
+    "id": 15,
+    "name": "zoologico de quimeras",
+    "local": "umbral",
+    "date": "0006-06-06",
+    "price": 666.0,
+    "max_capacity": 666,
+    "time": "06:59",
+    "current_capacity": 665,
+    "owner_email": "gus@gmail.com",
+    "description": "MEDO MUITO MEDO",
+    "cover": "48f3af3586a84162ae939b1f4f274cc4.png",
+    "participants_emails": [
+    "",
+    "g@gmail.com"
+    ]
+    },
+    {
+    "id": 16,
+    "name": "viagem para angola",
+    "local": "angola",
+    "date": "2025-06-03",
+    "price": 888.0,
+    "max_capacity": 888,
+    "time": "08:59",
+    "current_capacity": 886,
+    "owner_email": "adm@gmail.com",
+    "description": "888",
+    "cover": "7365f09df2d642b881d6c9a6c1558468.jpg",
+    "participants_emails": [
+    "",
+    "g@gmail.com",
+    "naoadm@gmail.com"
+    ]
+    },
+    {
+    "id": 17,
+    "name": "1",
+    "local": "1",
+    "date": "0001-01-01",
+    "price": 1.0,
+    "max_capacity": 1,
+    "time": "01:01",
+    "current_capacity": 0,
+    "owner_email": "adm@gmail.com",
+    "description": "1",
+    "cover": null,
+    "participants_emails": [
+    "",
+    "g@gmail.com",
+    "t@gmail.com"
+    ]
+    },
+    {
+    "id": 18,
+    "name": "2",
+    "local": "2",
+    "date": "2025-06-11",
+    "price": 2.0,
+    "max_capacity": 2,
+    "time": "02:02",
+    "current_capacity": 2,
+    "owner_email": "adm@gmail.com",
+    "description": "2",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 19,
+    "name": "3",
+    "local": "3",
+    "date": "2025-06-04",
+    "price": 3.0,
+    "max_capacity": 3,
+    "time": "03:03",
+    "current_capacity": 2,
+    "owner_email": "adm@gmail.com",
+    "description": "3",
+    "cover": null,
+    "participants_emails": [
+    "",
+    "g@gmail.com"
+    ]
+    },
+    {
+    "id": 20,
+    "name": "444",
+    "local": "4",
+    "date": "0004-04-04",
+    "price": 4.0,
+    "max_capacity": 4,
+    "time": "04:04",
+    "current_capacity": 4,
+    "owner_email": "adm@gmail.com",
+    "description": "4",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 21,
+    "name": "5",
+    "local": "5",
+    "date": "0555-05-05",
+    "price": 0,
+    "max_capacity": 5,
+    "time": "05:05",
+    "current_capacity": 5,
+    "owner_email": "adm@gmail.com",
+    "description": "",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 22,
+    "name": "6",
+    "local": "6",
+    "date": "0006-06-06",
+    "price": 66.0,
+    "max_capacity": 66666666,
+    "time": "06:06",
+    "current_capacity": 66666665,
+    "owner_email": "adm@gmail.com",
+    "description": "66666666",
+    "cover": null,
+    "participants_emails": [
+    "",
+    "g@gmail.com"
+    ]
+    },
+    {
+    "id": 23,
+    "name": "7",
+    "local": "7",
+    "date": "0007-07-07",
+    "price": 0,
+    "max_capacity": 7,
+    "time": "07:07",
+    "current_capacity": 5,
+    "owner_email": "adm@gmail.com",
+    "description": "",
+    "cover": null,
+    "participants_emails": [
+    "",
+    "g@gmail.com",
+    "t@gmail.com"
+    ]
+    },
+    {
+    "id": 24,
+    "name": "8",
+    "local": "8",
+    "date": "0008-08-08",
+    "price": 8.0,
+    "max_capacity": 8,
+    "time": "08:08",
+    "current_capacity": 7,
+    "owner_email": "adm@gmail.com",
+    "description": "8",
+    "cover": null,
+    "participants_emails": [
+    "",
+    "g@gmail.com"
+    ]
+    },
+    {
+    "id": 25,
+    "name": "9",
+    "local": "9",
+    "date": "0009-09-09",
+    "price": 9.0,
+    "max_capacity": 9,
+    "time": "09:09",
+    "current_capacity": 7,
+    "owner_email": "adm@gmail.com",
+    "description": "9",
+    "cover": null,
+    "participants_emails": [
+    "",
+    "g@gmail.com",
+    "t@gmail.com"
+    ]
+    },
+    {
+    "id": 26,
+    "name": "121212",
+    "local": "212121",
+    "date": "1221-02-21",
+    "price": 12121.0,
+    "max_capacity": 21212,
+    "time": "12:12",
+    "current_capacity": 21211,
+    "owner_email": "adm@gmail.com",
+    "description": "2121212",
+    "cover": null,
+    "participants_emails": [
+    "",
+    "g@gmail.com",
+    "t@gmail.com"
+    ]
+    },
+    {
+    "id": 27,
+    "name": "69696969",
+    "local": "6969696",
+    "date": "0069-09-06",
+    "price": 6969.0,
+    "max_capacity": 6969,
+    "time": "06:59",
+    "current_capacity": 6969,
+    "owner_email": "adm@gmail.com",
+    "description": "696969",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 28,
+    "name": "123123",
+    "local": "1231231",
+    "date": "1231-03-21",
+    "price": 123123.0,
+    "max_capacity": 123123,
+    "time": "12:31",
+    "current_capacity": 123123,
+    "owner_email": "adm@gmail.com",
+    "description": "231231",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 29,
+    "name": "4565465",
+    "local": "4",
+    "date": "4654-05-06",
+    "price": 654654.0,
+    "max_capacity": 6546,
+    "time": "03:02",
+    "current_capacity": 6544,
+    "owner_email": "adm@gmail.com",
+    "description": "54654",
+    "cover": null,
+    "participants_emails": [
+    "",
+    "g@gmail.com",
+    "t@gmail.com"
+    ]
+    },
+    {
+    "id": 30,
+    "name": "4565465",
+    "local": "4",
+    "date": "4654-05-06",
+    "price": 654654.0,
+    "max_capacity": 6546,
+    "time": "03:02",
+    "current_capacity": 6546,
+    "owner_email": "adm@gmail.com",
+    "description": "54654",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 31,
+    "name": "simsimsim",
+    "local": "sim",
+    "date": "1239-03-12",
+    "price": 0,
+    "max_capacity": 333,
+    "time": "10:48",
+    "current_capacity": 331,
+    "owner_email": "adm@gmail.com",
+    "description": "simsim",
+    "cover": null,
+    "participants_emails": [
+    "",
+    "g@gmail.com",
+    "t@gmail.com"
+    ]
+    },
+    {
+    "id": 32,
+    "name": "n",
+    "local": "n",
+    "date": "0079-08-09",
+    "price": 78.0,
+    "max_capacity": 444,
+    "time": "09:59",
+    "current_capacity": 443,
+    "owner_email": "adm@gmail.com",
+    "description": "nnn",
+    "cover": null,
+    "participants_emails": [
+    "",
+    "t@gmail.com"
+    ]
+    },
+    {
+    "id": 33,
+    "name": "pfv",
+    "local": "para",
+    "date": "3333-03-31",
+    "price": 3.0,
+    "max_capacity": 333,
+    "time": "03:33",
+    "current_capacity": 333,
+    "owner_email": "adm@gmail.com",
+    "description": "de bugar",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 34,
+    "name": "Competição de JYTHON",
+    "local": "Labs de IA de Caldas Novas",
+    "date": "2025-07-26",
+    "price": 27.9,
+    "max_capacity": 1000000,
+    "time": "23:01",
+    "current_capacity": 999998,
+    "owner_email": "ta@gmail.com",
+    "description": "Competição de JYTHON",
+    "cover": "638ffe77ce274b5089156d510a84aa29.png",
+    "participants_emails": [
+    "",
+    "g@gmail.com",
+    "t@gmail.com"
+    ]
+    },
+    {
+    "id": 35,
+    "name": "evento fds",
+    "local": "ali",
+    "date": "2235-03-23",
+    "price": 0.0,
+    "max_capacity": 3,
+    "time": "12:33",
+    "current_capacity": 3,
+    "owner_email": "fds@gmail.com",
+    "description": "pode apagar",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 36,
+    "name": "Sinucastigo 2000",
+    "local": "São Paulo",
+    "date": "2025-08-09",
+    "price": 90.0,
+    "max_capacity": 90,
+    "time": "10:00",
+    "current_capacity": 90,
+    "owner_email": "ta@gmail.com",
+    "description": "O melhor evento de sinuca da Atualidade, com convidados surpresa.",
+    "cover": "71ff991cc2984261a3a211fe6a79fef9.jpg",
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 37,
+    "name": "Revisão de Menção",
+    "local": "Casa do Russo",
+    "date": "2025-08-01",
+    "price": 0.0,
+    "max_capacity": 1,
+    "time": "21:03",
+    "current_capacity": 1,
+    "owner_email": "ta@gmail.com",
+    "description": "asd",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 41,
+    "name": "Pizza Boa XIV",
+    "local": "pizzaria",
+    "date": "2025-07-25",
+    "price": 0.0,
+    "max_capacity": 1,
+    "time": "22:22",
+    "current_capacity": 1,
+    "owner_email": "ta@gmail.com",
+    "description": "mas",
+    "cover": "a152ebd21a0d41ee8d169a8ee301fb0f.jpg",
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 42,
+    "name": "🎆 AMO EMOJIS 🎟🖼🎨",
+    "local": "brasilia",
+    "date": "2025-07-08",
+    "price": 0.0,
+    "max_capacity": 1,
+    "time": "21:18",
+    "current_capacity": 1,
+    "owner_email": "fds@gmail.com",
+    "description": "mm",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    
+    },
+    {
+    "id": 43,
+    "name": "a312123",
+    "local": "aasdd",
+    "date": "0213-04-10",
+    "price": 3120.0,
+    "max_capacity": 1,
+    "time": "12:03",
+    "current_capacity": 1,
+    "owner_email": "ta@gmail.com",
+    "description": "mm",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 44,
+    "name": "a312123",
+    "local": "aasdd",
+    "date": "0213-04-10",
+    "price": 3120.0,
+    "max_capacity": 1,
+    "time": "12:03",
+    "current_capacity": 1,
+    "owner_email": "ta@gmail.com",
+    "description": "mm",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 45,
+    "name": "a312123",
+    "local": "aasdd",
+    "date": "0213-04-10",
+    "price": 3120.0,
+    "max_capacity": 1,
+    "time": "12:03",
+    "current_capacity": 1,
+    "owner_email": "ta@gmail.com",
+    "description": "mm",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 46,
+    "name": "asd",
+    "local": "asd",
+    "date": "2900-01-20",
+    "price": 123213.0,
+    "max_capacity": 122,
+    "time": "23:21",
+    "current_capacity": 122,
+    "owner_email": "ta@gmail.com",
+    "description": "nmkjgig",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 47,
+    "name": "asd",
+    "local": "asd",
+    "date": "2900-01-20",
+    "price": 123213.0,
+    "max_capacity": 122,
+    "time": "23:21",
+    "current_capacity": 122,
+    "owner_email": "ta@gmail.com",
+    "description": "nmkjgig",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 48,
+    "name": "sdqwdqwd",
+    "local": "sdqwdqwd2",
+    "date": "2222-12-22",
+    "price": 222.0,
+    "max_capacity": 1,
+    "time": "12:32",
+    "current_capacity": 1,
+    "owner_email": "ta@gmail.com",
+    "description": "sdqwdqwd",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 49,
+    "name": "wdwwwdw3",
+    "local": "dsdasdwdwd",
+    "date": "2222-02-12",
+    "price": 231231230.0,
+    "max_capacity": 1,
+    "time": "12:02",
+    "current_capacity": 1,
+    "owner_email": "ta@gmail.com",
+    "description": "asdasdsadad",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 50,
+    "name": "wdwwwdw3",
+    "local": "dsdasdwdwd",
+    "date": "2222-02-12",
+    "price": 231231230.0,
+    "max_capacity": 1,
+    "time": "12:02",
+    "current_capacity": 1,
+    "owner_email": "ta@gmail.com",
+    "description": "asdasdsadad",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 51,
+    "name": "wdwwwdw3",
+    "local": "dsdasdwdwd",
+    "date": "2222-02-12",
+    "price": 231231230.0,
+    "max_capacity": 1,
+    "time": "12:02",
+    "current_capacity": 1,
+    "owner_email": "ta@gmail.com",
+    "description": "asdasdsadad",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+    },
+    {
+    "id": 52,
+    "name": "Festa da IAOP",
+    "local": "Festa da IAOP",
+    "date": "0022-03-02",
+    "price": 222.0,
+    "max_capacity": 1,
+    "time": "22:02",
+    "current_capacity": 1,
+    "owner_email": "ta@gmail.com",
+    "description": "asdasd",
+    "cover": null,
+    "participants_emails": [
+    ""
+    ]
+}
 ]
