@@ -78,42 +78,31 @@ class EventService:
         self.event_model.add_event(event)
         self.event_model.events = self.event_model._load()
 
-    # a ideia é diminuir a capacidade do evento quando um user se inscrever
-    def decrease_capacity(self, event_id):
-        event = self.get_by_id(event_id)
-        if event and event.current_capacity > 0:
-            event.current_capacity -= 1
-            self.event_model.update_event(event) 
-
-    def increase_capacity(self, event_id):
-        event = self.get_by_id(event_id)
-        if event and event.current_capacity < event.max_capacity:
-            event.current_capacity +=1
-            self.event_model.update_event(event)
 
 
     def add_participant(self, event_id: int, user_email: str):
+        print('entrou no evento')
         event = self.get_by_id(event_id) #busca o evento
-        if event and user_email not in event.participants_emails: #se o user não estiver no evento
+        if event and (user_email not in event.participants_emails): #se o user não estiver no evento
             event.participants_emails.append(user_email) #coloca o email dele na lista de participantes
-            self.decrease_capacity(event_id) #diminui as vagas
             self.event_model.update_event(event) #atualiza no sistema
     
     def remove_participant(self, event_id:int, user_email: str):
         event = self.get_by_id(event_id)
         if event and user_email in event.participants_emails:
             event.participants_emails.remove(user_email)
-            self.increase_capacity(event_id)
+            print("removeu")
             self.event_model.update_event(event)
             #falta marcar no pagamento que saiu do evento, 'refund_requested'
             #quando reembolsado 'refunded'
             #adicionar a opção de cancelar pagamento, cancelled
 
-    def remove_user_from_all_events(self, user_email: str): #util pra quando apagar o user
-        events = self.event_model.get_all()
-        for event in events: #para cada evento
-            if user_email in event.participants_emails: #se o cabra estiver
-                self.remove_participant(event.id, user_email) #tira ele
+    def remove_user_from_all_events(self, user_email: str):
+        self.event_model.events = self.event_model._load()
+        for event in self.event_model.events:
+            if user_email in event.participants_emails:
+                event.participants_emails.remove(user_email)
+        self.event_model._save()  # Salva a lista inteira após atualização
 
     def get_participants(self, event_id:int):
         return self.event_model.get_participants(event_id)     

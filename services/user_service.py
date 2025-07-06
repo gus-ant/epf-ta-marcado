@@ -83,13 +83,14 @@ class UserService:
 
     def delete_user(self, user_id):
         user = self.user_model.get_by_id(user_id)
+        print(user.name)
         if user: #caso encontre
             if user.adm: #se for adm
                 eventos = [e for e in self.event_service.get_all() if e.owner_email == user.email] #lista com todos os eventos do adm
                 for e in eventos:
                     self.event_service.delete_event(e.id) #apaga o evento
-            self.event_service.remove_user_from_all_events(user.email) #tira o user de todos os eventos
-            self.user_model.delete_user(user_id) #usa o metodo do user.py (já salva)
+        self.event_service.remove_user_from_all_events(user.email) #tira o user de todos os eventos
+        self.user_model.delete_user(user_id) #usa o metodo do user.py (já salva)
 
     def authenticate(self, email, password):
         #autentica um usuario usando email e senha

@@ -24,7 +24,7 @@ class UserController(BaseController): #herda de BaseController
         self.app.route('/users', method='GET', callback=self.list_users) #Registra rota GET /users que chama o método list_users para listar usuários
         self.app.route('/users/add', method=['GET', 'POST'], callback=self.add_user) #Registra rota /users/add que aceita GET (mostrar formulário) e POST (salvar usuário)
         self.app.route('/users/edit/<user_id:int>', method=['GET', 'POST'], callback=self.edit_user) #Registra rota /users/edit/<user_id> com parâmetro inteiro para editar usuário específico
-        self.app.route('/users/delete/<user_id:int>', method='POST', callback=self.confirm_delete_user) #Registra rota POST /users/delete/<user_id> para deletar usuário específico
+        self.app.route('/users/delete/<user_id:int>', method=['GET', 'POST'], callback=self.confirm_delete_user) #Registra rota POST /users/delete/<user_id> para deletar usuário específico
         self.app.route('/user/payments', method='GET', callback=self.view_payments)
 
 
@@ -135,19 +135,25 @@ class UserController(BaseController): #herda de BaseController
     # @route('/user/delete', method=['GET', 'POST'])
     @login_required
     def confirm_delete_user(self, user_id):
-        
+        print("Método HTTP:", request.method)
         session = request.environ.get('beaker.session')
+        user_id = session['user']['id']
+        print('user id:', user_id)
         user = self.user_service.get_by_id(user_id)
+        if not user:
+            return "Usuário não encontrado", 404
+        
+        if request.method == 'GET':
+            return self.render('confirm_delete_user', user=user, error=None)
+        
+        #POST
         senha_informada = request.forms.get('password')
-
         if not self.user_service.verify_password(user.email, senha_informada):
             return self.render('confirm_delete_user', user=user, error="Senha incorreta.")
-
+        
         self.user_service.delete_user(user_id)
-
         session.delete()
         session.save()
-
         return self.redirect('/events')
 
 
