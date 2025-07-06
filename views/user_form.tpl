@@ -76,7 +76,7 @@
     % if user:
     <!-- Form de deletar fora do form principal -->
     <div style="margin-top: 10px;">
-      <form action="/users/delete/{{user.id}}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir esta conta? Esta ação não pode ser desfeita.')" style="width: 100%;">
+      <form action="/users/delete/{{user.id}}" method="post" style="width: 100%;">
         <button type="submit" class="btn btn-secondary" style="width: 100%; color: white; background-color: red;">
           Deletar conta
         </button>
