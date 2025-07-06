@@ -9,22 +9,22 @@ class PaymentService:
         self.event_model = EventModel()
         self.event_service = EventService()
 
-    def create_payment(self, event_id, user_email, amount):
+    def create_payment(self, event_id, user_id, amount):
         self.payment_model.payments = self.payment_model._load()
         old_id = int(max([p.id for p in self.payment_model.payments], default=0))
         new_id = old_id+1
         event = self.event_model.get_by_id(event_id)
         event_name = event.name
         if amount == None or amount > 0:
-            payment = Payment(new_id, event_id, user_email, amount, event_name)
+            payment = Payment(new_id, event_id, user_id, amount, event_name)
         else:
-            payment = Payment(new_id, event_id, user_email, 0, event_name, 'paid')
+            payment = Payment(new_id, event_id, user_id, 0, event_name, 'paid')
 
             #AQUI O USER ENTRA NO EVENTO
             event_id = payment.event_id
             session = request.environ.get('beaker.session')
-            email = session['user']['email']
-            self.event_service.add_participant(event_id, email) 
+            user_id = session['user']['id']
+            self.event_service.add_participant(event_id, user_id) 
 
         self.payment_model.add(payment)
         return payment
@@ -35,11 +35,11 @@ class PaymentService:
     def get_by_id(self, pid):
         return self.payment_model.get_by_id(pid)
     
-    def get_by_event_participant(self, event_id, user_email):
-        return self.payment_model.get_by_event_participant(event_id, user_email)
+    def get_by_event_participant(self, event_id, user_id):
+        return self.payment_model.get_by_event_participant(event_id, user_id)
     
-    def get_all_from_user(self, user_email):
-        return self.payment_model.get_all_from_user(user_email)
+    def get_all_from_user(self, user_id):
+        return self.payment_model.get_all_from_user(user_id)
     
     def get_all(self):
         payments = self.payment_model._load()

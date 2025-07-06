@@ -53,7 +53,7 @@
                 <span style="color: red; font-weight: bold; margin-left: 10px;">(Ingressos Esgotados)</span>
               % end
             </li>
-            <li><strong>Email do organizador:</strong> {{event.owner_email}}</li>
+            <li><strong>Id do organizador:</strong> {{event.owner_id}}</li>
           </ul>
         </div>
 
@@ -67,7 +67,7 @@
           % elif sold_out:
             <p class="alert alert-danger">⚠️ Acabaram os ingressos!</p>
           % else:
-            % if user and not user.adm and user.email in event.participants_emails:
+            % if user and not user.adm and user.id in event.participants_ids:
               <p class="alert alert-success">✅ Você já participa do evento, Tá Marcado!</p>
               <form action="/events/{{event.id}}/leave" method="post">
                 <button type="submit" class="btn btn-danger">🚪 Sair do evento</button>
@@ -87,17 +87,15 @@
         </div>
 
         <!-- Participantes (somente admin) -->
-        % if user and user.adm and user.email == event.owner_email:
+        % if user and user.adm and user.id == event.owner_id:
           <div class="event-participants">
-            <h3>Participantes:</h3>
+            <h3>id dos Participantes:</h3>
 
               <ul>
-              % if len(event.participants_emails)>1:
-                % for email in event.participants_emails:
-                  <li> {{ email }}</li>
+              % if len(event.participants_ids)>1:
+                % for id in event.participants_ids:
+                  <li> {{ id }}</li>
                 % end
-              % elif expired:
-                <p class="alert alert-warning"> Esse evento não teve inscritos</p>
               % else:
                 <p class="alert alert-warning"> Esse evento ainda não tem inscritos</p>
 

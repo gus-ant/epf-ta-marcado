@@ -58,7 +58,7 @@ class UserService:
 
     def edit_user(self, user): #usa um objeto user
         name = request.forms.get('name') #puxa os dados do formulario http
-        email = request.forms.get('email') #ISSO AQUI PODE DAR UM PROBLEMÃO
+        email = request.forms.get('email')
         birthdate = request.forms.get('birthdate')
         password = request.forms.get('password')
         password_confirm = request.forms.get('password_confirm')
@@ -105,16 +105,16 @@ class UserService:
     def get_regular_users(self): #retorna apenas usuarios comuns
         return self.user_model.get_regular_users()
     
-    def can_create_events(self, user): #verifica se o usuario pode criar eventos
+    def can_create_events(self, user:User): #verifica se o usuario pode criar eventos
         return user and user.adm
     
-    def get_events_user_participates(self, user_email: str):
+    def get_events_user_participates(self, user_id:int):
         self.event_model.events = self.event_model._load()
-        return [e for e in self.event_model.events if user_email in e.participants_emails] #lista de todos os eventos que tem um participante com o mesmo email
+        return [e for e in self.event_model.events if user_id in e.participants_ids] #lista de todos os eventos que tem um participante com o mesmo id
     
-    def get_events_by_owner(self, owner_email: str):
+    def get_events_by_owner(self, owner_id: int):
         self.event_model.events = self.event_model._load()
-        return [e for e in self.event_model.events if owner_email == e.owner_email] #lista de todos os eventos que um adm tem
+        return [e for e in self.event_model.events if owner_id == e.owner_id] #lista de todos os eventos que um adm tem
     
     def verify_password(self, email, input_password):
         user = self.get_by_email(email)

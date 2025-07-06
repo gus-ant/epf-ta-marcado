@@ -13,7 +13,7 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 class Event:
     #falta adicionar uma lista com todas as pessoas participando 
 
-    def __init__(self, id, name, local, date, price, max_capacity, time, owner_email, description, cover=None, participants_emails:List[str]=None):
+    def __init__(self, id, name, local, date, price, max_capacity, time, owner_id, description, cover=None, participants_ids:List[int]=None):
         self.id = id #identificador unico 
         self.name = name #nome do evento
         self.local = local #local do evento
@@ -21,19 +21,19 @@ class Event:
         self.price = price #preço do ingresso
         self.max_capacity = max_capacity #capacidade maxima
         self.time = time #horario do envento
-        self.owner_email = owner_email #email de quem criou o evento
+        self.owner_id = owner_id #email de quem criou o evento
         self.description = description #descrição do evento
         self.cover = cover #capa do evento
-        self.participants_emails = participants_emails if participants_emails else [] #todos os emails dos participantes do evento
+        self.participants_ids = participants_ids if participants_ids else [] #todos os emails dos participantes do evento
 
     @property
     def current_capacity(self):
-        return self.max_capacity - len([e for e in self.participants_emails if e.strip()])
+        return self.max_capacity - len([e for e in self.participants_ids if e is not None])
     
     def __repr__(self): #representação em string 
         return (f"Event(id={self.id}, name={self.name}, local={self.local},time={self.time} ,"
                 f"date={self.date}, price={self.price}, max_capacity={self.max_capacity},"
-                f"owner_email={self.owner_email}), current_capacity={self.current_capacity},"
+                f"owner_id={self.owner_id}), current_capacity={self.current_capacity},"
                 f"description={self.description}")
 
     def to_dict(self): #torna o objeto em um dicionario
@@ -45,10 +45,10 @@ class Event:
             'price': self.price,
             'max_capacity': self.max_capacity,
             'time' : self.time,
-            'owner_email': self.owner_email,
+            'owner_id': self.owner_id,
             'description': self.description,
             'cover': self.cover,
-            'participants_emails': self.participants_emails
+            'participants_ids': self.participants_ids
         }
 
     @classmethod #metodo de classe
@@ -61,10 +61,10 @@ class Event:
             price = data['price'],
             max_capacity = data['max_capacity'],
             time = data['time'],
-            owner_email = data['owner_email'],
+            owner_id = data['owner_id'],
             description = data['description'],
             cover = data['cover'],
-            participants_emails = data.get('participants_emails', [])
+            participants_ids = data.get('participants_ids', [])
         ) 
 
 class EventModel:
@@ -108,8 +108,8 @@ class EventModel:
     #retorna o evento com o mesmo id, caso não exista, None
     #next é otimizado, por parar quando acha
 
-    def get_by_owner_email(self, event_owner_email:str):
-        return [e for e in self.events if e.owner_email == event_owner_email]
+    def get_by_owner_id(self, event_owner_id:int):
+        return [e for e in self.events if e.owner_id == event_owner_id]
     #retorna lista com eventos que tenham owner_email =
 
     def get_by_name(self, event_name:str): 
@@ -135,7 +135,7 @@ class EventModel:
                 self.events[i] = updated_event #troca o evento da lista pelo novo
                 self._save() #salva
                 print(f"[UPDATE] Evento salvo {updated_event.name}.")
-                print(f"lista de emails: {updated_event.participants_emails}")
+                print(f"lista de emails: {updated_event.participants_ids}")
                 self.events = self._load()
                 break #fecha o loop
     
@@ -147,14 +147,14 @@ class EventModel:
     def get_participants(self, event_id:int):
         self.events = self._load()
         event = self.get_by_id(event_id)
-        return event.participants_emails if event else []  
+        return event.participants_ids if event else []  
     
     def get_participants_number(self, event_id:int):
         self.events = self._load()
         event = self.get_by_id(event_id)
         if not event:
             return 0
-        return len([e for e in event.participants_emails if e.strip()]) #só pega emails não vazios
+        return len([e for e in event.participants_ids if e is not None]) #só pega ids nao vazios
     
     def get_15_next_events(self):
         self.events = self._load()

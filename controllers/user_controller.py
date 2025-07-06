@@ -68,22 +68,19 @@ class UserController(BaseController): #herda de BaseController
         session = request.environ.get('beaker.session') #pega a sessao atual
         email = session['user']['email'] #pega o email
         user = self.user_service.get_by_email(email) #puxa o user
+        user_id = user.id
         if user:
             from services.event_service import EventService
             from services.payment_service import PaymentService
 
             payment_service = PaymentService()
-            user_payments = payment_service.get_all()  # ou crie um método como get_by_user_id(user.id)
-
-            # Filtro apenas dos pagamentos desse user
-            # user_payments = [p for p in user_payments if p.user_email == user.email and p.status == "paid"]
-            user_payments = [p for p in user_payments if p.user_email == user.email]
+            user_payments = payment_service.get_all_from_user(user_id)
 
             # Eventos que o usuário participa ou criou
             if not user.adm:
-                events = self.user_service.get_events_user_participates(email)
+                events = self.user_service.get_events_user_participates(user)
             else:
-                events = self.user_service.get_events_by_owner(email)
+                events = self.user_service.get_events_by_owner(user_id)
 
             # Adiciona o ID do pagamento ao evento (para usar no botão)
             for event in events:
@@ -98,7 +95,8 @@ class UserController(BaseController): #herda de BaseController
         session = request.environ.get('beaker.session')
         email = session['user']['email']
         user = self.user_service.get_by_email(email)
-        payments = self.payment_service.get_all_from_user(email)
+        user_id = user.id
+        payments = self.payment_service.get_all_from_user(user_id)
 
         return self.render('payments', user=user, payments=payments[::-1]) #envia a lista ao contrario pra facilitar visualização 
 
@@ -123,6 +121,7 @@ class UserController(BaseController): #herda de BaseController
     @login_required
     def delete_user(self, user_id):
         session = request.environ.get('beaker.session')
+        user_id = session['user']['id']
 
         self.user_service.delete_user(user_id) #remove o user
 
