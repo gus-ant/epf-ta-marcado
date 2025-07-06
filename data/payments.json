@@ -727,5 +727,32 @@
         "event_name": "sim",
         "status": "paid",
         "timestamp": "2025-07-06T02:26:02.519639"
+    },
+    {
+        "id": 82,
+        "event_id": 34,
+        "user_email": "apagar@gmail.com",
+        "amount": 27.9,
+        "event_name": "Competição de JYTHON",
+        "status": "paid",
+        "timestamp": "2025-07-06T10:34:37.956690"
+    },
+    {
+        "id": 83,
+        "event_id": 34,
+        "user_email": "mmm@gmail.com",
+        "amount": 27.9,
+        "event_name": "Competição de JYTHON",
+        "status": "paid",
+        "timestamp": "2025-07-06T10:51:20.790764"
+    },
+    {
+        "id": 84,
+        "event_id": 34,
+        "user_email": "m@hotmail.com",
+        "amount": 27.9,
+        "event_name": "Competição de JYTHON",
+        "status": "paid",
+        "timestamp": "2025-07-06T10:53:28.208226"
     }
 ]

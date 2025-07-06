@@ -44,6 +44,7 @@ class UserService:
 
         user = User(id=new_id, name=name, email=email, birthdate=birthdate, password=password, adm=adm) #cria o objeto de user
         self.user_model.add_user(user) #adiciona na memoria
+        return user
 
 
 
