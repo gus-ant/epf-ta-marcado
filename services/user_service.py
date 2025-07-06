@@ -114,4 +114,10 @@ class UserService:
         self.event_model.events = self.event_model._load()
         return [e for e in self.event_model.events if owner_email == e.owner_email] #lista de todos os eventos que um adm tem
     
+    def verify_password(self, email, input_password):
+        user = self.get_by_email(email)
+        if not user:
+            return False
+        return input_password == user.password
+
 

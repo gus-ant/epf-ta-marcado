@@ -24,7 +24,7 @@ class UserController(BaseController): #herda de BaseController
         self.app.route('/users', method='GET', callback=self.list_users) #Registra rota GET /users que chama o método list_users para listar usuários
         self.app.route('/users/add', method=['GET', 'POST'], callback=self.add_user) #Registra rota /users/add que aceita GET (mostrar formulário) e POST (salvar usuário)
         self.app.route('/users/edit/<user_id:int>', method=['GET', 'POST'], callback=self.edit_user) #Registra rota /users/edit/<user_id> com parâmetro inteiro para editar usuário específico
-        self.app.route('/users/delete/<user_id:int>', method='POST', callback=self.delete_user) #Registra rota POST /users/delete/<user_id> para deletar usuário específico
+        self.app.route('/users/delete/<user_id:int>', method='POST', callback=self.confirm_delete_user) #Registra rota POST /users/delete/<user_id> para deletar usuário específico
         self.app.route('/user/payments', method='GET', callback=self.view_payments)
 
 
@@ -107,7 +107,7 @@ class UserController(BaseController): #herda de BaseController
             except ValueError as e:
                 return self.render('user_form', user=user, action=f"/users/edit/{user_id}", error=None)
 
-
+    @login_required
     def delete_user(self, user_id):
         session = request.environ.get('beaker.session')
 
@@ -118,6 +118,26 @@ class UserController(BaseController): #herda de BaseController
             session.save()
 
         self.redirect('/events') #redireciona 
+    
+    # @route('/user/delete', method=['GET', 'POST'])
+    @login_required
+    def confirm_delete_user(self, user_id):
+        
+        session = request.environ.get('beaker.session')
+        user = self.user_service.get_by_id(user_id)
+        senha_informada = request.forms.get('password')
+
+        if not self.user_service.verify_password(user.email, senha_informada):
+            return self.render('confirm_delete_user', user=user, error="Senha incorreta.")
+
+        self.user_service.delete_user(user_id)
+
+        session.delete()
+        session.save()
+
+        return self.redirect('/events')
+
+
 
 user_routes = Bottle()
 user_controller = UserController(user_routes)
