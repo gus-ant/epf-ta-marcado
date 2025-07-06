@@ -39,7 +39,7 @@ class PaymentController(BaseController):
             # adição do método raise paymentexception
             raise PaymentNotFoundException()
         
-        payment = self.payment_service.get_by_event_participant(payment.event_id,payment.user_email)
+        payment = self.payment_service.get_by_event_participant(payment.event_id,payment.user_id)
         if payment == None:
             payment = self.payment_service.get_by_id(pid)
 
@@ -48,7 +48,7 @@ class PaymentController(BaseController):
 
         ticket_data = {
                 "evento": f"{payment.event_id}",
-                "usuario": payment.user_email,
+                "usuario": payment.user_id,
                 "valor": f"R$ {payment.amount:.2f}",
                 "status": payment.status,
                 "data": payment.timestamp
@@ -71,7 +71,7 @@ class PaymentController(BaseController):
 
             ticket_data = {
                 "evento": f"{payment.event_id}",
-                "usuario": payment.user_email,
+                "usuario": payment.user_id,
                 "valor": f"R$ {payment.amount:.2f}",
                 "status": payment.status,
                 "data": payment.timestamp
@@ -94,7 +94,7 @@ class PaymentController(BaseController):
                 # gera o QR Code com dados do ingresso
             ticket_data = {
                 "evento": f"{payment.event_id}",
-                "usuario": payment.user_email,
+                "usuario": payment.user_id,
                 "valor": f"R$ {payment.amount:.2f}",
                 "status": payment.status,
                 "data": payment.timestamp
@@ -109,8 +109,8 @@ class PaymentController(BaseController):
             #AQUI O USER SAI DO EVENTO
             event_id = payment.event_id
             session = request.environ.get('beaker.session')
-            email = session['user']['email']
-            self.event_service.remove_participant(event_id, email)
+            user_id = session['user']['id']
+            self.event_service.remove_participant(event_id, user_id)
 
             # renderiza a tela com QR Code embutido
             return self.render('payment_success', payment=payment, qr_code=qr_url)
@@ -123,7 +123,7 @@ class PaymentController(BaseController):
                 # gera o QR Code com dados do ingresso
             ticket_data = {
                 "evento": f"{payment.event_id}",
-                "usuario": payment.user_email,
+                "usuario": payment.user_id,
                 "valor": f"R$ {payment.amount:.2f}",
                 "status": payment.status,
                 "data": payment.timestamp
@@ -151,7 +151,7 @@ class PaymentController(BaseController):
 
             ticket_data = {
                 "evento": f"{payment.event_id}",
-                "usuario": payment.user_email,
+                "usuario": payment.user_id,
                 "valor": f"R$ {payment.amount:.2f}",
                 "status": payment.status,
                 "data": payment.timestamp
@@ -166,8 +166,8 @@ class PaymentController(BaseController):
             #AQUI O USER ENTRA NO EVENTO
             event_id = payment.event_id
             session = request.environ.get('beaker.session')
-            email = session['user']['email']
-            self.event_service.add_participant(event_id, email) 
+            user_id = session['user']['id']
+            self.event_service.add_participant(event_id, user_id) 
 
             # renderiza a tela com QR Code embutido
             return self.render('payment_success', payment=payment, qr_code=qr_url)

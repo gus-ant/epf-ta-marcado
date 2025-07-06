@@ -32,8 +32,8 @@ class EventController(BaseController):
         session = request.environ.get('beaker.session')
         user = None
         if session and 'user' in session:
-            email = session['user']['email']
-            user = self.user_service.get_by_email(email)
+            user_id = session['user']['id']
+            user = self.user_service.get_by_id(user_id)
 
         top15_events = self.event_service.get_top_15_events()
         next_15_events = self.event_service.get_15_next_events()
@@ -46,13 +46,13 @@ class EventController(BaseController):
     @login_required
     def join_event(self, event_id):
         session = request.environ['beaker.session']
-        email = session['user']['email']
+        user_id = session['user']['id']
 
         event = self.event_service.get_by_id(event_id)
         if not event:
             return "Evento não encontrado", 404
         
-        if email in self.event_service.get_participants(event.id):
+        if user_id in self.event_service.get_participants(event.id):
             return "Já participa do evento"
 
         if event.current_capacity <= 0:
@@ -61,13 +61,13 @@ class EventController(BaseController):
         if event.price == None or event.price > 0:
             payment = self.payment_service.create_payment(
                 event_id=event.id,
-                user_email=email,
+                user_id=user_id,
                 amount=event.price
             )
             return redirect(f'/payments/{int(payment.id)}')
         payment = self.payment_service.create_payment(
             event_id=event.id,
-            user_email=email,
+            user_id=user_id,
             amount= 0
         )
         return redirect(f'/payments/{int(payment.id)}')
@@ -77,18 +77,18 @@ class EventController(BaseController):
     @login_required
     def exit_event(self, event_id): 
         session = request.environ['beaker.session']
-        email = session['user']['email']
+        user_id = session['user']['id']
 
         event = self.event_service.get_by_id(event_id)
         if not event:
             return "Evento não encontrado", 404
         
-        if email not in event.participants_emails:
+        if user_id not in event.participants_ids:
             return "Você não participa desse evento"
         
-        self.event_service.remove_participant(event_id, email) #tira ele do evento
+        self.event_service.remove_participant(event_id, user_id) #tira ele do evento
 
-        last_payment = self.payment_service.get_by_event_participant(event_id, email)
+        last_payment = self.payment_service.get_by_event_participant(event_id, user_id)
         if last_payment:
             pid = last_payment.id
 
@@ -110,7 +110,6 @@ class EventController(BaseController):
             
             self.payment_service.mark_as_paid(payment_id)
             # atualiza capacidade do evento
-            self.event_service.decrease_capacity(payment.event_id)
             return self.render('payment_success', payment=payment)
 
         return redirect('payment_form', payment=payment)
@@ -120,7 +119,7 @@ class EventController(BaseController):
     @admin_required
     def create_event(self):
         session = request.environ['beaker.session'] #puxa o user logado
-        email = session['user']['email']
+        user_id = session['user']['id']
         if request.method == 'GET':
             return self.render('event_form', action='/events/create', event=None, error=None, datetime=datetime, timedelta=timedelta)
         else:
@@ -139,7 +138,7 @@ class EventController(BaseController):
                     price = float(price) #converte o preço limpo 
 
                 max_capacity = int(request.forms.get('max_capacity'))
-                owner_email = email #agora puxa automatico
+                owner_id = user_id #agora puxa automatico
                 description = request.forms.get('description')
                 cover_file = request.files.get('cover')
 
@@ -154,7 +153,7 @@ class EventController(BaseController):
                     cover_file.save(save_path) #guarda a imagem
                     
 
-                self.event_service.add_event(name, local, date, time, price, max_capacity, owner_email, description, cover=filename)
+                self.event_service.add_event(name, local, date, time, price, max_capacity, owner_id, description, cover=filename)
 
                 return redirect('/user')
             except Exception as e:
@@ -166,12 +165,12 @@ class EventController(BaseController):
         session = request.environ.get('beaker.session')
         user = None
         if session and 'user' in session:
-            email = session['user']['email']
-            user = self.user_service.get_by_email(email)
+            user_id = session['user']['id']
+            user = self.user_service.get_by_id(user_id)
         event = self.event_service.get_by_id(event_id)
         if not event:
             return "Evento não encontrado"
-        return self.render('event_detail', event=event, user=user, datetime=datetime, timedelta=timedelta)
+        return self.render('event_detail', event=event, user=user, datetime=datetime, timedelta=timedelta, session=session)
 
     def search_event(self):
         pesquisa = request.query.get("q", "").lower()
@@ -191,4 +190,3 @@ class EventController(BaseController):
 
 event_routes = Bottle()
 event_controller = EventController(event_routes)
-

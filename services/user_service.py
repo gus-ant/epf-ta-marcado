@@ -58,7 +58,7 @@ class UserService:
 
     def edit_user(self, user): #usa um objeto user
         name = request.forms.get('name') #puxa os dados do formulario http
-        email = request.forms.get('email') #ISSO AQUI PODE DAR UM PROBLEMÃO
+        email = request.forms.get('email')
         birthdate = request.forms.get('birthdate')
         password = request.forms.get('password')
         password_confirm = request.forms.get('password_confirm')
@@ -85,19 +85,28 @@ class UserService:
         user = self.user_model.get_by_id(user_id)
         print(user.name)
         if user: #caso encontre
+            print('achou o user')
             if user.adm: #se for adm
-                eventos = [e for e in self.event_service.get_all() if e.owner_email == user.email] #lista com todos os eventos do adm
+                print('user é adm')
+                eventos = [e for e in self.event_service.get_all() if e.owner_id == user.id] #lista com todos os eventos do adm
                 for e in eventos:
                     self.event_service.delete_event(e.id) #apaga o evento
-        self.event_service.remove_user_from_all_events(user.email) #tira o user de todos os eventos
-        self.user_model.delete_user(user_id) #usa o metodo do user.py (já salva)
+            self.event_service.remove_user_from_all_events(user.id) #tira o user de todos os eventos
+            self.user_model.delete_user(user_id) #usa o metodo do user.py (já salva)
 
     def authenticate(self, email, password):
-        #autentica um usuario usando email e senha
         user = self.user_model.get_by_email(email)
-        if user and user.check_password(password): #caso a senha for correta
-            return user
-        return None #caso for incorreta
+        print(f"Autenticando email: '{email}', senha recebida: '{password}'")
+        if user:
+            print(f"Senha salva no JSON: '{user.password}'")
+            if user.check_password(password):
+                print("Senha correta!")
+                return user
+            else:
+                print("Senha incorreta!")
+        else:
+            print("Usuário não encontrado!")
+        return None
     
     def get_admins(self): #retorna apenas os admins
         return self.user_model.get_admins()
@@ -105,16 +114,16 @@ class UserService:
     def get_regular_users(self): #retorna apenas usuarios comuns
         return self.user_model.get_regular_users()
     
-    def can_create_events(self, user): #verifica se o usuario pode criar eventos
+    def can_create_events(self, user:User): #verifica se o usuario pode criar eventos
         return user and user.adm
     
-    def get_events_user_participates(self, user_email: str):
+    def get_events_user_participates(self, user_id:int):
         self.event_model.events = self.event_model._load()
-        return [e for e in self.event_model.events if user_email in e.participants_emails] #lista de todos os eventos que tem um participante com o mesmo email
+        return [e for e in self.event_model.events if user_id in e.participants_ids] #lista de todos os eventos que tem um participante com o mesmo id
     
-    def get_events_by_owner(self, owner_email: str):
+    def get_events_by_owner(self, owner_id: int):
         self.event_model.events = self.event_model._load()
-        return [e for e in self.event_model.events if owner_email == e.owner_email] #lista de todos os eventos que um adm tem
+        return [e for e in self.event_model.events if owner_id == e.owner_id] #lista de todos os eventos que um adm tem
     
     def verify_password(self, email, input_password):
         user = self.get_by_email(email)

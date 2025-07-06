@@ -87,10 +87,12 @@ class UserModel:
 
 
     def get_by_id(self, user_id: int): 
+        self.users = self._load()
         return next((u for u in self.users if u.id == user_id), None) #busca pelo id, caso não encontre, retorna None
         #o next é otimizado, pois para assim que acha
 
     def get_by_email(self, email: str): #busca por email
+        self.users = self._load()
         return next((u for u in self.users if u.email == email), None)
 
 
@@ -108,6 +110,7 @@ class UserModel:
 
 
     def delete_user(self, user_id: int): #salva uma nova lista sem o id antigo
+        self.users = self._load()
         self.users = [u for u in self.users if u.id != user_id] #cria uma lista excluindo o antigo
         self._save() #salva
 
