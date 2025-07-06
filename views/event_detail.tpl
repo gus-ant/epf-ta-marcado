@@ -96,6 +96,8 @@
                 % for email in event.participants_emails:
                   <li> {{ email }}</li>
                 % end
+              % elif expired:
+                <p class="alert alert-warning"> Esse evento não teve inscritos</p>
               % else:
                 <p class="alert alert-warning"> Esse evento ainda não tem inscritos</p>
 

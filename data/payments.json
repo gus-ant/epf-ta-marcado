@@ -754,5 +754,14 @@
         "event_name": "Competição de JYTHON",
         "status": "paid",
         "timestamp": "2025-07-06T10:53:28.208226"
+    },
+    {
+        "id": 85,
+        "event_id": 14,
+        "user_email": "apagar@gmail.com",
+        "amount": 900.0,
+        "event_name": "ENCONTRO DE FÏsica AEROESPACIAL",
+        "status": "paid",
+        "timestamp": "2025-07-06T11:50:39.786353"
     }
 ]
