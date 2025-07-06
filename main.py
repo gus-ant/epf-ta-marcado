@@ -12,6 +12,7 @@ if __name__ == '__main__':
 #fazer uma pagina pra confirmar o delete, onde o user tem que informar a senha e confirmar (botão com timer) 🧲
 #ver se o user sai de todos os eventos 🧲
 #rever as coisas que puxam user por email e trocar pra puxar por ID 
+# se um adm deleta conta, eventos dele somem e as pessoas que tavam com pagamento pendente, cancelar, pago, reembolso pendente SÓ para eventos do futuro
 #}
 
 #COMEÇAR O README
