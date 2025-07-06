@@ -56,14 +56,6 @@
         "adm": true
     },
     {
-        "id": 10,
-        "name": "apagar33",
-        "email": "apagar@gmail.com",
-        "birthdate": "3333-03-31",
-        "password": "123123123",
-        "adm": false
-    },
-    {
         "id": 11,
         "name": "usuario fds",
         "email": "fds@gmail.com",
@@ -76,6 +68,30 @@
         "name": "user novo para testes",
         "email": "test@gmail.com",
         "birthdate": "3543-05-04",
+        "password": "123123123",
+        "adm": false
+    },
+    {
+        "id": 18,
+        "name": "Caju",
+        "email": "apagar@gmail.com",
+        "birthdate": "0024-12-12",
+        "password": "123123123",
+        "adm": false
+    },
+    {
+        "id": 19,
+        "name": "MAS",
+        "email": "m@hotmail.com",
+        "birthdate": "2022-02-18",
+        "password": "123123123",
+        "adm": false
+    },
+    {
+        "id": 23,
+        "name": "MN",
+        "email": "n@gmail.com",
+        "birthdate": "2025-06-30",
         "password": "123123123",
         "adm": false
     }

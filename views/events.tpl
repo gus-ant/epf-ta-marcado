@@ -14,8 +14,8 @@
 % if user:
   % if user.adm:
     <div class="container">
-    <div style="margin-top: 40px; text-align: right;">
-      <a href="/events/create" class="btn">+ Criar novo evento</a>
+    <div style="margin-top: 20px; text-align: center; ">
+      <a href="/events/create" class="btn" style="min-width: 400px">+ Crie um novo evento</a>
     </div>
   % end
 % end

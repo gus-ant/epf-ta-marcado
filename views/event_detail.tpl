@@ -80,7 +80,7 @@
               <p class="alert alert-warning">⚠️ Para se inscrever, use uma conta de usuario</p>
             % else:
               <form action="/events/{{event.id}}/join" method="post">
-                <button type="submit" class="btn btn-outline">🔐 Faça login para garantir seu ingresso</button>
+                <button type="submit" class="btn">🔐 Faça login para garantir seu ingresso</button>
               </form>
             % end
           % end
@@ -96,6 +96,8 @@
                 % for email in event.participants_emails:
                   <li> {{ email }}</li>
                 % end
+              % elif expired:
+                <p class="alert alert-warning"> Esse evento não teve inscritos</p>
               % else:
                 <p class="alert alert-warning"> Esse evento ainda não tem inscritos</p>
 

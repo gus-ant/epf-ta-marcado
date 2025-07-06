@@ -36,19 +36,32 @@ class UserController(BaseController): #herda de BaseController
     def add_user(self):
         if request.method == 'GET':
             session = request.environ.get('beaker.session')
-
-            return self.render('user_form', user=None, action="/users/add", error=None, session=session) #faz o formulario vazio para o novo usuario
+            return self.render('user_form', user=None, action="/users/add", error=None, session=session)
         else:
-            # POST - salvar usuário
             try:
-                result = self.user_service.save()
-                if result: #trata os erros
-                    return result
-                self.redirect('/login') #apos salvar manda para login pra fazer o login
+                # salva o usuário e obtém o objeto
+                user = self.user_service.save()
+
+                if not user:
+                    return self.render('user_form', user=None, action='/users/add', error="Erro ao criar usuário.", session=request.environ.get('beaker.session'))
+
+                # vai autenticar o usuário automaticamente (mesmo processo que no login)
+                session = request.environ.get('beaker.session')
+                session['user'] = {
+                    'email': user.email,
+                    'name': user.name,
+                    'adm': user.adm,
+                    'id': user.id
+                }
+                session.save()
+
+                print(f"USER {user.name} LOGADO AUTOMATICAMENTE")
+                return self.redirect('/user')  # Redireciona para o perfil
+
             except (ValueError, EmailAlreadyUsedException, PasswordMismatchException) as e:
                 session = request.environ.get('beaker.session')
-                # para tratar os erros
                 return self.render('user_form', user=None, action='/users/add', error=str(e), session=session)
+
             
     @login_required
     def view_profile(self):
