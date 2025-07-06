@@ -124,6 +124,8 @@ class UserController(BaseController): #herda de BaseController
     def confirm_delete_user(self, user_id):
         print("Método HTTP:", request.method)
         session = request.environ.get('beaker.session')
+        user_id = session['user']['id']
+        print('user id:', user_id)
         user = self.user_service.get_by_id(user_id)
         if not user:
             return "Usuário não encontrado", 404

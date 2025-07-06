@@ -8,9 +8,6 @@ if __name__ == '__main__':
 
 #checar o que acontece quando deleta conta
 #{
-#avisar quando for deletar que ainda tem pagamentos possiveis em andamento 🧲
-#fazer uma pagina pra confirmar o delete, onde o user tem que informar a senha e confirmar (botão com timer) 🧲
-#ver se o user sai de todos os eventos 🧲
 #rever as coisas que puxam user por email e trocar pra puxar por ID 
 # se um adm deleta conta, eventos dele somem e as pessoas que tavam com pagamento pendente, cancelar, pago, reembolso pendente SÓ para eventos do futuro
 #}

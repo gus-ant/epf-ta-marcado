@@ -13,7 +13,7 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 class Event:
     #falta adicionar uma lista com todas as pessoas participando 
 
-    def __init__(self, id, name, local, date, price, max_capacity, time, current_capacity, owner_email, description, cover=None, participants_emails:List[str]=[""]):
+    def __init__(self, id, name, local, date, price, max_capacity, time, owner_email, description, cover=None, participants_emails:List[str]=None):
         self.id = id #identificador unico 
         self.name = name #nome do evento
         self.local = local #local do evento
@@ -24,12 +24,11 @@ class Event:
         self.owner_email = owner_email #email de quem criou o evento
         self.description = description #descrição do evento
         self.cover = cover #capa do evento
-        self.participants_emails = participants_emails or [] #todos os emails dos participantes do evento
+        self.participants_emails = participants_emails if participants_emails else [] #todos os emails dos participantes do evento
 
-        self.current_capacity = max_capacity #capacidade atual inicial
-        if current_capacity != None: #caso seja passado valor
-            self.current_capacity = current_capacity
-        #(posteriormente calcular quando alguem entrar ou sair do evento)
+    @property
+    def current_capacity(self):
+        return self.max_capacity - len([e for e in self.participants_emails if e.strip()])
     
     def __repr__(self): #representação em string 
         return (f"Event(id={self.id}, name={self.name}, local={self.local},time={self.time} ,"
@@ -46,7 +45,6 @@ class Event:
             'price': self.price,
             'max_capacity': self.max_capacity,
             'time' : self.time,
-            'current_capacity': self.current_capacity,
             'owner_email': self.owner_email,
             'description': self.description,
             'cover': self.cover,
@@ -63,7 +61,6 @@ class Event:
             price = data['price'],
             max_capacity = data['max_capacity'],
             time = data['time'],
-            current_capacity = data['current_capacity'],
             owner_email = data['owner_email'],
             description = data['description'],
             cover = data['cover'],
@@ -102,6 +99,7 @@ class EventModel:
         # f é o arquivo, indent é pra facilitar a leitura, ensure ascii false permite caracteres unicode
 
     def get_all(self): #retorna todos
+        self.events = self._load()
         return self.events
     
     def get_by_id(self, event_id:int):
@@ -136,6 +134,8 @@ class EventModel:
             if event.id == updated_event.id: #se os eventos tiverem o id igual
                 self.events[i] = updated_event #troca o evento da lista pelo novo
                 self._save() #salva
+                print(f"[UPDATE] Evento salvo {updated_event.name}.")
+                print(f"lista de emails: {updated_event.participants_emails}")
                 self.events = self._load()
                 break #fecha o loop
     
