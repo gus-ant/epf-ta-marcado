@@ -18,8 +18,14 @@ Esse projeto tem como objetivo aplicar os conceitos de Programação Orientada a
 A aplicação serve como base didática e extensível para estudos práticos de organização em camadas (MVC), uso de sessões, tratamento de exceções, manipulação de arquivos e interação com usuários por meio de uma interface web.
 
 
-
-![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+![Bottle](https://img.shields.io/badge/Bottle-242323?style=for-the-badge&logo=bottle&logoColor=white)
+![QRCode](https://img.shields.io/badge/QRCode-000000?style=for-the-badge&logo=qrcode&logoColor=white)
+![Pylint](https://img.shields.io/badge/Pylint-44B744?style=for-the-badge&logo=pylint&logoColor=white)
+![Pillow](https://img.shields.io/badge/Pillow-4A4A4A?style=for-the-badge&logo=python&logoColor=white)
 
 ---
 
@@ -34,7 +40,6 @@ A aplicação serve como base didática e extensível para estudos práticos de 
 - 🖼️ Opção de upload de imagem de capa para os eventos
 - 📑 Visualização do perfil com histórico de eventos
 - 📈 Painel do administrador para criação de eventos
-
 
 ---
 
@@ -189,6 +194,6 @@ Estão no arquivo requirements.txt com:
 
 ### 🙋‍♂️ Autores
 
-Feito com dedicação por Gabriel Velho e Gustavo Antonio
+Feito com dedicação por ![Gabriel Velho](https://github.com/Velho008/) e ![Gustavo Antonio](https://github.com/Velho008/)
 
 📚 Engenharia - FCTE/UnB
