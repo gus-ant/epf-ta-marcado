@@ -37,7 +37,7 @@ A aplicação serve como base didática e extensível para estudos práticos de 
 - 📍 Detalhes completos do evento e endereço
 - 🧾 Detalhamento do pagamento e download do ingresso
 - 🔐 Proteção de rotas por tipo de usuário
-- 🖼️ Upload de imagem de capa para os eventos
+- 🖼️ Opção de upload de imagem de capa para os eventos
 - 📑 Visualização do perfil com histórico de eventos
 - 📈 Painel do administrador para criação de eventos
 

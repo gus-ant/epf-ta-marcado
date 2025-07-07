@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "name": "Observação do Planeta Terra",
+        "local": "Espaço Sideral",
+        "date": "2025-07-19",
+        "price": 90.0,
+        "max_capacity": 10,
+        "time": "20:00",
+        "owner_id": 2,
+        "description": "Saída com a Space x, na melhor missão espacial do mundo.",
+        "cover": "b3a819d18b604236a254cd80d158d19b.jpg",
+        "participants_ids": []
+    },
+    {
+        "id": 2,
+        "name": "Clássicos Desconhecidos",
+        "local": "JK Shopping - Taguatinga, DF",
+        "date": "2025-07-09",
+        "price": 15.0,
+        "max_capacity": 100,
+        "time": "14:00",
+        "owner_id": 2,
+        "description": "Seção com vários filmes clássicos subavaliados, porém com um toque de arte muito elevado.",
+        "cover": "d411accc690d4ad2bfaed36c3cdfefeb.jpg",
+        "participants_ids": []
+    },
+    {
+        "id": 3,
+        "name": "Visita ao Zoológico de Quimera",
+        "local": "Quimera - Baixada Paulista",
+        "date": "2025-07-09",
+        "price": 0.0,
+        "max_capacity": 40,
+        "time": "09:30",
+        "owner_id": 2,
+        "description": "Visita ao Zoológico de Quimera: Uma Aventura Fantástica!\r\n\r\nPrepare-se para uma experiência inesquecível no Zoológico de Quimera, onde o mito encontra a realidade! Embarque em uma jornada extraordinária",
+        "cover": "724802f5f74d4eb2b1c0cdd813b07680.jpg",
+        "participants_ids": []
+    },
+    {
+        "id": 4,
+        "name": "Musical Broadway: O Fantasma d",
+        "local": "Sql 25 - Asa Sul, DF",
+        "date": "2025-07-24",
+        "price": 200.0,
+        "max_capacity": 90,
+        "time": "19:00",
+        "owner_id": 3,
+        "description": "O clássico musical da Broadway chega à cidade! Uma história de amor, mistério e música que conquistou muitos espectadores.",
+        "cover": "f51cb9ca3e024ab88e066e0936a302b5.png",
+        "participants_ids": []
+    },
+    {
+        "id": 5,
+        "name": "Festival de Música Eletrônica",
+        "local": "Iate Clube - Lago Norte, DF",
+        "date": "2025-07-08",
+        "price": 10.0,
+        "max_capacity": 1000,
+        "time": "22:00",
+        "owner_id": 3,
+        "description": "Uma noite incrível com os melhores DJs da cena eletrônica nacional e internacional. ",
+        "cover": "a3ebd9f928ec4c78acb925d9724d3dfb.png",
+        "participants_ids": []
+    },
+    {
+        "id": 6,
+        "name": "Exposição de Arte Moderna",
+        "local": "Museu da República, Brasília - DF1",
+        "date": "2025-07-08",
+        "price": 5.0,
+        "max_capacity": 100,
+        "time": "08:00",
+        "owner_id": 3,
+        "description": "Uma exposição única que reúne obras de artistas contemporâneos renomados. Uma jornada através das maiores artes modernas.",
+        "cover": "04a16ff58ea04f0899f156445e19c1d7.png",
+        "participants_ids": []
+    }
+]

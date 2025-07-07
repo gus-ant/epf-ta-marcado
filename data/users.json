@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Gustavo Antonio",
+        "email": "g@gmail.com",
+        "birthdate": "2006-04-28",
+        "password": "123123123",
+        "adm": false
+    },
+    {
+        "id": 2,
+        "name": "Maria Freitas",
+        "email": "m@hotmail.com",
+        "birthdate": "2000-02-09",
+        "password": "123123123",
+        "adm": true
+    },
+    {
+        "id": 3,
+        "name": "Henrique Solano",
+        "email": "h@gmail.com",
+        "birthdate": "2009-03-09",
+        "password": "123123123",
+        "adm": true
+    }
+]
