@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "event_id": 1,
+        "user_id": 3,
+        "amount": 3.0,
+        "event_name": "EVENTO ZERO232132",
+        "status": "refund_requested",
+        "timestamp": "2025-07-06T23:00:18.847589"
+    },
+    {
+        "id": 2,
+        "event_id": 2,
+        "user_id": 3,
+        "amount": 0,
+        "event_name": "123",
+        "status": "refunded",
+        "timestamp": "2025-07-06T23:00:35.100167"
+    },
+    {
+        "id": 3,
+        "event_id": 1,
+        "user_id": 1,
+        "amount": 3.0,
+        "event_name": "EVENTO ZERO232132",
+        "status": "pending",
+        "timestamp": "2025-07-06T23:00:51.634169"
+    },
+    {
+        "id": 4,
+        "event_id": 2,
+        "user_id": 1,
+        "amount": 0,
+        "event_name": "123",
+        "status": "refunded",
+        "timestamp": "2025-07-06T23:00:59.185764"
+    }
+]

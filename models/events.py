@@ -3,6 +3,7 @@ import os
 from dataclasses import dataclass, asdict
 from typing import List
 from datetime import datetime
+from models.payment import PaymentModel
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 # Define o diretório onde os arquivos de dados serão armazenados
@@ -74,6 +75,7 @@ class EventModel:
     
     def __init__(self):
         self.events = self._load() #inicializa a lista e armazena na memoria
+        self.payment_model = PaymentModel()
 
     def _load(self):
         if not os.path.exists(self.FILE_PATH): #caso não tenha
@@ -139,11 +141,42 @@ class EventModel:
                 self.events = self._load()
                 break #fecha o loop
     
-    def delete_event(self, event_id:int):
-        self.events = [e for e in self.events if e.id !=event_id] #troca por uma nova lista sem o item com mesmo id
-        self._save() #salva
+    def delete_event(self, event_id: int):
         self.events = self._load()
-    
+        print('caiu no delete event')
+
+        event = self.get_by_id(event_id)
+        if not event:
+            print("Evento não encontrado.")
+            return
+        print(event.name, "encontrado")
+
+        participantes = event.participants_ids
+        print("Participantes encontrados:", participantes)
+        for user_id in participantes:
+            print('user id:', user_id, "mudando pagamento")
+            pagamento = self.payment_model.get_by_event_participant(event_id, user_id)
+
+            if not pagamento:
+                print(f"Nenhum pagamento encontrado para o user {user_id} no evento {event_id}")
+                continue
+
+            if event.price == 0:
+                print('evento grátis, pagamento reembolsado')
+                pagamento.status = 'refunded'
+            elif pagamento.status == 'paid':
+                print('evento pago, pagamento em reembolso')
+                pagamento.status = 'refund_requested'
+            elif pagamento.status == 'pending':
+                print('pagamento pendente cancelado')
+                pagamento.status = 'cancelled'
+
+            self.payment_model.update(pagamento)
+
+        self.events = [e for e in self.events if e.id != event_id]
+        self._save()
+        self.events = self._load()
+        
     def get_participants(self, event_id:int):
         self.events = self._load()
         event = self.get_by_id(event_id)

@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "karn",
+        "email": "fds@gmail.com",
+        "birthdate": "2025-07-07",
+        "password": "123123123",
+        "adm": false
+    },
+    {
+        "id": 2,
+        "name": "admilson",
+        "email": "adm@gmail.com",
+        "birthdate": "3333-03-31",
+        "password": "123123123",
+        "adm": true
+    },
+    {
+        "id": 3,
+        "name": "EVENTO ZERO",
+        "email": "g@gmail.com",
+        "birthdate": "3333-03-31",
+        "password": "123123123",
+        "adm": false
+    }
+]
