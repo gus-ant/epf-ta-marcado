@@ -27,6 +27,8 @@ class EventController(BaseController):
         self.app.route('/events/<event_id:int>', method='GET', callback=self.view_event)
         self.app.route('/events/<event_id:int>/leave', method='POST', callback=self.exit_event)
         self.app.route('/events/search', method='GET', callback=self.search_event)
+        self.app.route('/events/<event_id:int>/delete', method='POST', callback=self.delete_event)
+
 
     def list_events(self):
         session = request.environ.get('beaker.session')
@@ -187,6 +189,21 @@ class EventController(BaseController):
         
         return self.render('event_search', events=eventos_filtrados, query=pesquisa)
 
+    @login_required
+    def delete_event(self, event_id):
+        session = request.environ.get('beaker.session')
+        user_id = session['user']['id']
+        
+        event = self.event_service.get_by_id(event_id)
+        if not event:
+            return "Evento não encontrado", 404
+        
+        # Verifica se o user atual é ADM e dono do evento
+        if not self.user_service.get_by_id(user_id).adm or user_id != event.owner_id:
+            return "Você não tem permissão para apagar este evento", 403
+
+        self.event_service.delete_event(event_id)
+        return redirect('/')  # ou '/events' se preferir voltar pra lista geral
 
 event_routes = Bottle()
 event_controller = EventController(event_routes)

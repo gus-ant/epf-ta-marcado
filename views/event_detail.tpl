@@ -75,6 +75,10 @@
             <form action="/events/{{event.id}}/join" method="post">
               <button type="submit" class="btn btn-primary">❤️ Quero ir</button>
             </form>
+          % elif user and user.adm and user.id == event.owner_id:
+            <form action="/events/{{event.id}}/delete" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este evento?');">
+              <button type="submit" class="btn btn-danger">🗑️ Apagar evento</button>
+            </form>
           % elif user and user.adm:
             <p class="alert alert-warning">⚠️ Para se inscrever, use uma conta de usuário</p>
           % else:
