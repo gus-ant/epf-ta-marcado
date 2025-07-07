@@ -1,6 +1,6 @@
 #  Tá Marcado
 
- ![Logo Tá Marcado](/static/img/new_logo.png)
+<img src="/static/img/new_logo.png" width="300">
 
 ## ✅ Objetivo:
 O projeto Tá Marcado é um sistema de gestão e compra de ingressos para eventos, que tem suporte a geração de QR Code como ingresso, login de usuários e painel administrativo e foi desenvolvido com Python (Bottle), HTML/CSS e persistência em JSON. 
@@ -31,10 +31,10 @@ A aplicação serve como base didática e extensível para estudos práticos de 
 - 📍 Detalhes completos do evento e endereço
 - 🧾 Detalhamento do pagamento e download do ingresso
 - 🔐 Proteção de rotas por tipo de usuário
-- 🖼️ Upload de imagem de capa para os eventos
+- 🖼️ Opção de upload de imagem de capa para os eventos
 - 📑 Visualização do perfil com histórico de eventos
 - 📈 Painel do administrador para criação de eventos
-- ❤️ Curtidas nos eventos
+
 
 ---
 
