@@ -32,14 +32,14 @@ A aplicação serve como base didática e extensível para estudos práticos de 
 ## 🚀 Funcionalidades
 
 - ✅ Cadastro e login de usuários (clientes e administradores)
-- 🔍 Busca de eventos por nome ou local (`/events/search?q=`)
-- 🎫 Compra de ingressos com QR Code gerado automaticamente
-- 📍 Detalhes completos do evento e endereço
-- 🧾 Detalhamento do pagamento e download do ingresso
-- 🔐 Proteção de rotas por tipo de usuário
-- 🖼️ Opção de upload de imagem de capa para os eventos
-- 📑 Visualização do perfil com histórico de eventos
-- 📈 Painel do administrador para criação de eventos
+- ✅ Busca de eventos por nome ou local (`/events/search?q=`)
+- ✅ Compra de ingressos com QR Code gerado automaticamente
+- ✅ Detalhes completos do evento e endereço
+- ✅ Detalhamento do pagamento e download do ingresso
+- ✅ Proteção de rotas por tipo de usuário
+- ✅ Opção de upload de imagem de capa para os eventos
+- ✅ Visualização do perfil com histórico de eventos
+- ✅ Painel do administrador para criação de eventos
 
 ---
 
@@ -114,17 +114,36 @@ epf-ta-marcado/
 
 
 ---
+## Diagrama UML:
+
+<img src="/static/img/diagrama1.png" width="500">
+
+# Interface do Sistema
+
+### Página Inicial
+
+![](https://github.com/gus-ant/epf-ta-marcado/blob/main/static/img/pag_inicial.png)
+
+### Detalhes do Evento
+
+![](https://github.com/gus-ant/epf-ta-marcado/blob/main/static/img/detalhe_evento.png)
+
+### Processo de Compra
+
+![](https://github.com/gus-ant/epf-ta-marcado/blob/main/static/img/detalhes_pag.png)
+
+### Painel Cliente
+
+![](https://github.com/gus-ant/epf-ta-marcado/blob/main/static/img/pag_perfil.png)
+
+### Painel Administrador
+
+![](https://github.com/gus-ant/epf-ta-marcado/blob/main/static/img/pag_adm.png)
+
 
 ## Exemplo de Ingresso com QR Code
 
-Ao confirmar o pagamento, o usuário recebe um QR Code com os dados do ingresso:
-
-🎭 Musical Broadway: O Fantasma da Ópera
-📅 Data: 19/02/2024 às 20:00
-📍 Local: Teatro Municipal
-
-💰 Total: R$ 300.00
-
+![](https://github.com/gus-ant/epf-ta-marcado/blob/main/static/img/qr_code.png)
 
 ---
 
@@ -194,6 +213,6 @@ Estão no arquivo requirements.txt com:
 
 ### 🙋‍♂️ Autores
 
-Feito com dedicação por ![Gabriel Velho](https://github.com/Velho008/) e ![Gustavo Antonio](https://github.com/Velho008/)
+Feito com dedicação por ![Gabriel Velho](https://github.com/Velho008/) e ![Gustavo Antonio](https://github.com/gus-ant/)
 
 📚 Engenharia - FCTE/UnB
